@@ -7,8 +7,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Personal website and portfolio for Tim Snow.">
+	<meta property="og:image" content="img/portfolio/audio1" />
+	<meta property="og:title" content="Tim Snow." />
+	<meta property="og:description" content="Computer Science (Games) graduate. Personal website and portfolio for Tim Snow - Web, mobile and software developer." />
     <meta name="author" content="Tim Snow.">
-
+	<link rel="icon" 
+		type="image/png" 
+		href="favicon.png">
+		
     <title>Tim Snow.</title>
 
     <!-- Bootstrap Core CSS - Uses Bootswatch Flatly Theme: http://bootswatch.com/flatly/ -->
@@ -95,7 +101,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-sm-6 portfolio-item">
+                <div class="col-sm-4 portfolio-item">
                     <a href="#portfolioModal1" class="portfolio-link" data-toggle="modal">
                         <div class="caption">
                             <div class="caption-content">
@@ -105,7 +111,17 @@
                         <img src="img/portfolio/audio.png" class="img-responsive" alt="">
                     </a>
                 </div>
-                <div class="col-sm-6 portfolio-item">
+				<div class="col-sm-4 portfolio-item">
+                    <a href="#portfolioModal6" class="portfolio-link" data-toggle="modal">
+                        <div class="caption">
+                            <div class="caption-content">
+                                <i class="fa fa-search-plus fa-3x"></i>
+                            </div>
+                        </div>
+                        <img src="img/portfolio/gol.png" class="img-responsive" alt="">
+                    </a>
+                </div>
+                <div class="col-sm-4 portfolio-item">
                     <a href="#portfolioModal2" class="portfolio-link" data-toggle="modal">
                         <div class="caption">
                             <div class="caption-content">
@@ -160,10 +176,13 @@
             </div>
             <div class="row">
                 <div class="col-lg-4 col-lg-offset-2">
-                    <p>I have recently completed my BSc (Hons) in Computer Science (Games) at the University of Brighton and achieved a 2:1 result. The degree has fuelled my passion for all things technology related - I am a developer, designer, and an avid gamer!</p>
+                    <p>I have recently completed my BSc (Hons) in Computer Science (Games) at the University of Brighton and achieved a 2:1 result. 
+					The degree has fuelled my passion for all things technology related, I am an IT-minded individual who thrives on challenges and learning, 
+					as well as passing on skills to others, I enjoy working with and interact well with people, am keen and enthusiastic and take pride in all my work. </p>
                 </div>
                 <div class="col-lg-4">
-                    <p>I have worked with many different languages, paradigms, libraries and technologies while at university and also when working on my own projects. My current projects are the creation of this website and also learning to use the Unity environment.</p>
+                    <p>I have worked with many different languages, paradigms, libraries and technologies while at university and also when working on my own projects. 
+					I am currently working on various projects, such as the creation of this website, an app that communicates using NFC on Android phones, a website using SQL for user accounts, and also learning to use the Unity environment.</p>
                 </div>
             </div>
         </div>
@@ -231,7 +250,7 @@
                 <div class="row">
                     <div class="footer-col col-md-6">
                         <h3>Location</h3>
-                        <p>Stevenage<br>Hertfordshire, England</p>
+                        <p>Hertford Heath<br>Hertfordshire, England</p>
                     </div>
                     <div class="footer-col col-md-6">
                         <h3>Around the Web</h3>
@@ -434,6 +453,45 @@
 							</p>
 							<p>
 								Gave tremendous insight in to the workings and the many problems encountered when working with concurrent and networked systems.
+							</p>
+                            <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+	    <div class="portfolio-modal modal fade" id="portfolioModal6" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-content">
+            <div class="close-modal" data-dismiss="modal">
+                <div class="lr">
+                    <div class="rl">
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 col-lg-offset-2">
+                        <div class="modal-body">
+                            <h2>JavaScript implementation of Conway's Game of Life</h2>
+                            <hr class="star-primary">
+                            <img src="img/portfolio/gol1.png" class="img-responsive img-centered" alt="">
+							<a href="http://tim-snow.github.io/WebGameOfLife" target="_blank"><h4>You can view the website here.</h4></a>
+							<a href="https://github.com/Tim-Snow/WebGameOfLife/tree/gh-pages" target="_blank"><h4>You can view the code here.</h4></a>
+   							<dl class="dl-horizontal">                         
+								<dt><h4>Language:</h4></dt><dd><p>JavaScript</p></dd>
+								<dt><h4>Library:</h4></dt><dd><p>jQuery</p></dd>
+							</dl>
+                            <p>
+								A fun side project that allows the user to set the initial state and watch how four simple rules can create patterns and cause it to evolve. <br />
+								The four rules are:<br />
+								<p align="left"><small>
+								1. Any live cell with fewer than two live neighbours dies.<br />
+								2. Any live cell with two or three live neighbours lives on to the next generation.<br />
+								3. Any live cell with more than three live neighbours dies.<br />
+								4. Any dead cell with exactly three live neighbours becomes a live cell.</small></p>
+							<p>
+								Also added in templates for common found patterns allowing a much easier and less tedious set up. Grid size, visibility and speed can be customized.
 							</p>
                             <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
                         </div>
