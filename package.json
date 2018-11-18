@@ -1,0 +1,22 @@
+{
+  "name": "personalwebsite",
+  "version": "1.0.0",
+  "description": "[Freelancer](http://startbootstrap.com/template-overviews/freelancer/) is a one page freelancer portfolio theme for [Bootstrap](http://getbootstrap.com/) created by [Start Bootstrap](http://startbootstrap.com/). This theme features several content sections, a responsive portfolio grid with hover effects, full page portfolio item modals, and a working PHP contact form.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tim-Snow/PersonalWebsite.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tim-Snow/PersonalWebsite/issues"
+  },
+  "homepage": "https://github.com/Tim-Snow/PersonalWebsite#readme",
+  "dependencies": {
+    "react": "^16.6.3"
+  }
+}
