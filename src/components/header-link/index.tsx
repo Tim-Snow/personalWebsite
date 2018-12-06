@@ -14,7 +14,6 @@ interface State {
 export default class HeaderLink extends React.Component<Props, State> {
   private defaultStyle = {
     cursor: 'pointer',
-    flexGrow: 0.5,
   }
 
   private hoverStyle = {
@@ -27,7 +26,7 @@ export default class HeaderLink extends React.Component<Props, State> {
     backgroundColor: '#FFF',
   }
 
-  constructor(props: any) {
+  constructor(props: Props) {
     super(props)
 
     this.state = {

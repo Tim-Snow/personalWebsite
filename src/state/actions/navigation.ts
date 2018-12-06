@@ -1,4 +1,4 @@
-import * as Actions from '../constants/action-types'
+import * as Actions from '../constants/navigation-action-types'
 
 export interface ChangeToGame {
   type: Actions.CHANGE_TO_GAME
@@ -20,12 +20,17 @@ export interface ChangeToContact {
   type: Actions.CHANGE_TO_CONTACT
 }
 
+export interface ToggleType {
+  type: Actions.TOGGLE_TYPE
+}
+
 export type NavigationAction =
   | ChangeToGame
   | ChangeToNormal
   | ChangeToAbout
   | ChangeToContact
   | ChangeToPortfolio
+  | ToggleType
 
 export function changeToGame(): ChangeToGame {
   return {
@@ -54,5 +59,11 @@ export function changeToPortfolio(): ChangeToPortfolio {
 export function changeToContact(): ChangeToContact {
   return {
     type: Actions.CHANGE_TO_CONTACT,
+  }
+}
+
+export function toggleType(): ToggleType {
+  return {
+    type: Actions.TOGGLE_TYPE,
   }
 }

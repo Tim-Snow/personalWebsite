@@ -1,19 +1,18 @@
-import { NavigationState } from '../../state'
-import { Dispatch } from 'redux'
 import { connect } from 'react-redux'
+import { Dispatch } from 'redux'
 import { NavigationAction } from '../../state/actions/navigation'
-
-import Game from './Component'
+import { NavigationState } from '../../state'
+import PortfolioItem from './Component'
 
 function mapStateToProps({  }: NavigationState) {
   return {}
 }
 
-function mapPropsToDispatch(dispatch: Dispatch<NavigationAction>) {
+function mapDispatchToProps(dispatch: Dispatch<NavigationAction>) {
   return {}
 }
 
 export default connect(
   mapStateToProps,
-  mapPropsToDispatch,
-)(Game)
+  mapDispatchToProps,
+)(PortfolioItem)

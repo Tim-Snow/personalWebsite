@@ -1,9 +1,8 @@
 {
-  "name": "my-app",
+  "name": "personal-website",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@types/enzyme-adapter-react-16": "^1.0.3",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-redux": "^6.0.0",
@@ -14,9 +13,11 @@
     "start": "react-scripts-ts start",
     "build": "react-scripts-ts build",
     "test": "jest",
-    "eject": "react-scripts-ts eject"
+    "eject": "react-scripts-ts eject",
+    "lint": "tslint ./src/**/*"
   },
   "devDependencies": {
+    "@types/enzyme-adapter-react-16": "^1.0.3",
     "@types/enzyme": "^3.1.15",
     "@types/jest": "^23.3.10",
     "@types/node": "^10.12.12",
@@ -31,11 +32,7 @@
     "jsdom": "^13.0.0",
     "react-test-renderer": "^16.6.3",
     "ts-jest": "^23.10.5",
+    "tslint": "^5.11.0",
     "typescript": "^3.2.1"
-  },
-  "jest": {
-    "moduleNameMapper": {
-      "^.+\\.(css|scss)$": "identity-obj-proxy"
-    }
   }
 }

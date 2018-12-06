@@ -7,11 +7,10 @@ import Header from './Component'
 configure({ adapter: new Adapter() })
 
 const defaultProps = {
-  normal: () => undefined,
-  game: () => undefined,
   about: () => undefined,
   contact: () => undefined,
   portfolio: () => undefined,
+  toggle: () => undefined,
   type: 'reg',
   view: 'about',
 }

@@ -26,7 +26,6 @@ ShallowWrapper {
       "onMouseOver": [Function],
       "style": Object {
         "cursor": "pointer",
-        "flexGrow": 0.5,
       },
     },
     "ref": null,
@@ -45,7 +44,6 @@ ShallowWrapper {
         "onMouseOver": [Function],
         "style": Object {
           "cursor": "pointer",
-          "flexGrow": 0.5,
         },
       },
       "ref": null,

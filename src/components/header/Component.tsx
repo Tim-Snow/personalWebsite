@@ -3,15 +3,16 @@ import * as React from 'react'
 import HeaderLink from '../header-link'
 import Hamburger from '../hamburger'
 
+import * as Page from '../../state/constants/pages'
+
 interface Props {
   type: string
   view: string
 
-  normal: () => void
-  game: () => void
   about: () => void
   contact: () => void
   portfolio: () => void
+  toggle: () => void
 }
 
 interface State {
@@ -34,53 +35,53 @@ export default class Header extends React.Component<Props, State> {
   public render() {
     const { type, view } = this.props
     return (
-      <div
+      <header
         style={{
+          // position: 'fixed',
+          display: 'flex',
+          alignItems: 'center',
           backgroundColor: '#007',
           color: '#FFF',
-          display: 'flex',
-          justifyContent: 'space-evenly',
-          alignItems: 'center',
           height: '50px',
+          width: '100%',
           padding: '0px',
           top: 0,
           left: 0,
           marginBottom: '20px',
         }}
       >
-        <h2 style={{ flexGrow: 2 }}>Tim Snow.</h2>
+        <h2 style={{ flex: 1 }}>Tim Snow.</h2>
         {this.state.width >= 768 ? (
-          <>
+          <nav
+            style={{ display: 'flex', flex: 1, justifyContent: 'space-around' }}
+          >
             <HeaderLink
               switcher
-              text={type === 'game' ? '🎮' : '📰'}
-              cb={this.switchType}
+              text={type === Page.GAME ? '🎮' : '📰'}
+              cb={this.props.toggle}
             />
             <HeaderLink
               text="About"
-              active={view === 'about'}
+              active={view === Page.ABOUT}
               cb={this.props.about}
             />
             <HeaderLink
               text="Portfolio"
-              active={view === 'portfolio'}
+              active={view === Page.PORTFOLIO}
               cb={this.props.portfolio}
             />
             <HeaderLink
               text="Contact"
-              active={view === 'contact'}
+              active={view === Page.CONTACT}
               cb={this.props.contact}
             />
-          </>
+          </nav>
         ) : (
           <Hamburger />
         )}
-      </div>
+      </header>
     )
   }
 
   private updateWidth = () => this.setState({ width: window.innerWidth })
-
-  private switchType = () =>
-    this.props.type === 'game' ? this.props.normal() : this.props.game()
 }

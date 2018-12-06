@@ -6,9 +6,8 @@ ShallowWrapper {
   Symbol(enzyme.__unrendered__): <Header
     about={[Function]}
     contact={[Function]}
-    game={[Function]}
-    normal={[Function]}
     portfolio={[Function]}
+    toggle={[Function]}
     type="reg"
     view="about"
   />,
@@ -29,7 +28,7 @@ ShallowWrapper {
         <h2
           style={
             Object {
-              "flexGrow": 2,
+              "flex": 1,
             }
           }
         >
@@ -43,11 +42,11 @@ ShallowWrapper {
         "color": "#FFF",
         "display": "flex",
         "height": "50px",
-        "justifyContent": "space-evenly",
         "left": 0,
         "marginBottom": "20px",
         "padding": "0px",
         "top": 0,
+        "width": "100%",
       },
     },
     "ref": null,
@@ -59,7 +58,7 @@ ShallowWrapper {
         "props": Object {
           "children": "Tim Snow.",
           "style": Object {
-            "flexGrow": 2,
+            "flex": 1,
           },
         },
         "ref": null,
@@ -76,7 +75,7 @@ ShallowWrapper {
         "type": [Function],
       },
     ],
-    "type": "div",
+    "type": "header",
   },
   Symbol(enzyme.__nodes__): Array [
     Object {
@@ -88,7 +87,7 @@ ShallowWrapper {
           <h2
             style={
               Object {
-                "flexGrow": 2,
+                "flex": 1,
               }
             }
           >
@@ -102,11 +101,11 @@ ShallowWrapper {
           "color": "#FFF",
           "display": "flex",
           "height": "50px",
-          "justifyContent": "space-evenly",
           "left": 0,
           "marginBottom": "20px",
           "padding": "0px",
           "top": 0,
+          "width": "100%",
         },
       },
       "ref": null,
@@ -118,7 +117,7 @@ ShallowWrapper {
           "props": Object {
             "children": "Tim Snow.",
             "style": Object {
-              "flexGrow": 2,
+              "flex": 1,
             },
           },
           "ref": null,
@@ -135,7 +134,7 @@ ShallowWrapper {
           "type": [Function],
         },
       ],
-      "type": "div",
+      "type": "header",
     },
   ],
   Symbol(enzyme.__options__): Object {

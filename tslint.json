@@ -61,5 +61,8 @@
     "jsx-no-lambda": false,
     "jsx-boolean-value": false,
     "no-unused-expression": false
+  },
+  "linterOptions": {
+    "exclude": ["src/**/*.css", "src/**/*.snap"]
   }
 }

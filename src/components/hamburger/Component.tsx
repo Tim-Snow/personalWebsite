@@ -1,7 +1,14 @@
 import * as React from 'react'
 import './index.css'
 
-export default class Hamburger extends React.Component {
+interface Props {
+  isOpen: boolean
+
+  open: () => void
+  close: () => void
+}
+
+export default class Hamburger extends React.Component<Props> {
   public render() {
     return (
       <div className="container" onClick={this.click}>
@@ -13,6 +20,12 @@ export default class Hamburger extends React.Component {
   }
 
   private click = (x: any) => {
-    x.classList.toggle('change')
+    if (this.props.isOpen) {
+      this.props.close()
+    } else {
+      this.props.open()
+    }
+
+    // x.classList.toggle('change')
   }
 }

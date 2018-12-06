@@ -5,7 +5,7 @@ import Game from './game'
 import Normal from './normal'
 import Header from './header'
 
-import State from '../state/IState'
+import * as Page from '../state/constants/pages'
 
 interface Props {
   type: string
@@ -16,15 +16,15 @@ class App extends React.Component<Props> {
     return (
       <div style={{ textAlign: 'center' }}>
         <Header />
-        {(this.props.type === 'game' && <Game />) || <Normal />}
+        {(this.props.type === Page.GAME && <Game />) || <Normal />}
       </div>
     )
   }
 }
 
-function mapStateToProps({ type }: State) {
+function mapStateToProps(state: any) {
   return {
-    type,
+    type: state.navigation.type,
   }
 }
 

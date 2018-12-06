@@ -12,3 +12,6 @@ export type CHANGE_TO_PORTFOLIO = typeof CHANGE_TO_PORTFOLIO
 
 export const CHANGE_TO_CONTACT = 'CHANGE_TO_CONTACT'
 export type CHANGE_TO_CONTACT = typeof CHANGE_TO_CONTACT
+
+export const TOGGLE_TYPE = 'TOGGLE_TYPE'
+export type TOGGLE_TYPE = typeof TOGGLE_TYPE

@@ -4,4 +4,7 @@ module.exports = {
   globals: {
     window: { addEventListener: () => {} },
   },
+  moduleNameMapper: {
+    '^.+\\.(css|scss)$': 'identity-obj-proxy',
+  },
 }
