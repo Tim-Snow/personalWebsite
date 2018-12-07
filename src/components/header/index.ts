@@ -7,10 +7,11 @@ import {
   changeToAbout,
   toggleType,
 } from '../../state/actions/navigation'
+import { NavigationState } from '../../state/index'
 import Header from './Component'
 
-function mapStateToProps(state: any) {
-  return { type: state.navigation.type, view: state.navigation.view }
+function mapStateToProps({ type, view }: NavigationState) {
+  return { type, view }
 }
 
 function mapDispatchToProps(dispatch: Dispatch<NavigationAction>) {

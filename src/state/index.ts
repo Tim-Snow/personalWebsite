@@ -4,7 +4,7 @@ export interface NavigationState {
 }
 
 export interface HamburgerState {
-  open: boolean
+  isOpen: boolean
 }
 
 export default interface RootState {

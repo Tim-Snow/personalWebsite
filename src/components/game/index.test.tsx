@@ -6,7 +6,7 @@ import Game from './index'
 
 configure({ adapter: new Adapter() })
 
-describe('header', () => {
+describe('game', () => {
   it('should match the snapshot', () => {
     const game = shallow(<Game />)
     expect(game).toMatchSnapshot()

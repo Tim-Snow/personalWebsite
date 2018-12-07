@@ -1,9 +1,9 @@
 import { HamburgerAction } from '../actions/hamburger'
-import { CLOSE, OPEN } from '../constants/hamburger-action-types'
+import { CLOSE, OPEN, TOGGLE } from '../constants/hamburger'
 import { HamburgerState } from '../index'
 
 export const defaultHamburgerState: HamburgerState = {
-  open: false,
+  isOpen: false,
 }
 
 export function hamburger(
@@ -12,9 +12,11 @@ export function hamburger(
 ): HamburgerState {
   switch (action.type) {
     case OPEN:
-      return { ...state, open: true }
+      return { ...state, isOpen: true }
     case CLOSE:
-      return { ...state, open: false }
+      return { ...state, isOpen: false }
+    case TOGGLE:
+      return { ...state, isOpen: !state.isOpen }
   }
 
   return state

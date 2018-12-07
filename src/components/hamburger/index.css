@@ -1,7 +1,16 @@
 .container {
-  padding: 3px;
+  margin: 3px;
   display: inline-block;
   cursor: pointer;
+}
+
+.modal {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  top: 50px;
+  right: 3px;
+  background-color: #007;
 }
 
 .bar1,

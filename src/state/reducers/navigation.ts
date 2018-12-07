@@ -6,7 +6,7 @@ import {
   CHANGE_TO_PORTFOLIO,
   CHANGE_TO_CONTACT,
   TOGGLE_TYPE,
-} from '../constants/navigation-action-types'
+} from '../constants/navigation'
 import * as Page from '../constants/pages'
 import { NavigationState } from '../index'
 

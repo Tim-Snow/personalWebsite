@@ -1,4 +1,4 @@
-import * as Actions from '../constants/navigation-action-types'
+import * as Actions from '../constants/navigation'
 
 export interface ChangeToGame {
   type: Actions.CHANGE_TO_GAME

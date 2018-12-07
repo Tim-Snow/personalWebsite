@@ -7,12 +7,19 @@ pool:
   vmImage: 'Ubuntu 16.04'
 
 steps:
-- task: NodeTool@0
-  inputs:
-    versionSpec: '8.x'
-  displayName: 'Install Node.js'
+  - task: geeklearningio.gl-vsts-tasks-yarn.yarn-task.Yarn@2
+    displayName: 'Yarn'
+    inputs:
+      ProductionMode: true
 
-- script: |
-    npm install
-    npm run build
-  displayName: 'npm install and build'
+  - script: |
+      yarn
+    displayName: 'install packages'
+
+  - script: |
+      yarn test
+    displayName: 'snapshot test'
+
+  - script: |
+      yarn build
+    displayName: 'build'
