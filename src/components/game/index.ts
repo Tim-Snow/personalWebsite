@@ -1,7 +1,7 @@
 import { NavigationState } from '../../state'
 import { Dispatch } from 'redux'
 import { connect } from 'react-redux'
-import { NavigationAction } from '../../state/actions/navigation'
+import { NavigationAction } from '../../state/navigation/actions'
 
 import Game from './Component'
 

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import { Dispatch } from 'redux'
-import { NavigationAction } from '../../state/actions/navigation'
+import { NavigationAction } from '../../state/navigation/actions'
 import { NavigationState } from '../../state'
 import PortfolioItem from './Component'
 

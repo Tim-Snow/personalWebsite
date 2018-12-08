@@ -1,4 +1,4 @@
-import { NavigationAction } from '../../state/actions/navigation'
+import { NavigationAction } from '../../state/navigation/actions'
 import { connect } from 'react-redux'
 import { Dispatch } from 'redux'
 

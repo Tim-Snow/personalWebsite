@@ -1,4 +1,4 @@
-import * as Actions from '../constants/navigation'
+import * as Actions from '../constants'
 
 export interface ChangeToGame {
   type: Actions.CHANGE_TO_GAME
@@ -24,6 +24,14 @@ export interface ToggleType {
   type: Actions.TOGGLE_TYPE
 }
 
+export interface SetLargeScreen {
+  type: Actions.SET_LARGE_SCREEN
+}
+
+export interface SetSmallScreen {
+  type: Actions.SET_SMALL_SCREEN
+}
+
 export type NavigationAction =
   | ChangeToGame
   | ChangeToNormal
@@ -31,6 +39,8 @@ export type NavigationAction =
   | ChangeToContact
   | ChangeToPortfolio
   | ToggleType
+  | SetLargeScreen
+  | SetSmallScreen
 
 export function changeToGame(): ChangeToGame {
   return {
@@ -65,5 +75,17 @@ export function changeToContact(): ChangeToContact {
 export function toggleType(): ToggleType {
   return {
     type: Actions.TOGGLE_TYPE,
+  }
+}
+
+export function setLargeScreen(): SetLargeScreen {
+  return {
+    type: Actions.SET_LARGE_SCREEN,
+  }
+}
+
+export function setSmallScreen(): SetSmallScreen {
+  return {
+    type: Actions.SET_SMALL_SCREEN,
   }
 }

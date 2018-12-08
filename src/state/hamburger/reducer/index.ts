@@ -1,6 +1,6 @@
-import { HamburgerAction } from '../actions/hamburger'
-import { CLOSE, OPEN, TOGGLE } from '../constants/hamburger'
-import { HamburgerState } from '../index'
+import { HamburgerAction } from '../actions'
+import { CLOSE, OPEN, TOGGLE } from '../constants'
+import { HamburgerState } from '../../index'
 
 export const defaultHamburgerState: HamburgerState = {
   isOpen: false,

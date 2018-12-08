@@ -1,4 +1,4 @@
-import * as Actions from '../constants/hamburger'
+import * as Actions from '../constants'
 
 export interface Open {
   type: Actions.OPEN

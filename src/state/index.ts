@@ -1,6 +1,7 @@
 export interface NavigationState {
   type: string
   view: string
+  largeScreen: boolean
 }
 
 export interface HamburgerState {

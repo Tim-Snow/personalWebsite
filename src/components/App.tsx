@@ -5,7 +5,7 @@ import Game from './game'
 import Normal from './normal'
 import Header from './header'
 
-import * as Page from '../state/constants/pages'
+import * as Page from '../constants/pages'
 
 interface Props {
   type: string

@@ -1,4 +1,4 @@
-import { NavigationAction } from '../actions/navigation'
+import { NavigationAction } from '../actions'
 import {
   CHANGE_TO_GAME,
   CHANGE_TO_NORMAL,
@@ -6,13 +6,16 @@ import {
   CHANGE_TO_PORTFOLIO,
   CHANGE_TO_CONTACT,
   TOGGLE_TYPE,
-} from '../constants/navigation'
-import * as Page from '../constants/pages'
-import { NavigationState } from '../index'
+  SET_LARGE_SCREEN,
+  SET_SMALL_SCREEN,
+} from '../constants'
+import * as Page from '../../../constants/pages'
+import { NavigationState } from '../../index'
 
 const defaultState: NavigationState = {
   type: Page.NORMAL,
   view: Page.ABOUT,
+  largeScreen: true,
 }
 
 export function navigation(
@@ -36,6 +39,10 @@ export function navigation(
       } else {
         return { ...state, type: Page.GAME }
       }
+    case SET_LARGE_SCREEN:
+      return { ...state, largeScreen: true }
+    case SET_SMALL_SCREEN:
+      return { ...state, largeScreen: false }
   }
 
   return state

@@ -6,12 +6,18 @@ import {
   changeToPortfolio,
   changeToAbout,
   toggleType,
-} from '../../state/actions/navigation'
-import { NavigationState } from '../../state/index'
+  setLargeScreen as setLarge,
+  setSmallScreen as setSmall,
+} from '../../state/navigation/actions'
+import RootState from '../../state/index'
 import Header from './Component'
 
-function mapStateToProps({ type, view }: NavigationState) {
-  return { type, view }
+function mapStateToProps(state: RootState) {
+  return {
+    type: state.navigation.type,
+    view: state.navigation.view,
+    largeScreen: state.navigation.largeScreen,
+  }
 }
 
 function mapDispatchToProps(dispatch: Dispatch<NavigationAction>) {
@@ -20,6 +26,8 @@ function mapDispatchToProps(dispatch: Dispatch<NavigationAction>) {
     contact: () => dispatch(changeToContact()),
     portfolio: () => dispatch(changeToPortfolio()),
     toggle: () => dispatch(toggleType()),
+    setLargeScreen: () => dispatch(setLarge()),
+    setSmallScreen: () => dispatch(setSmall()),
   }
 }
 

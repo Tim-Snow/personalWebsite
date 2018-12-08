@@ -11,8 +11,11 @@ const defaultProps = {
   contact: () => undefined,
   portfolio: () => undefined,
   toggle: () => undefined,
+  setLargeScreen: () => undefined,
+  setSmallScreen: () => undefined,
   type: 'reg',
   view: 'about',
+  largeScreen: true,
 }
 
 describe('header', () => {

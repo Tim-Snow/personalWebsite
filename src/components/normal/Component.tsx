@@ -4,7 +4,7 @@ import About from '../about'
 import Contact from '../contact'
 import Portfolio from '../portfolio'
 
-import * as Page from '../../state/constants/pages'
+import * as Page from '../../constants/pages'
 
 interface Props {
   view: string

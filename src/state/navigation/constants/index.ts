@@ -15,3 +15,9 @@ export type CHANGE_TO_CONTACT = typeof CHANGE_TO_CONTACT
 
 export const TOGGLE_TYPE = 'TOGGLE_TYPE'
 export type TOGGLE_TYPE = typeof TOGGLE_TYPE
+
+export const SET_LARGE_SCREEN = 'SET_LARGE_SCREEN'
+export type SET_LARGE_SCREEN = typeof SET_LARGE_SCREEN
+
+export const SET_SMALL_SCREEN = 'SET_SMALL_SCREEN'
+export type SET_SMALL_SCREEN = typeof SET_SMALL_SCREEN

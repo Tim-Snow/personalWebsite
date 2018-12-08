@@ -3,23 +3,23 @@ import * as React from 'react'
 import HeaderLink from '../header-link'
 import Hamburger from '../hamburger'
 
-import * as Page from '../../state/constants/pages'
+import * as Page from '../../constants/pages'
 
-interface Props {
+export interface Props {
   type: string
   view: string
+  largeScreen: boolean
 
   about: () => void
   contact: () => void
   portfolio: () => void
   toggle: () => void
+
+  setLargeScreen: () => void
+  setSmallScreen: () => void
 }
 
-interface State {
-  width: number
-}
-
-export default class Header extends React.Component<Props, State> {
+export default class Header extends React.Component<Props> {
   public componentWillMount() {
     this.updateWidth()
   }
@@ -33,11 +33,13 @@ export default class Header extends React.Component<Props, State> {
   }
 
   public render() {
-    const { type, view } = this.props
+    const { type, view, largeScreen } = this.props
+    const titleStyle = largeScreen ? { flex: 1 } : { flex: 3 }
+    // change header from flex if small to center text
+
     return (
       <header
         style={{
-          // position: 'fixed',
           display: 'flex',
           alignItems: 'center',
           backgroundColor: '#007',
@@ -50,8 +52,9 @@ export default class Header extends React.Component<Props, State> {
           marginBottom: '20px',
         }}
       >
-        <h2 style={{ flex: 1 }}>Tim Snow.</h2>
-        {this.state.width >= 768 ? (
+        <h2 style={titleStyle}>Tim Snow.</h2>
+
+        {largeScreen && (
           <nav
             style={{ display: 'flex', flex: 1, justifyContent: 'space-around' }}
           >
@@ -76,12 +79,17 @@ export default class Header extends React.Component<Props, State> {
               cb={this.props.contact}
             />
           </nav>
-        ) : (
-          <Hamburger />
         )}
+        {largeScreen || <Hamburger />}
       </header>
     )
   }
 
-  private updateWidth = () => this.setState({ width: window.innerWidth })
+  private updateWidth = () => {
+    if (window.innerWidth >= 768) {
+      this.props.setLargeScreen()
+    } else {
+      this.props.setSmallScreen()
+    }
+  }
 }
