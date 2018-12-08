@@ -11,6 +11,7 @@ export interface Props {
   view: string
   largeScreen: boolean
 
+  home: () => void
   about: () => void
   contact: () => void
   portfolio: () => void
@@ -35,7 +36,9 @@ export default class Header extends React.Component<Props> {
 
   public render() {
     const { type, view, largeScreen } = this.props
-    const titleStyle = largeScreen ? { flex: 1 } : { flex: 3 }
+    const titleStyle = largeScreen
+      ? { flex: 1, cursor: 'pointer' }
+      : { flex: 3, cursor: 'pointer' }
     // change header from flex if small to center text
 
     return (
@@ -53,7 +56,9 @@ export default class Header extends React.Component<Props> {
           marginBottom: '20px',
         }}
       >
-        <h2 style={titleStyle}>Tim Snow.</h2>
+        <h2 style={titleStyle} onClick={this.props.home}>
+          Tim Snow.
+        </h2>
 
         {largeScreen && (
           <nav

@@ -1,5 +1,6 @@
 import { NavigationAction } from '../actions'
 import {
+  CHANGE_TO_HOME,
   CHANGE_TO_GAME,
   CHANGE_TO_NORMAL,
   CHANGE_TO_ABOUT,
@@ -14,7 +15,7 @@ import { NavigationState } from '../../index'
 
 const defaultState: NavigationState = {
   type: Page.NORMAL,
-  view: Page.ABOUT,
+  view: Page.HOME,
   largeScreen: true,
 }
 
@@ -23,6 +24,8 @@ export function navigation(
   action: NavigationAction,
 ): NavigationState {
   switch (action.type) {
+    case CHANGE_TO_HOME:
+      return { ...state, view: Page.HOME }
     case CHANGE_TO_GAME:
       return { ...state, type: Page.GAME }
     case CHANGE_TO_NORMAL:

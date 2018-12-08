@@ -8,6 +8,7 @@ import {
   toggleType,
   setLargeScreen as setLarge,
   setSmallScreen as setSmall,
+  changeToHome,
 } from '../../state/navigation/actions'
 import RootState from '../../state/index'
 import Header from './Component'
@@ -22,6 +23,7 @@ function mapStateToProps(state: RootState) {
 
 function mapDispatchToProps(dispatch: Dispatch<NavigationAction>) {
   return {
+    home: () => dispatch(changeToHome()),
     about: () => dispatch(changeToAbout()),
     contact: () => dispatch(changeToContact()),
     portfolio: () => dispatch(changeToPortfolio()),

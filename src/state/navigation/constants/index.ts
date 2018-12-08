@@ -1,3 +1,6 @@
+export const CHANGE_TO_HOME = 'CHANGE_TO_HOME'
+export type CHANGE_TO_HOME = typeof CHANGE_TO_HOME
+
 export const CHANGE_TO_GAME = 'CHANGE_TO_GAME'
 export type CHANGE_TO_GAME = typeof CHANGE_TO_GAME
 

@@ -7,6 +7,7 @@ import Header from './Component'
 configure({ adapter: new Adapter() })
 
 const defaultProps = {
+  home: () => undefined,
   about: () => undefined,
   contact: () => undefined,
   portfolio: () => undefined,

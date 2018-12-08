@@ -1,5 +1,9 @@
 import * as React from 'react'
-import { COLOUR_SECONDARY, COLOUR_MAIN } from '../../constants/colours'
+import {
+  COLOUR_SECONDARY,
+  COLOUR_MAIN,
+  COLOUR_MAIN_HIGHLIGHTED,
+} from '../../constants/colours'
 
 interface Props {
   title: string
@@ -20,7 +24,9 @@ export default class PortfolioItem extends React.Component<Props, State> {
   public render() {
     const style = {
       color: COLOUR_SECONDARY,
-      backgroundColor: COLOUR_MAIN,
+      backgroundColor: this.state.expanded
+        ? COLOUR_MAIN_HIGHLIGHTED
+        : COLOUR_MAIN,
       width: '150px',
       height: '150px',
       display: 'inline-block',

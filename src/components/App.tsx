@@ -14,7 +14,7 @@ interface Props {
 class App extends React.Component<Props> {
   public render() {
     return (
-      <div style={{ textAlign: 'center' }}>
+      <div style={{ textAlign: 'center', margin: '20px' }}>
         <Header />
         {(this.props.type === Page.GAME && <Game />) || <Normal />}
       </div>

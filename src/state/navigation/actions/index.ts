@@ -1,5 +1,9 @@
 import * as Actions from '../constants'
 
+export interface ChangeToHome {
+  type: Actions.CHANGE_TO_HOME
+}
+
 export interface ChangeToGame {
   type: Actions.CHANGE_TO_GAME
 }
@@ -33,6 +37,7 @@ export interface SetSmallScreen {
 }
 
 export type NavigationAction =
+  | ChangeToHome
   | ChangeToGame
   | ChangeToNormal
   | ChangeToAbout
@@ -41,6 +46,12 @@ export type NavigationAction =
   | ToggleType
   | SetLargeScreen
   | SetSmallScreen
+
+export function changeToHome(): ChangeToHome {
+  return {
+    type: Actions.CHANGE_TO_HOME,
+  }
+}
 
 export function changeToGame(): ChangeToGame {
   return {
