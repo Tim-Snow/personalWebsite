@@ -8,7 +8,7 @@ configure({ adapter: new Adapter() })
 
 describe('portfolio item', () => {
   it('should match the snapshot', () => {
-    const portfolioItem = shallow(<PortfolioItem />)
+    const portfolioItem = shallow(<PortfolioItem title="title" />)
     expect(portfolioItem).toMatchSnapshot()
   })
 })

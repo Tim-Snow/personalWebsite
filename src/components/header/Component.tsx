@@ -4,6 +4,7 @@ import HeaderLink from '../header-link'
 import Hamburger from '../hamburger'
 
 import * as Page from '../../constants/pages'
+import { COLOUR_SECONDARY, COLOUR_MAIN } from '../../constants/colours'
 
 export interface Props {
   type: string
@@ -42,8 +43,8 @@ export default class Header extends React.Component<Props> {
         style={{
           display: 'flex',
           alignItems: 'center',
-          backgroundColor: '#007',
-          color: '#FFF',
+          backgroundColor: COLOUR_MAIN,
+          color: COLOUR_SECONDARY,
           height: '50px',
           width: '100%',
           padding: '0px',

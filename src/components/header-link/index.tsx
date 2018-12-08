@@ -1,5 +1,10 @@
 import * as React from 'react'
 
+import {
+  COLOUR_MAIN_HIGHLIGHTED,
+  COLOUR_SECONDARY,
+} from '../../constants/colours'
+
 interface Props {
   text: string
   cb: () => void
@@ -18,12 +23,12 @@ export default class HeaderLink extends React.Component<Props, State> {
 
   private hoverStyle = {
     ...this.defaultStyle,
-    backgroundColor: '#009',
+    backgroundColor: COLOUR_MAIN_HIGHLIGHTED,
   }
 
   private switcherStyle = {
     ...this.defaultStyle,
-    backgroundColor: '#FFF',
+    backgroundColor: COLOUR_SECONDARY,
   }
 
   constructor(props: Props) {
