@@ -10,7 +10,7 @@ function App() {
   return (
     <div style={styles.container}>
       <Profile />
-      <div style={styles.bottomSection}>
+      <div style={styles.splitSection}>
         <AboutMe style={styles.about} />
         <Activity style={styles.activity} />
       </div>
@@ -24,7 +24,7 @@ const styles = {
   container: {
     backgroundColor: '#335',
   },
-  bottomSection: {
+  splitSection: {
     display: 'flex',
     flex: 1,
     flexDirection: 'row',

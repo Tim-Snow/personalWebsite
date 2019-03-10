@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Collapse from '@material-ui/core/Collapse'
 
 import PortfolioItem from './PortfolioItem'
+import request from '../libs/request'
 
 import GithubSvg from '../assets/github.svg'
 
@@ -14,25 +15,12 @@ function Portfolio() {
   }, [])
 
   const getGitRepositories = async () => {
-    const { REACT_APP_API_KEY, REACT_APP_API_URL } = process.env
-    const portfolios = await fetch(
-      `${REACT_APP_API_URL}/users/tim-snow/repos`,
-      {
-        method: 'get',
-        headers: {
-          Authorization: `token ${REACT_APP_API_KEY}`,
-        },
-      },
-    )
-      .then(res => res.json())
-      .catch(err => console.error(err))
-
+    const portfolios = await request('/users/tim-snow/repos')
     await setPortfolios(portfolios)
   }
 
   const setSelectedInterceptor = i =>
     i === selected ? hideDetailView() : showDetailView(i)
-
   const hideDetailView = () => setSelected(-1)
   const showDetailView = i => setSelected(i)
 

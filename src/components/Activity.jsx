@@ -1,24 +1,17 @@
 import React, { useEffect, useState } from 'react'
 
 import TableTitle from './TableTitle'
+import request from '../libs/request'
 
 function Activity() {
   const [activity, setActivity] = useState([])
-  const { REACT_APP_API_KEY, REACT_APP_API_URL } = process.env
 
   useEffect(() => {
     getGitActivity()
   }, [])
 
   const getGitActivity = async () => {
-    const response = await fetch(`${REACT_APP_API_URL}/users/tim-snow/events`, {
-      method: 'get',
-      headers: {
-        Authorization: `token ${REACT_APP_API_KEY}`,
-      },
-    })
-      .then(res => res.json())
-      .catch(err => console.error(err))
+    const response = await request('/users/tim-snow/events')
 
     // const cleaned = await cleanEventNames(response)
     await setActivity(cleanEventNames(response))

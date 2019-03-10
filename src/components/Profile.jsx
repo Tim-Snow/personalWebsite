@@ -7,6 +7,8 @@ import LocationSvg from '../assets/outline-location_on-24px.svg'
 import WebsiteSvg from '../assets/outline-screen_share-24px.svg'
 import GithubSvg from '../assets/github.svg'
 
+import request from '../libs/request'
+
 import Tooltip from '@material-ui/core/Tooltip'
 
 function Profile() {
@@ -24,19 +26,9 @@ function Profile() {
   }, [])
 
   const fetchGitInfo = async () => {
-    const { REACT_APP_API_KEY, REACT_APP_API_URL } = process.env
-
-    const { name, blog, email, location, bio, avatar_url } = await fetch(
-      `${REACT_APP_API_URL}/users/tim-snow`,
-      {
-        method: 'get',
-        headers: {
-          Authorization: `token ${REACT_APP_API_KEY}`,
-        },
-      },
+    const { name, blog, email, location, bio, avatar_url } = await request(
+      '/users/tim-snow',
     )
-      .then(res => res.json())
-      .catch(err => console.error(err))
 
     const image = URL.createObjectURL(
       await fetch(avatar_url)
