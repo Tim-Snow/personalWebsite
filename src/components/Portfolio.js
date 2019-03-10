@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react'
+import Collapse from '@material-ui/core/Collapse'
 
 import PortfolioItem from './PortfolioItem'
+
+import GithubSvg from '../assets/github.svg'
 
 function Portfolio() {
   const [loaded, setLoaded] = useState(false)
@@ -51,9 +54,26 @@ function Portfolio() {
             />
           ))}
       </div>
-      {selected !== 0 && (
-        <div style={styles.details}>project info {selected}</div>
-      )}
+      <Collapse in={selected !== 0}>
+        <div style={styles.details}>
+          <h5>{selected !== 0 && portfolios[selected - 1].name}</h5>
+          {selected !== 0 && (
+            <p>
+              <a href={portfolios[selected - 1].html_url}>
+                <img
+                  style={styles.icon}
+                  src={GithubSvg}
+                  alt="View code on Github"
+                />
+              </a>
+            </p>
+          )}
+          <p>{selected !== 0 && portfolios[selected - 1].description}</p>
+          {selected !== 0 && (
+            <p>Main language used: {portfolios[selected - 1].language}</p>
+          )}
+        </div>
+      </Collapse>
     </div>
   )
 }
@@ -72,10 +92,9 @@ const styles = {
   },
   details: {
     backgroundColor: '#DFDFDF',
-    height: 300,
-    borderStyle: 'solid',
     margin: 10,
   },
+  icon: { width: 24 },
 }
 
 export default Portfolio
