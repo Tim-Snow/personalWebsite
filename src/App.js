@@ -13,16 +13,16 @@ function App() {
       <div style={styles.bottomSection}>
         <AboutMe />
         <Activity />
-        <Contact />
       </div>
       <Portfolio />
+      <Contact />
     </div>
   )
 }
 
 const styles = {
   container: {
-    backgroundColor: '#CCC',
+    backgroundColor: '#335',
   },
   bottomSection: {
     display: 'flex',

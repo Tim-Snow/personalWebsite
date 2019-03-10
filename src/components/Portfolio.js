@@ -1,23 +1,55 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import PortfolioItem from './PortfolioItem'
 
 function Portfolio() {
+  const [loaded, setLoaded] = useState(false)
   const [selected, setSelected] = useState(0)
+  const [portfolios, setPortfolios] = useState([])
 
-  const setSelectedInterceptor = e =>
-    e === selected ? setSelected(0) : setSelected(e)
+  useEffect(() => {
+    if (!loaded) {
+      getGitRepositories()
+    }
+  })
+
+  const getGitRepositories = async () => {
+    const { REACT_APP_API_KEY, REACT_APP_API_URL } = process.env
+    const portfolios = await fetch(
+      `${REACT_APP_API_URL}/users/tim-snow/repos`,
+      {
+        method: 'get',
+        headers: {
+          Authorization: `token ${REACT_APP_API_KEY}`,
+        },
+      },
+    )
+      .then(res => res.json())
+      .catch(err => console.error(err))
+
+    await setPortfolios(portfolios)
+    await setLoaded(true)
+  }
+
+  const setSelectedInterceptor = i =>
+    i === selected ? hiedDetailView() : showDetailView(i)
+
+  const hiedDetailView = () => setSelected(0)
+  const showDetailView = i => setSelected(i)
 
   return (
     <div style={styles.container}>
       <h2>Portfolio</h2>
       <div style={styles.flex}>
-        <PortfolioItem id={1} title="Test" callback={setSelectedInterceptor} />
-        <PortfolioItem
-          id={2}
-          title="Test 2"
-          callback={setSelectedInterceptor}
-        />
+        {portfolios &&
+          portfolios.map((portfolio, key) => (
+            <PortfolioItem
+              id={key + 1}
+              title={portfolio.name}
+              details={portfolio.description}
+              callback={setSelectedInterceptor}
+            />
+          ))}
       </div>
       {selected !== 0 && (
         <div style={styles.details}>project info {selected}</div>
@@ -36,13 +68,13 @@ const styles = {
   },
   flex: {
     display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
+    overflowX: 'scroll',
   },
   details: {
     backgroundColor: '#DFDFDF',
     height: 300,
     borderStyle: 'solid',
+    margin: 10,
   },
 }
 

@@ -42,7 +42,9 @@ const styles = {
     alignItems: 'center',
     padding: 15,
     backgroundColor: '#DFDFDF',
-    width: 900,
+    marginTop: 10,
+    marginLeft: 10,
+    marginRight: 10,
   },
   form: {
     display: 'flex',
