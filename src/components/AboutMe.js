@@ -3,7 +3,7 @@ import React from 'react'
 function AboutMe() {
   return (
     <div style={styles.container}>
-      <h1>About me</h1>
+      <h2>About me</h2>
       <h4>
         I am an IT-minded individual who thrives on challenges and learning, as
         well as passing on skills to others, I enjoy working with and interact
@@ -30,7 +30,7 @@ function AboutMe() {
       </p>
 
       <div style={styles.skillsContainer}>
-        <ul style={styles.skills}>
+        <ul>
           <li>Native Android development</li>
           <li>Java</li>
           <li>Kotlin</li>
@@ -41,7 +41,7 @@ function AboutMe() {
           <li>Spark, Scala</li>
         </ul>
 
-        <ul style={styles.skills}>
+        <ul>
           <li>Linux, MacOS, Windows</li>
           <li>Encryption</li>
           <li>Git</li>
@@ -72,8 +72,6 @@ const styles = {
     display: 'flex',
     flexDirection: 'row',
     flexFlow: 'row wrap',
-  },
-  skills: {
     textAlign: 'left',
   },
 }

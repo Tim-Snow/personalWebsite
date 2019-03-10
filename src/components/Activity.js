@@ -46,14 +46,22 @@ function Activity() {
 
   return (
     <div style={styles.container}>
-      <h1>Recent activity</h1>
+      <h2>Recent activity</h2>
       <table>
         <tbody>
           <tr key="titles">
-            <td>Date</td>
-            <td>Event</td>
-            <td>Repository</td>
-            <td>Commit message</td>
+            <td>
+              <h5>Date</h5>
+            </td>
+            <td>
+              <h5>Event</h5>
+            </td>
+            <td>
+              <h5>Repository</h5>
+            </td>
+            <td>
+              <h5>Commit message</h5>
+            </td>
           </tr>
           {loaded &&
             activity &&

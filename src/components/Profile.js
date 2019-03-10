@@ -5,6 +5,7 @@ import WorkSvg from '../assets/outline-business-24px.svg'
 import PhoneSvg from '../assets/outline-call-24px.svg'
 import LocationSvg from '../assets/outline-location_on-24px.svg'
 import WebsiteSvg from '../assets/outline-screen_share-24px.svg'
+import GithubSvg from '../assets/github.svg'
 
 import Tooltip from '@material-ui/core/Tooltip'
 
@@ -62,13 +63,9 @@ function Profile() {
         <h1 style={styles.name}>{info.name}</h1>
         <table>
           <tbody>
-            <tr>
-              <td />
-              <td />
-            </tr>
             <tr style={styles.row}>
               <td style={styles.col}>
-                <img src={LocationSvg} alt="Location" />
+                <img style={styles.icon} src={LocationSvg} alt="Location" />
               </td>
               <td>
                 <p>Currently located in {info.location}</p>
@@ -76,7 +73,7 @@ function Profile() {
             </tr>
             <tr style={styles.row}>
               <td style={styles.col}>
-                <img src={WorkSvg} alt="Work" />
+                <img style={styles.icon} src={WorkSvg} alt="Work" />
               </td>
               <td>
                 <p>{info.bio}</p>
@@ -84,7 +81,15 @@ function Profile() {
             </tr>
             <tr style={styles.row}>
               <td style={styles.col}>
-                <img src={EmailSvg} alt="email" />
+                <img style={styles.icon} src={GithubSvg} alt="github" />
+              </td>
+              <td>
+                Find me on <a href="https://github.com/Tim-Snow">github</a>
+              </td>
+            </tr>
+            <tr style={styles.row}>
+              <td style={styles.col}>
+                <img style={styles.icon} src={EmailSvg} alt="email" />
               </td>
               <td>
                 <a href={`mailto:${info.email}?subject=Hello world!`}>
@@ -94,7 +99,7 @@ function Profile() {
             </tr>
             <tr style={styles.row}>
               <td style={styles.col}>
-                <img src={WebsiteSvg} alt="Web" />
+                <img style={styles.icon} src={WebsiteSvg} alt="Web" />
               </td>
               <td>
                 <a href={info.blog}>{info.blog && info.blog.substr(7)}</a> -
@@ -103,7 +108,7 @@ function Profile() {
             </tr>
             <tr style={styles.row}>
               <td style={styles.col}>
-                <img src={PhoneSvg} alt="Phone" />
+                <img style={styles.icon} src={PhoneSvg} alt="Phone" />
               </td>
               <td style={styles.interactive} onClick={revealPhoneNumber}>
                 <Tooltip title="Shhh :)" placement="top-start" enterDelay={10}>
@@ -155,6 +160,7 @@ const styles = {
   interactive: {
     cursor: 'pointer',
   },
+  icon: { width: 24 },
 }
 
 export default Profile
