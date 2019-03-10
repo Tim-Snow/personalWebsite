@@ -6,7 +6,7 @@ import PortfolioItem from './PortfolioItem'
 import GithubSvg from '../assets/github.svg'
 
 function Portfolio() {
-  const [selected, setSelected] = useState(0)
+  const [selected, setSelected] = useState(-1)
   const [portfolios, setPortfolios] = useState([])
 
   useEffect(() => {
@@ -31,9 +31,9 @@ function Portfolio() {
   }
 
   const setSelectedInterceptor = i =>
-    i === selected ? hiedDetailView() : showDetailView(i)
+    i === selected ? hideDetailView() : showDetailView(i)
 
-  const hiedDetailView = () => setSelected(0)
+  const hideDetailView = () => setSelected(-1)
   const showDetailView = i => setSelected(i)
 
   return (
@@ -43,20 +43,20 @@ function Portfolio() {
         {portfolios &&
           portfolios.map((portfolio, key) => (
             <PortfolioItem
-              id={key + 1}
-              key={key + 1}
+              id={key}
+              key={key}
               title={portfolio.name}
               details={portfolio.description}
               callback={setSelectedInterceptor}
             />
           ))}
       </div>
-      <Collapse in={selected !== 0}>
+      <Collapse in={selected !== -1}>
         <div style={styles.details}>
-          <h5>{selected !== 0 && portfolios[selected - 1].name}</h5>
-          {selected !== 0 && (
+          <h5>{selected !== -1 && portfolios[selected].name}</h5>
+          {selected !== -1 && (
             <p>
-              <a href={portfolios[selected - 1].html_url}>
+              <a href={portfolios[selected].html_url}>
                 <img
                   style={styles.icon}
                   src={GithubSvg}
@@ -65,9 +65,9 @@ function Portfolio() {
               </a>
             </p>
           )}
-          <p>{selected !== 0 && portfolios[selected - 1].description}</p>
-          {selected !== 0 && (
-            <p>Main language used: {portfolios[selected - 1].language}</p>
+          <p>{selected !== -1 && portfolios[selected].description}</p>
+          {selected !== -1 && (
+            <p>Main language used: {portfolios[selected].language}</p>
           )}
         </div>
       </Collapse>

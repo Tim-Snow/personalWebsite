@@ -40,7 +40,6 @@ function AboutMe() {
           <li>Hadoop, HiveQL, Impala, UDFs</li>
           <li>Spark, Scala</li>
         </ul>
-
         <ul>
           <li>Linux, MacOS, Windows</li>
           <li>Encryption</li>

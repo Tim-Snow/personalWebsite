@@ -54,7 +54,7 @@ app.get('/users/tim-snow', (req, res) => {
 })
 
 app.get('/users/tim-snow/repos', (req, res) => {
-  console.log('repo get requet')
+  console.log('repo get request')
   res.json([
     {
       id: 38641766,
@@ -2457,6 +2457,131 @@ app.get('/users/tim-snow/repos', (req, res) => {
   ])
 })
 
+app.get(
+  '/repos/Tim-Snow/PersonalWebsite/commits/89aed1fc79f749eaade427cc043bed1edec2935e',
+  (req, res) => {
+    console.log('commit info request')
+    res.json({
+      sha: '89aed1fc79f749eaade427cc043bed1edec2935e',
+      node_id:
+        'MDY6Q29tbWl0NDM5NjI2Mjk6ODlhZWQxZmM3OWY3NDllYWFkZTQyN2NjMDQzYmVkMWVkZWMyOTM1ZQ==',
+      commit: {
+        author: {
+          name: 'Tim Snow',
+          email: 'tim.snow1991@gmail.com',
+          date: '2019-03-03T11:03:57Z',
+        },
+        committer: {
+          name: 'Tim Snow',
+          email: 'tim.snow1991@gmail.com',
+          date: '2019-03-03T11:03:57Z',
+        },
+        message: 'Update CNAME',
+        tree: {
+          sha: '174025d6620c0098fb9f9eb6dae02f8970aeea66',
+          url:
+            'https://api.github.com/repos/Tim-Snow/PersonalWebsite/git/trees/174025d6620c0098fb9f9eb6dae02f8970aeea66',
+        },
+        url:
+          'https://api.github.com/repos/Tim-Snow/PersonalWebsite/git/commits/89aed1fc79f749eaade427cc043bed1edec2935e',
+        comment_count: 0,
+        verification: {
+          verified: false,
+          reason: 'unsigned',
+          signature: null,
+          payload: null,
+        },
+      },
+      url:
+        'https://api.github.com/repos/Tim-Snow/PersonalWebsite/commits/89aed1fc79f749eaade427cc043bed1edec2935e',
+      html_url:
+        'https://github.com/Tim-Snow/PersonalWebsite/commit/89aed1fc79f749eaade427cc043bed1edec2935e',
+      comments_url:
+        'https://api.github.com/repos/Tim-Snow/PersonalWebsite/commits/89aed1fc79f749eaade427cc043bed1edec2935e/comments',
+      author: {
+        login: 'Tim-Snow',
+        id: 4265090,
+        node_id: 'MDQ6VXNlcjQyNjUwOTA=',
+        avatar_url: 'https://avatars2.githubusercontent.com/u/4265090?v=4',
+        gravatar_id: '',
+        url: 'https://api.github.com/users/Tim-Snow',
+        html_url: 'https://github.com/Tim-Snow',
+        followers_url: 'https://api.github.com/users/Tim-Snow/followers',
+        following_url:
+          'https://api.github.com/users/Tim-Snow/following{/other_user}',
+        gists_url: 'https://api.github.com/users/Tim-Snow/gists{/gist_id}',
+        starred_url:
+          'https://api.github.com/users/Tim-Snow/starred{/owner}{/repo}',
+        subscriptions_url:
+          'https://api.github.com/users/Tim-Snow/subscriptions',
+        organizations_url: 'https://api.github.com/users/Tim-Snow/orgs',
+        repos_url: 'https://api.github.com/users/Tim-Snow/repos',
+        events_url: 'https://api.github.com/users/Tim-Snow/events{/privacy}',
+        received_events_url:
+          'https://api.github.com/users/Tim-Snow/received_events',
+        type: 'User',
+        site_admin: false,
+      },
+      committer: {
+        login: 'Tim-Snow',
+        id: 4265090,
+        node_id: 'MDQ6VXNlcjQyNjUwOTA=',
+        avatar_url: 'https://avatars2.githubusercontent.com/u/4265090?v=4',
+        gravatar_id: '',
+        url: 'https://api.github.com/users/Tim-Snow',
+        html_url: 'https://github.com/Tim-Snow',
+        followers_url: 'https://api.github.com/users/Tim-Snow/followers',
+        following_url:
+          'https://api.github.com/users/Tim-Snow/following{/other_user}',
+        gists_url: 'https://api.github.com/users/Tim-Snow/gists{/gist_id}',
+        starred_url:
+          'https://api.github.com/users/Tim-Snow/starred{/owner}{/repo}',
+        subscriptions_url:
+          'https://api.github.com/users/Tim-Snow/subscriptions',
+        organizations_url: 'https://api.github.com/users/Tim-Snow/orgs',
+        repos_url: 'https://api.github.com/users/Tim-Snow/repos',
+        events_url: 'https://api.github.com/users/Tim-Snow/events{/privacy}',
+        received_events_url:
+          'https://api.github.com/users/Tim-Snow/received_events',
+        type: 'User',
+        site_admin: false,
+      },
+      parents: [
+        {
+          sha: '94b2eb70b5d7c147a66b55119457f338753d7909',
+          url:
+            'https://api.github.com/repos/Tim-Snow/PersonalWebsite/commits/94b2eb70b5d7c147a66b55119457f338753d7909',
+          html_url:
+            'https://github.com/Tim-Snow/PersonalWebsite/commit/94b2eb70b5d7c147a66b55119457f338753d7909',
+        },
+      ],
+      stats: {
+        total: 2,
+        additions: 1,
+        deletions: 1,
+      },
+      files: [
+        {
+          sha: '1f417a3d18236a51295a1e615b095c6c25d37897',
+          filename: 'CNAME',
+          status: 'modified',
+          additions: 1,
+          deletions: 1,
+          changes: 2,
+          blob_url:
+            'https://github.com/Tim-Snow/PersonalWebsite/blob/89aed1fc79f749eaade427cc043bed1edec2935e/CNAME',
+          raw_url:
+            'https://github.com/Tim-Snow/PersonalWebsite/raw/89aed1fc79f749eaade427cc043bed1edec2935e/CNAME',
+          contents_url:
+            'https://api.github.com/repos/Tim-Snow/PersonalWebsite/contents/CNAME?ref=89aed1fc79f749eaade427cc043bed1edec2935e',
+          patch:
+            '@@ -1 +1 @@\n-timsnow.dev\n\\ No newline at end of file\n+www.tim-snow.co.uk\n\\ No newline at end of file',
+        },
+      ],
+    })
+  },
+)
+
 app.get('/users/tim-snow/events', (req, res) => {
   console.log('event get request')
   res.json([
@@ -2515,7 +2640,7 @@ app.get('/users/tim-snow/events', (req, res) => {
             message: 'Update CNAME',
             distinct: true,
             url:
-              'https://api.github.com/repos/Tim-Snow/PersonalWebsite/commits/89aed1fc79f749eaade427cc043bed1edec2935e',
+              '/repos/Tim-Snow/PersonalWebsite/commits/89aed1fc79f749eaade427cc043bed1edec2935e',
           },
         ],
       },

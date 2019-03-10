@@ -66,7 +66,7 @@ function Activity() {
             activity.map(activity => (
               <tr key={activity.id}>
                 <td style={styles.border}>
-                  {activity.created_at.substr(0, 10)}
+                  {activity.created_at && activity.created_at.substr(0, 10)}
                 </td>
                 <td style={styles.border}>{activity.type}</td>
                 <td style={styles.border}>
