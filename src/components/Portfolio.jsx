@@ -41,21 +41,21 @@ function Portfolio() {
       </div>
       <Collapse in={selected !== -1}>
         <div style={styles.details}>
-          <h5>{selected !== -1 && portfolios[selected].name}</h5>
           {selected !== -1 && (
-            <p>
-              <a href={portfolios[selected].html_url}>
-                <img
-                  style={styles.icon}
-                  src={GithubSvg}
-                  alt="View code on Github"
-                />
-              </a>
-            </p>
-          )}
-          <p>{selected !== -1 && portfolios[selected].description}</p>
-          {selected !== -1 && (
-            <p>Main language used: {portfolios[selected].language}</p>
+            <div>
+              <h5>{portfolios[selected].name}</h5>
+              <p>
+                <a href={portfolios[selected].html_url}>
+                  <img
+                    style={styles.icon}
+                    src={GithubSvg}
+                    alt="View code on Github"
+                  />
+                </a>
+              </p>
+              <p>{portfolios[selected].description}</p>
+              <p>Main language used: {portfolios[selected].language}</p>
+            </div>
           )}
         </div>
       </Collapse>
