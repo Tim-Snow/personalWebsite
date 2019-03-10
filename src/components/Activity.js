@@ -4,14 +4,14 @@ import TableTitle from './TableTitle'
 
 function Activity() {
   const [activity, setActivity] = useState([])
+  const { REACT_APP_API_KEY, REACT_APP_API_URL } = process.env
 
   useEffect(() => {
     getGitActivity()
   }, [])
 
   const getGitActivity = async () => {
-    const { REACT_APP_API_KEY, REACT_APP_API_URL } = process.env
-    const activity = await fetch(`${REACT_APP_API_URL}/users/tim-snow/events`, {
+    const response = await fetch(`${REACT_APP_API_URL}/users/tim-snow/events`, {
       method: 'get',
       headers: {
         Authorization: `token ${REACT_APP_API_KEY}`,
@@ -20,17 +20,26 @@ function Activity() {
       .then(res => res.json())
       .catch(err => console.error(err))
 
-    await setActivity(cleanEventNames(activity))
+    await setActivity(cleanEventNames(response))
   }
 
-  const cleanEventNames = activity => {
-    return activity.map(act => {
+  const cleanEventNames = activities => {
+    return activities.map(act => {
       switch (act.type) {
         case 'WatchEvent':
           act.type = 'Watching'
           break
         case 'PushEvent':
           act.type = 'Pushed to'
+          act.payload.commits.map(async commit => {
+            commit.http_url = await fetch(commit.url, {
+              method: 'get',
+            })
+              .then(res => res.json())
+              .catch(err => console.error(err))
+          })
+
+          console.log(act)
           break
         case 'CreateEvent':
           act.type = 'Created'
@@ -68,7 +77,9 @@ function Activity() {
                 <td style={styles.border}>
                   {activity.type === 'Pushed to' &&
                     activity.payload.commits.map(commit => (
-                      <p key={commit.sha}>{commit.message}</p>
+                      <a href={commit.http_url} key={commit.sha}>
+                        {commit.message}
+                      </a>
                     ))}
                 </td>
               </tr>

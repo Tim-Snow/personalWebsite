@@ -44,6 +44,7 @@ function Portfolio() {
           portfolios.map((portfolio, key) => (
             <PortfolioItem
               id={key + 1}
+              key={key + 1}
               title={portfolio.name}
               details={portfolio.description}
               callback={setSelectedInterceptor}
