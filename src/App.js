@@ -4,6 +4,7 @@ import Profile from './components/Profile'
 import AboutMe from './components/AboutMe'
 import Activity from './components/Activity'
 import Contact from './components/Contact'
+import Portfolio from './components/Portfolio'
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Activity />
         <Contact />
       </div>
+      <Portfolio />
     </div>
   )
 }
