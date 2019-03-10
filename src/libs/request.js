@@ -12,4 +12,12 @@ const request = async url => {
   return response
 }
 
+export const requestImage = async url => {
+  return URL.createObjectURL(
+    await fetch(url)
+      .then(response => response.blob())
+      .catch(err => console.error(err)),
+  )
+}
+
 export default request

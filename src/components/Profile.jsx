@@ -7,7 +7,7 @@ import LocationSvg from '../assets/outline-location_on-24px.svg'
 import WebsiteSvg from '../assets/outline-screen_share-24px.svg'
 import GithubSvg from '../assets/github.svg'
 
-import request from '../libs/request'
+import request, { requestImage } from '../libs/request'
 
 import Tooltip from '@material-ui/core/Tooltip'
 
@@ -30,11 +30,7 @@ function Profile() {
       '/users/tim-snow',
     )
 
-    const image = URL.createObjectURL(
-      await fetch(avatar_url)
-        .then(response => response.blob())
-        .catch(err => console.error(err)),
-    )
+    const image = await requestImage(avatar_url)
 
     setInfo({
       name: name.replace(' ', '\n'),
