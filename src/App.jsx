@@ -11,8 +11,8 @@ function App() {
     <div style={styles.container}>
       <Profile />
       <div style={styles.bottomSection}>
-        <AboutMe />
-        <Activity />
+        <AboutMe style={styles.about} />
+        <Activity style={styles.activity} />
       </div>
       <Portfolio />
       <Contact />
@@ -30,6 +30,12 @@ const styles = {
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'space-around',
+  },
+  about: {
+    flex: 2,
+  },
+  activity: {
+    flex: 1,
   },
 }
 

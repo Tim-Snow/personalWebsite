@@ -20,6 +20,7 @@ function Activity() {
       .then(res => res.json())
       .catch(err => console.error(err))
 
+    // const cleaned = await cleanEventNames(response)
     await setActivity(cleanEventNames(response))
   }
 
@@ -31,15 +32,17 @@ function Activity() {
           break
         case 'PushEvent':
           act.type = 'Pushed to'
-          act.payload.commits.map(async commit => {
-            commit.http_url = await fetch(commit.url, {
-              method: 'get',
-            })
-              .then(res => res.json())
-              .catch(err => console.error(err))
-          })
+          // if (act.payload.push_id === 3361145045) {
+          //   await act.payload.commits.map(async commit => {
+          //     const { html_url } = await fetch(commit.url, {
+          //       method: 'get',
+          //     })
+          //       .then(res => res.json())
+          //       .catch(err => console.error(err))
 
-          console.log(act)
+          //     commit.asd = html_url
+          //   })
+          // }
           break
         case 'CreateEvent':
           act.type = 'Created'
@@ -77,9 +80,9 @@ function Activity() {
                 <td style={styles.border}>
                   {activity.type === 'Pushed to' &&
                     activity.payload.commits.map(commit => (
-                      <a href={commit.http_url} key={commit.sha}>
-                        {commit.message}
-                      </a>
+                      <p key={commit.sha}>
+                        <a href={commit.asd}>{commit.message}</a>
+                      </p>
                     ))}
                 </td>
               </tr>
