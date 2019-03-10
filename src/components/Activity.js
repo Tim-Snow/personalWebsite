@@ -26,7 +26,6 @@ function Activity() {
   }
 
   const cleanEventNames = activity => {
-    console.log(activity)
     return activity.map(act => {
       switch (act.type) {
         case 'WatchEvent':
