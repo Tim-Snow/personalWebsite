@@ -6,15 +6,12 @@ import PortfolioItem from './PortfolioItem'
 import GithubSvg from '../assets/github.svg'
 
 function Portfolio() {
-  const [loaded, setLoaded] = useState(false)
   const [selected, setSelected] = useState(0)
   const [portfolios, setPortfolios] = useState([])
 
   useEffect(() => {
-    if (!loaded) {
-      getGitRepositories()
-    }
-  })
+    getGitRepositories()
+  }, [])
 
   const getGitRepositories = async () => {
     const { REACT_APP_API_KEY, REACT_APP_API_URL } = process.env
@@ -31,7 +28,6 @@ function Portfolio() {
       .catch(err => console.error(err))
 
     await setPortfolios(portfolios)
-    await setLoaded(true)
   }
 
   const setSelectedInterceptor = i =>

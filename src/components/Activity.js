@@ -4,13 +4,10 @@ import TableTitle from './TableTitle'
 
 function Activity() {
   const [activity, setActivity] = useState([])
-  const [loaded, setLoaded] = useState(false)
 
   useEffect(() => {
-    if (!loaded) {
-      getGitActivity()
-    }
-  })
+    getGitActivity()
+  }, [])
 
   const getGitActivity = async () => {
     const { REACT_APP_API_KEY, REACT_APP_API_URL } = process.env
@@ -24,7 +21,6 @@ function Activity() {
       .catch(err => console.error(err))
 
     await setActivity(cleanEventNames(activity))
-    await setLoaded(true)
   }
 
   const cleanEventNames = activity => {
@@ -57,8 +53,7 @@ function Activity() {
             <TableTitle value="Repository" />
             <TableTitle value="Commit message" />
           </tr>
-          {loaded &&
-            activity &&
+          {activity &&
             activity.map(activity => (
               <tr key={activity.id}>
                 <td style={styles.border}>

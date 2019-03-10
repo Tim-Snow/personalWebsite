@@ -20,8 +20,8 @@ function Profile() {
   const [phone, setPhone] = useState('07944 878 ???')
 
   useEffect(() => {
-    info.image === undefined && fetchGitInfo()
-  })
+    fetchGitInfo()
+  }, [])
 
   const fetchGitInfo = async () => {
     const { REACT_APP_API_KEY, REACT_APP_API_URL } = process.env
