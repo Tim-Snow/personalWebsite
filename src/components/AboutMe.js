@@ -59,14 +59,16 @@ function AboutMe() {
 const styles = {
   container: {
     padding: 15,
-    background: '#333',
-    color: '#DDD',
+    background: '#DFDFDF',
+    color: '#333',
     maxWidth: 900,
+    height: 600,
     textAlign: 'center',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     alignSelf: 'start',
+    margin: 10,
   },
   skillsContainer: {
     display: 'flex',

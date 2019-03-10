@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 
+import TableTitle from './TableTitle'
+
 function Activity() {
   const [activity, setActivity] = useState([])
   const [loaded, setLoaded] = useState(false)
@@ -46,22 +48,14 @@ function Activity() {
 
   return (
     <div style={styles.container}>
-      <h2>Recent activity</h2>
+      <h2>Recent Github activity</h2>
       <table>
         <tbody>
           <tr key="titles">
-            <td>
-              <h5>Date</h5>
-            </td>
-            <td>
-              <h5>Event</h5>
-            </td>
-            <td>
-              <h5>Repository</h5>
-            </td>
-            <td>
-              <h5>Commit message</h5>
-            </td>
+            <TableTitle value="Date" />
+            <TableTitle value="Event" />
+            <TableTitle value="Repository" />
+            <TableTitle value="Commit message" />
           </tr>
           {loaded &&
             activity &&
@@ -94,11 +88,15 @@ const styles = {
   container: {
     background: '#DFDFDF',
     color: '#333',
-    maxWidth: 900,
     textAlign: 'center',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+    margin: 10,
+    overflowY: 'scroll',
+    height: 600,
+    width: 900,
+    padding: 15,
   },
   border: {
     borderColor: '#333',

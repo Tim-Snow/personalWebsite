@@ -45,7 +45,7 @@ function Profile() {
     )
 
     setInfo({
-      name,
+      name: name.replace(' ', '\n'),
       blog,
       email,
       location,
@@ -58,9 +58,9 @@ function Profile() {
 
   return (
     <div style={styles.container}>
-      {info.image && <img src={info.image} alt="pic" style={styles.image} />}
+      <h1 style={styles.name}>{info.name}</h1>
+      {info.image && <img src={info.image} alt="Me" style={styles.image} />}
       <div style={styles.infoContainer}>
-        <h1 style={styles.name}>{info.name}</h1>
         <table>
           <tbody>
             <tr style={styles.row}>
@@ -81,7 +81,7 @@ function Profile() {
             </tr>
             <tr style={styles.row}>
               <td style={styles.col}>
-                <img style={styles.icon} src={GithubSvg} alt="github" />
+                <img style={styles.icon} src={GithubSvg} alt="Github" />
               </td>
               <td>
                 Find me on <a href="https://github.com/Tim-Snow">github</a>
@@ -89,7 +89,7 @@ function Profile() {
             </tr>
             <tr style={styles.row}>
               <td style={styles.col}>
-                <img style={styles.icon} src={EmailSvg} alt="email" />
+                <img style={styles.icon} src={EmailSvg} alt="Email" />
               </td>
               <td>
                 <a href={`mailto:${info.email}?subject=Hello world!`}>
@@ -131,7 +131,6 @@ const styles = {
     alignItems: 'center',
     justifyContent: 'center',
     flexWrap: 'wrap',
-    marginBottom: 10,
   },
   infoContainer: {
     padding: 5,
@@ -145,10 +144,9 @@ const styles = {
     borderRadius: 15,
   },
   name: {
-    textAlign: 'center',
-    fontSize: 36,
+    fontSize: 54,
     fontWeight: 600,
-    margin: 0,
+    padding: 10,
   },
   row: {
     height: 50,
