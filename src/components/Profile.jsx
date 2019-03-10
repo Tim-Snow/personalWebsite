@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 
-import EmailSvg from '../assets/outline-alternate_email-24px.svg'
-import WorkSvg from '../assets/outline-business-24px.svg'
-import PhoneSvg from '../assets/outline-call-24px.svg'
-import LocationSvg from '../assets/outline-location_on-24px.svg'
-import WebsiteSvg from '../assets/outline-screen_share-24px.svg'
+import EmailSvg from '../assets/email.svg'
+import WorkSvg from '../assets/business.svg'
+import PhoneSvg from '../assets/call.svg'
+import LocationSvg from '../assets/location.svg'
+import WebsiteSvg from '../assets/web.svg'
 import GithubSvg from '../assets/github.svg'
 
 import request, { requestImage } from '../libs/request'
