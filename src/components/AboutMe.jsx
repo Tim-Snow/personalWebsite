@@ -55,7 +55,7 @@ const styles = {
     background: '#DFDFDF',
     color: '#333',
     maxWidth: 900,
-    minimumHeight: 600,
+    minHeight: 600,
     textAlign: 'justify',
     display: 'flex',
     flexDirection: 'column',

@@ -97,7 +97,7 @@ const styles = {
     alignItems: 'center',
     margin: 10,
     overflowY: 'scroll',
-    minimumHeight: 600,
+    height: 600,
     width: 900,
     padding: 15,
   },
