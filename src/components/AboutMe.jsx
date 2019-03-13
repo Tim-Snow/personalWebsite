@@ -10,13 +10,11 @@ function AboutMe() {
         end however I can also be found working with Spring boot/Express REST
         APIs and configuring pipelines.
       </h4>
-
       <p>
         In my free time I am usually working on personal projects, playing with
         new technologies, creating little games for fun, gaming, discovering new
         music, playing guitar and racing quadcopters! (I use Arch BTW)
       </p>
-
       <p>
         Some other development languages, libraries, frameworks, and
         technologies I have experience with in no particular order:
