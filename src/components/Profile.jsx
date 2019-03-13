@@ -87,15 +87,6 @@ function Profile() {
             </tr>
             <tr style={styles.row}>
               <td style={styles.col}>
-                <img style={styles.icon} src={WebsiteSvg} alt="Web" />
-              </td>
-              <td>
-                <a href={info.blog}>{info.blog && info.blog.substr(7)}</a> - old
-                site I'm migrating from!
-              </td>
-            </tr>
-            <tr style={styles.row}>
-              <td style={styles.col}>
                 <img style={styles.icon} src={PhoneSvg} alt="Phone" />
               </td>
               <td style={styles.interactive} onClick={revealPhoneNumber}>
