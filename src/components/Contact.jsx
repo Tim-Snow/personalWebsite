@@ -37,6 +37,7 @@ const Contact = () => {
 
 const styles = {
   container: {
+    borderRadius: 4,
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -49,6 +50,7 @@ const styles = {
   form: {
     display: 'flex',
     flexDirection: 'column',
+    alignItems: 'center',
   },
   margin: {
     margin: 5,

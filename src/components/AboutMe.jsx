@@ -57,11 +57,12 @@ function AboutMe() {
 
 const styles = {
   container: {
+    borderRadius: 4,
     padding: 15,
     background: '#DFDFDF',
     color: '#333',
     maxWidth: 900,
-    height: 600,
+    minimumHeight: 600,
     textAlign: 'center',
     display: 'flex',
     flexDirection: 'column',

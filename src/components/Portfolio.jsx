@@ -65,6 +65,7 @@ function Portfolio() {
 
 const styles = {
   container: {
+    borderRadius: 4,
     backgroundColor: '#DFDFDF',
     color: '#333',
     textAlign: 'center',

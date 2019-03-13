@@ -25,17 +25,17 @@ function Activity() {
           break
         case 'PushEvent':
           act.type = 'Pushed to'
-          // if (act.payload.push_id === 3361145045) {
-          //   await act.payload.commits.map(async commit => {
-          //     const { html_url } = await fetch(commit.url, {
-          //       method: 'get',
-          //     })
-          //       .then(res => res.json())
-          //       .catch(err => console.error(err))
+          if (act.payload.push_id === 3361145045) {
+            act.payload.commits.map(async commit => {
+              const { html_url } = await fetch(commit.url, {
+                method: 'get',
+              })
+                .then(res => res.json())
+                .catch(err => console.error(err))
 
-          //     commit.asd = html_url
-          //   })
-          // }
+              commit.asd = html_url
+            })
+          }
           break
         case 'CreateEvent':
           act.type = 'Created'
@@ -88,6 +88,7 @@ function Activity() {
 
 const styles = {
   container: {
+    borderRadius: 4,
     background: '#DFDFDF',
     color: '#333',
     textAlign: 'center',
