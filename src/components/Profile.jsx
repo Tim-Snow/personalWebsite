@@ -90,8 +90,8 @@ function Profile() {
                 <img style={styles.icon} src={WebsiteSvg} alt="Web" />
               </td>
               <td>
-                <a href={info.blog}>{info.blog && info.blog.substr(7)}</a> -
-                you're already here!
+                <a href={info.blog}>{info.blog && info.blog.substr(7)}</a> - old
+                site I'm migrating from!
               </td>
             </tr>
             <tr style={styles.row}>
