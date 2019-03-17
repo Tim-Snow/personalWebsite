@@ -4,7 +4,6 @@ import EmailSvg from '../assets/email.svg'
 import WorkSvg from '../assets/business.svg'
 import PhoneSvg from '../assets/call.svg'
 import LocationSvg from '../assets/location.svg'
-import WebsiteSvg from '../assets/web.svg'
 import GithubSvg from '../assets/github.svg'
 
 import request, { requestImage } from '../libs/request'
@@ -27,7 +26,7 @@ function Profile() {
 
   const fetchGitInfo = async () => {
     const { name, blog, email, location, bio, avatar_url } = await request(
-      '/users/tim-snow',
+      '/api/users/tim-snow',
     )
 
     const image = await requestImage(avatar_url)

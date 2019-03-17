@@ -11,7 +11,7 @@ function Activity() {
   }, [])
 
   const getGitActivity = async () => {
-    const response = await request('/users/tim-snow/events')
+    const response = await request('/api/users/tim-snow/events')
 
     // const cleaned = await cleanEventNames(response)
     await setActivity(cleanEventNames(response))

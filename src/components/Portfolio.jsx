@@ -15,7 +15,7 @@ function Portfolio() {
   }, [])
 
   const getGitRepositories = async () => {
-    const portfolios = await request('/users/tim-snow/repos')
+    const portfolios = await request('/api/users/tim-snow/repos')
     await setPortfolios(portfolios)
   }
 

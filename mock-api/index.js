@@ -2,7 +2,7 @@ const express = require('express')
 const app = express()
 app.set('port', process.env.PORT || 3001)
 
-app.get('/users/tim-snow', (req, res) => {
+app.get('/api/users/tim-snow', (req, res) => {
   console.log('user get request')
   res.json({
     login: 'Tim-Snow',
@@ -53,14 +53,14 @@ app.get('/users/tim-snow', (req, res) => {
   })
 })
 
-app.get('/users/tim-snow/repos', (req, res) => {
+app.get('/api/users/tim-snow/repos', (req, res) => {
   console.log('repo get request')
   res.json([
     {
       id: 38641766,
       node_id: 'MDEwOlJlcG9zaXRvcnkzODY0MTc2Ng==',
-      name: '2D-Unity-Game',
-      full_name: 'Tim-Snow/2D-Unity-Game',
+      name: 'unityLocalMultiplayerGame',
+      full_name: 'Tim-Snow/unityLocalMultiplayerGame',
       private: false,
       owner: {
         login: 'Tim-Snow',
@@ -329,8 +329,8 @@ app.get('/users/tim-snow/repos', (req, res) => {
     {
       id: 25734912,
       node_id: 'MDEwOlJlcG9zaXRvcnkyNTczNDkxMg==',
-      name: 'FinalProject',
-      full_name: 'Tim-Snow/FinalProject',
+      name: 'finalProject',
+      full_name: 'Tim-Snow/finalProject',
       private: false,
       owner: {
         login: 'Tim-Snow',
@@ -461,8 +461,8 @@ app.get('/users/tim-snow/repos', (req, res) => {
     {
       id: 134195162,
       node_id: 'MDEwOlJlcG9zaXRvcnkxMzQxOTUxNjI=',
-      name: 'fxgl-sci-brawl',
-      full_name: 'Tim-Snow/fxgl-sci-brawl',
+      name: 'fxglScientistBrawl',
+      full_name: 'Tim-Snow/fxglScientistBrawl',
       private: false,
       owner: {
         login: 'Tim-Snow',
@@ -593,8 +593,8 @@ app.get('/users/tim-snow/repos', (req, res) => {
     {
       id: 97983466,
       node_id: 'MDEwOlJlcG9zaXRvcnk5Nzk4MzQ2Ng==',
-      name: 'HomeMonitor',
-      full_name: 'Tim-Snow/HomeMonitor',
+      name: 'homeMonitor',
+      full_name: 'Tim-Snow/homeMonitor',
       private: false,
       owner: {
         login: 'Tim-Snow',
@@ -725,8 +725,8 @@ app.get('/users/tim-snow/repos', (req, res) => {
     {
       id: 167859519,
       node_id: 'MDEwOlJlcG9zaXRvcnkxNjc4NTk1MTk=',
-      name: 'homemonitorApp',
-      full_name: 'Tim-Snow/homemonitorApp',
+      name: 'homeMonitorApp',
+      full_name: 'Tim-Snow/homeMonitorApp',
       private: false,
       owner: {
         login: 'Tim-Snow',
@@ -857,8 +857,8 @@ app.get('/users/tim-snow/repos', (req, res) => {
     {
       id: 137670646,
       node_id: 'MDEwOlJlcG9zaXRvcnkxMzc2NzA2NDY=',
-      name: 'Homepage',
-      full_name: 'Tim-Snow/Homepage',
+      name: 'homepage',
+      full_name: 'Tim-Snow/homepage',
       private: false,
       owner: {
         login: 'Tim-Snow',
@@ -986,8 +986,8 @@ app.get('/users/tim-snow/repos', (req, res) => {
     {
       id: 33462465,
       node_id: 'MDEwOlJlcG9zaXRvcnkzMzQ2MjQ2NQ==',
-      name: 'Java_TCP_Fair_Server_and_Fair_Client',
-      full_name: 'Tim-Snow/Java_TCP_Fair_Server_and_Fair_Client',
+      name: 'tcpPongFairServerAndClient',
+      full_name: 'Tim-Snow/tcpPongFairServerAndClient',
       private: false,
       owner: {
         login: 'Tim-Snow',
@@ -1130,8 +1130,8 @@ app.get('/users/tim-snow/repos', (req, res) => {
     {
       id: 98453589,
       node_id: 'MDEwOlJlcG9zaXRvcnk5ODQ1MzU4OQ==',
-      name: 'PacmanPython',
-      full_name: 'Tim-Snow/PacmanPython',
+      name: 'pacmanPython',
+      full_name: 'Tim-Snow/pacmanPython',
       private: false,
       owner: {
         login: 'Tim-Snow',
@@ -1262,8 +1262,8 @@ app.get('/users/tim-snow/repos', (req, res) => {
     {
       id: 43962629,
       node_id: 'MDEwOlJlcG9zaXRvcnk0Mzk2MjYyOQ==',
-      name: 'PersonalWebsite',
-      full_name: 'Tim-Snow/PersonalWebsite',
+      name: 'personalWebsite',
+      full_name: 'Tim-Snow/personalWebsite',
       private: false,
       owner: {
         login: 'Tim-Snow',
@@ -1396,8 +1396,8 @@ app.get('/users/tim-snow/repos', (req, res) => {
     {
       id: 31169717,
       node_id: 'MDEwOlJlcG9zaXRvcnkzMTE2OTcxNw==',
-      name: 'Plain-Sailing-Android-App',
-      full_name: 'Tim-Snow/Plain-Sailing-Android-App',
+      name: 'plainSailingAndroid',
+      full_name: 'Tim-Snow/plainSailingAndroid',
       private: false,
       owner: {
         login: 'Tim-Snow',
@@ -1534,8 +1534,8 @@ app.get('/users/tim-snow/repos', (req, res) => {
     {
       id: 45704130,
       node_id: 'MDEwOlJlcG9zaXRvcnk0NTcwNDEzMA==',
-      name: 'ScientistBrawl',
-      full_name: 'Tim-Snow/ScientistBrawl',
+      name: 'scientistBrawl',
+      full_name: 'Tim-Snow/scientistBrawl',
       private: false,
       owner: {
         login: 'Tim-Snow',
@@ -1672,8 +1672,8 @@ app.get('/users/tim-snow/repos', (req, res) => {
     {
       id: 21654436,
       node_id: 'MDEwOlJlcG9zaXRvcnkyMTY1NDQzNg==',
-      name: 'SDL_Engine_and_Arena_Game',
-      full_name: 'Tim-Snow/SDL_Engine_and_Arena_Game',
+      name: 'sdlEngineAndArenaGame',
+      full_name: 'Tim-Snow/sdlEngineAndArenaGame',
       private: false,
       owner: {
         login: 'Tim-Snow',
@@ -1810,8 +1810,8 @@ app.get('/users/tim-snow/repos', (req, res) => {
     {
       id: 119246688,
       node_id: 'MDEwOlJlcG9zaXRvcnkxMTkyNDY2ODg=',
-      name: 'Snake',
-      full_name: 'Tim-Snow/Snake',
+      name: 'snake',
+      full_name: 'Tim-Snow/snake',
       private: false,
       owner: {
         login: 'Tim-Snow',
@@ -1931,8 +1931,8 @@ app.get('/users/tim-snow/repos', (req, res) => {
     {
       id: 124569886,
       node_id: 'MDEwOlJlcG9zaXRvcnkxMjQ1Njk4ODY=',
-      name: 'space-web-game',
-      full_name: 'Tim-Snow/space-web-game',
+      name: 'spaceWebGame',
+      full_name: 'Tim-Snow/spaceWebGame',
       private: false,
       owner: {
         login: 'Tim-Snow',
@@ -2063,8 +2063,8 @@ app.get('/users/tim-snow/repos', (req, res) => {
     {
       id: 9695411,
       node_id: 'MDEwOlJlcG9zaXRvcnk5Njk1NDEx',
-      name: 'StarshipFontana',
-      full_name: 'Tim-Snow/StarshipFontana',
+      name: 'starshipFontana',
+      full_name: 'Tim-Snow/starshipFontana',
       private: false,
       owner: {
         login: 'Tim-Snow',
@@ -2203,8 +2203,8 @@ app.get('/users/tim-snow/repos', (req, res) => {
     {
       id: 16967730,
       node_id: 'MDEwOlJlcG9zaXRvcnkxNjk2NzczMA==',
-      name: 'Sumo',
-      full_name: 'Tim-Snow/Sumo',
+      name: 'sumo',
+      full_name: 'Tim-Snow/sumo',
       private: false,
       owner: {
         login: 'Tim-Snow',
@@ -2325,8 +2325,8 @@ app.get('/users/tim-snow/repos', (req, res) => {
     {
       id: 48763850,
       node_id: 'MDEwOlJlcG9zaXRvcnk0ODc2Mzg1MA==',
-      name: 'WebGameOfLife',
-      full_name: 'Tim-Snow/WebGameOfLife',
+      name: 'gameOfLife',
+      full_name: 'Tim-Snow/gameOfLife',
       private: false,
       owner: {
         login: 'Tim-Snow',
@@ -2458,7 +2458,7 @@ app.get('/users/tim-snow/repos', (req, res) => {
 })
 
 app.get(
-  '/repos/Tim-Snow/PersonalWebsite/commits/89aed1fc79f749eaade427cc043bed1edec2935e',
+  '/api/repos/Tim-Snow/PersonalWebsite/commits/89aed1fc79f749eaade427cc043bed1edec2935e',
   (req, res) => {
     console.log('commit info request')
     res.json({
@@ -2582,7 +2582,7 @@ app.get(
   },
 )
 
-app.get('/users/tim-snow/events', (req, res) => {
+app.get('/api/users/tim-snow/events', (req, res) => {
   console.log('event get request')
   res.json([
     {
