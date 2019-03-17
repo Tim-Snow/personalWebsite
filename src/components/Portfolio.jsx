@@ -5,6 +5,7 @@ import PortfolioItem from './PortfolioItem'
 import request from '../libs/request'
 
 import GithubSvg from '../assets/github.svg'
+import PortfolioImages from '../assets/portfolio-images'
 
 function Portfolio() {
   const [selected, setSelected] = useState(-1)
@@ -23,6 +24,9 @@ function Portfolio() {
     i === selected ? hideDetailView() : showDetailView(i)
   const hideDetailView = () => setSelected(-1)
   const showDetailView = i => setSelected(i)
+
+  let current
+  if (portfolios && selected !== -1) current = portfolios[selected].name
 
   return (
     <div style={styles.container}>
@@ -43,7 +47,7 @@ function Portfolio() {
         <div style={styles.details}>
           {selected !== -1 && (
             <div>
-              <h5>{portfolios[selected].name}</h5>
+              <h5>{current}</h5>
               <p>
                 <a href={portfolios[selected].html_url}>
                   <img
@@ -53,6 +57,11 @@ function Portfolio() {
                   />
                 </a>
               </p>
+              <img
+                src={PortfolioImages[current]}
+                alt={current}
+                style={styles.image}
+              />
               <p>{portfolios[selected].description}</p>
               <p>Main language used: {portfolios[selected].language}</p>
             </div>
@@ -81,6 +90,10 @@ const styles = {
     margin: 10,
   },
   icon: { width: 24 },
+  image: {
+    maxHeight: 600,
+    maxWidth: 600,
+  },
 }
 
 export default Portfolio
