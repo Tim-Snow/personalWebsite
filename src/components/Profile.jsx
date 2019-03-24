@@ -80,7 +80,7 @@ function Profile() {
                 <img style={styles.icon} src={GithubSvg} alt="Github" />
               </td>
               <td>
-                Find me on
+                Find me on{' '}
                 <a
                   href="https://github.com/Tim-Snow"
                   target="_blank"

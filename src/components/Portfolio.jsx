@@ -9,14 +9,17 @@ import { secondary, shadow, radius } from '../constants/styles'
 function Portfolio() {
   const [selected, setSelected] = useState(-1)
   const [portfolios, setPortfolios] = useState([])
+  const [loaded, setLoaded] = useState(false)
 
   useEffect(() => {
     getGitRepositories()
   }, [])
 
-  const getGitRepositories = async () => {
-    const portfolios = await request('/users/tim-snow/repos')
-    await setPortfolios(portfolios)
+  const getGitRepositories = () => {
+    request('/users/tim-snow/repos')
+      .then(res => setPortfolios(res))
+      .then(() => setLoaded(true))
+      .catch(() => setLoaded(false))
   }
 
   const setSelectedInterceptor = i =>
@@ -28,7 +31,7 @@ function Portfolio() {
     <div style={styles.container}>
       <h2>Portfolio</h2>
       <div style={styles.flex}>
-        {portfolios &&
+        {loaded &&
           portfolios.map((portfolio, key) => (
             <PortfolioItem
               id={key}
@@ -40,7 +43,7 @@ function Portfolio() {
           ))}
       </div>
 
-      {portfolios && (
+      {loaded && (
         <PortfolioDetail
           open={selected !== -1}
           portfolio={portfolios[selected]}

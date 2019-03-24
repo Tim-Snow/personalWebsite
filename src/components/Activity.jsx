@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 
 import TableTitle from './TableTitle'
 import request from '../libs/request'
-import CommitMessage from './CommitMessage'
+import Link from './Link'
 
 import { secondary, shadow, radius } from '../constants/styles'
 
@@ -59,22 +59,16 @@ function Activity() {
                 </td>
                 <td style={styles.column}>{activity.type}</td>
                 <td style={styles.column}>
-                  <a
-                    href={activity.repo.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {activity.repo.name.split('/')[1]}
-                  </a>
+                  <Link
+                    text={activity.repo.name.split('/')[1]}
+                    url={activity.repo.url}
+                  />
                 </td>
                 <td style={styles.column}>
                   {activity.type === 'Pushed to' &&
                     activity.payload.commits.map(commit => (
                       <p key={commit.sha}>
-                        <CommitMessage
-                          message={commit.message}
-                          url={commit.url}
-                        />
+                        <Link text={commit.message} url={commit.url} />
                       </p>
                     ))}
                 </td>

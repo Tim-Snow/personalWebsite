@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react'
 
 const { REACT_APP_API_KEY } = process.env
 
-function CommitMessage(props) {
-  const [commitUrl, setUrl] = useState('')
+function Link(props) {
+  const [url, setUrl] = useState('')
 
   useEffect(() => fetchUrl(), [])
 
@@ -20,10 +20,10 @@ function CommitMessage(props) {
   }
 
   return (
-    <a href={commitUrl} target="_blank" rel="noopener noreferrer">
-      {props.message}
+    <a href={url} target="_blank" rel="noopener noreferrer">
+      {props.text}
     </a>
   )
 }
 
-export default CommitMessage
+export default Link
