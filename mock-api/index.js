@@ -2,58 +2,64 @@ const express = require('express')
 const app = express()
 app.set('port', process.env.PORT || 3001)
 
-app.get('/api/users/tim-snow', (req, res) => {
+app.get('/users/tim-snow', (req, res) => {
   console.log('user get request')
-  res.json({
-    login: 'Tim-Snow',
-    id: 4265090,
-    node_id: 'MDQ6VXNlcjQyNjUwOTA=',
-    avatar_url: '/uploads/img.bmp',
-    gravatar_id: '',
-    url: 'https://api.github.com/users/Tim-Snow',
-    html_url: 'https://github.com/Tim-Snow',
-    followers_url: 'https://api.github.com/users/Tim-Snow/followers',
-    following_url:
-      'https://api.github.com/users/Tim-Snow/following{/other_user}',
-    gists_url: 'https://api.github.com/users/Tim-Snow/gists{/gist_id}',
-    starred_url: 'https://api.github.com/users/Tim-Snow/starred{/owner}{/repo}',
-    subscriptions_url: 'https://api.github.com/users/Tim-Snow/subscriptions',
-    organizations_url: 'https://api.github.com/users/Tim-Snow/orgs',
-    repos_url: 'https://api.github.com/users/Tim-Snow/repos',
-    events_url: 'https://api.github.com/users/Tim-Snow/events{/privacy}',
-    received_events_url:
-      'https://api.github.com/users/Tim-Snow/received_events',
-    type: 'User',
-    site_admin: false,
-    name: 'Tim Snow',
-    company: 'Santander Technology UK',
-    blog: 'http://www.Tim-Snow.co.uk',
-    location: 'Northampton',
-    email: 'tim.snow1991@gmail.com',
-    hireable: null,
-    bio: 'Software Developer at Santander Technology UK.',
-    public_repos: 18,
-    public_gists: 1,
-    followers: 4,
-    following: 7,
-    created_at: '2013-04-26T12:52:05Z',
-    updated_at: '2019-03-01T16:29:56Z',
-    private_gists: 10,
-    total_private_repos: 1,
-    owned_private_repos: 1,
-    disk_usage: 188619,
-    collaborators: 0,
-    two_factor_authentication: false,
-    plan: {
-      name: 'free',
-      space: 976562499,
-      collaborators: 0,
-      private_repos: 10000,
-    },
-  })
+  setTimeout(
+    () =>
+      res.json({
+        login: 'Tim-Snow',
+        id: 4265090,
+        node_id: 'MDQ6VXNlcjQyNjUwOTA=',
+        avatar_url: '/uploads/img.bmp',
+        gravatar_id: '',
+        url: 'https://api.github.com/users/Tim-Snow',
+        html_url: 'https://github.com/Tim-Snow',
+        followers_url: 'https://api.github.com/users/Tim-Snow/followers',
+        following_url:
+          'https://api.github.com/users/Tim-Snow/following{/other_user}',
+        gists_url: 'https://api.github.com/users/Tim-Snow/gists{/gist_id}',
+        starred_url:
+          'https://api.github.com/users/Tim-Snow/starred{/owner}{/repo}',
+        subscriptions_url:
+          'https://api.github.com/users/Tim-Snow/subscriptions',
+        organizations_url: 'https://api.github.com/users/Tim-Snow/orgs',
+        repos_url: 'https://api.github.com/users/Tim-Snow/repos',
+        events_url: 'https://api.github.com/users/Tim-Snow/events{/privacy}',
+        received_events_url:
+          'https://api.github.com/users/Tim-Snow/received_events',
+        type: 'User',
+        site_admin: false,
+        name: 'Tim Snow',
+        company: 'Santander Technology UK',
+        blog: 'http://www.Tim-Snow.co.uk',
+        location: 'Northampton',
+        email: 'tim.snow1991@gmail.com',
+        hireable: null,
+        bio: 'Software Developer at Santander Technology UK.',
+        public_repos: 18,
+        public_gists: 1,
+        followers: 4,
+        following: 7,
+        created_at: '2013-04-26T12:52:05Z',
+        updated_at: '2019-03-01T16:29:56Z',
+        private_gists: 10,
+        total_private_repos: 1,
+        owned_private_repos: 1,
+        disk_usage: 188619,
+        collaborators: 0,
+        two_factor_authentication: false,
+        plan: {
+          name: 'free',
+          space: 976562499,
+          collaborators: 0,
+          private_repos: 10000,
+        },
+      }),
+    5000,
+  )
 })
 
-app.get('/api/users/tim-snow/repos', (req, res) => {
+app.get('/users/tim-snow/repos', (req, res) => {
   console.log('repo get request')
   res.json([
     {
@@ -2584,7 +2590,7 @@ app.get(
   },
 )
 
-app.get('/api/users/tim-snow/events', (req, res) => {
+app.get('/users/tim-snow/events', (req, res) => {
   console.log('event get request')
   res.json([
     {

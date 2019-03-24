@@ -2,19 +2,23 @@ import React, { useEffect, useState } from 'react'
 
 import TableTitle from './TableTitle'
 import request from '../libs/request'
+import CommitMessage from './CommitMessage'
+
+import { secondary, shadow, radius } from '../constants/styles'
 
 function Activity() {
-  const [activity, setActivity] = useState([])
+  const [activities, setActivities] = useState([])
+  const [loaded, setLoaded] = useState(false)
 
   useEffect(() => {
     getGitActivity()
   }, [])
 
-  const getGitActivity = async () => {
-    const response = await request('/api/users/tim-snow/events')
-
-    // const cleaned = await cleanEventNames(response)
-    await setActivity(cleanEventNames(response))
+  const getGitActivity = () => {
+    request('/users/tim-snow/events')
+      .then(res => cleanEventNames(res))
+      .then(clean => setActivities(clean))
+      .then(() => setLoaded(true))
   }
 
   const cleanEventNames = activities => {
@@ -25,14 +29,6 @@ function Activity() {
           break
         case 'PushEvent':
           act.type = 'Pushed to'
-          act.payload.commits.map(async commit => {
-            const { html_url } = await fetch(commit.url, {
-              method: 'get',
-            })
-              .then(res => res.json())
-              .catch(err => console.error(err))
-            commit.http_url = html_url
-          })
           break
         case 'CreateEvent':
           act.type = 'Created'
@@ -55,8 +51,8 @@ function Activity() {
             <TableTitle value="Repository" />
             <TableTitle value="Commit message" />
           </tr>
-          {activity &&
-            activity.map(activity => (
+          {loaded &&
+            activities.map(activity => (
               <tr key={activity.id}>
                 <td style={styles.border}>
                   {activity.created_at && activity.created_at.substr(0, 10)}
@@ -71,7 +67,10 @@ function Activity() {
                   {activity.type === 'Pushed to' &&
                     activity.payload.commits.map(commit => (
                       <p key={commit.sha}>
-                        <a href={commit.http_url}>{commit.message}</a>
+                        <CommitMessage
+                          message={commit.message}
+                          url={commit.url}
+                        />
                       </p>
                     ))}
                 </td>
