@@ -22,28 +22,30 @@ function Profile() {
     blog: 'http://timsnow.dev',
   })
   const [phone, setPhone] = useState('07944 878 ???')
-  const [fetched, setFetched] = useState(false)
+  const [loaded, setLoaded] = useState(undefined)
 
   useEffect(() => {
     fetchGitInfo()
   }, [])
 
-  const fetchGitInfo = async () => {
-    const { name, blog, email, location, bio, avatar_url } = await request(
-      '/users/tim-snow',
-    )
+  const fetchGitInfo = () => {
+    request('/users/tim-snow')
+      .then(res => {
+        const { name, blog, email, location, bio, avatar_url } = res
 
-    const image = await requestImage(avatar_url)
-
-    setInfo({
-      name,
-      blog,
-      email,
-      location,
-      bio,
-      image,
-    })
-    setFetched(true)
+        requestImage(avatar_url).then(image => {
+          setInfo({
+            name,
+            blog,
+            email,
+            location,
+            bio,
+            image: URL.createObjectURL(image),
+          })
+        })
+      })
+      .then(() => setLoaded(true))
+      .catch(() => setLoaded(false))
   }
 
   const revealPhoneNumber = () => setPhone('07944 878 537')
@@ -51,7 +53,7 @@ function Profile() {
   return (
     <div style={styles.container}>
       <h1 style={styles.name}>{info.name}</h1>
-      <Slide in={fetched}>
+      <Slide in={loaded}>
         <div>
           {info.image && <img src={info.image} alt="Me" style={styles.image} />}
         </div>
