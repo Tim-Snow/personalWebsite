@@ -9,6 +9,7 @@ import GithubSvg from '../assets/github.svg'
 import request, { requestImage } from '../libs/request'
 
 import Tooltip from '@material-ui/core/Tooltip'
+import Slide from '@material-ui/core/Slide'
 
 function Profile() {
   const [info, setInfo] = useState({
@@ -19,6 +20,7 @@ function Profile() {
     blog: 'http://timsnow.dev',
   })
   const [phone, setPhone] = useState('07944 878 ???')
+  const [fetched, setFetched] = useState(false)
 
   useEffect(() => {
     fetchGitInfo()
@@ -32,13 +34,14 @@ function Profile() {
     const image = await requestImage(avatar_url)
 
     setInfo({
-      name: name.replace(' ', '\n'),
+      name,
       blog,
       email,
       location,
       bio,
       image,
     })
+    setFetched(true)
   }
 
   const revealPhoneNumber = () => setPhone('07944 878 537')
@@ -46,7 +49,11 @@ function Profile() {
   return (
     <div style={styles.container}>
       <h1 style={styles.name}>{info.name}</h1>
-      {info.image && <img src={info.image} alt="Me" style={styles.image} />}
+      <Slide in={fetched}>
+        <div>
+          {info.image && <img src={info.image} alt="Me" style={styles.image} />}
+        </div>
+      </Slide>
       <div style={styles.infoContainer}>
         <table>
           <tbody>
