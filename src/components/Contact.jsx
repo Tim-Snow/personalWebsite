@@ -40,7 +40,12 @@ function Contact() {
             Sorry, I haven't implemented anything but the visuals for this,
             yet..!
           </p>
-          <p>Use the info at the top of the page to get in contact 😊</p>
+          <p>
+            Use the info at the top of the page to get in contact{' '}
+            <span role="img" aria-label="smile">
+              😊
+            </span>
+          </p>
         </div>
       )}
       <Button
