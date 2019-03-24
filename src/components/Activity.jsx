@@ -59,7 +59,11 @@ function Activity() {
                 </td>
                 <td style={styles.column}>{activity.type}</td>
                 <td style={styles.column}>
-                  <a href={activity.repo.url} target="_blank">
+                  <a
+                    href={activity.repo.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     {activity.repo.name.split('/')[1]}
                   </a>
                 </td>

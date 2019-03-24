@@ -81,7 +81,11 @@ function Profile() {
               </td>
               <td>
                 Find me on
-                <a href="https://github.com/Tim-Snow" target="_blank">
+                <a
+                  href="https://github.com/Tim-Snow"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   github
                 </a>
               </td>
@@ -94,6 +98,7 @@ function Profile() {
                 <a
                   href={`mailto:${info.email}?subject=Hello world!`}
                   target="_blank"
+                  rel="noopener noreferrer"
                 >
                   <p>{info.email}</p>
                 </a>

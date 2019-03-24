@@ -20,7 +20,7 @@ function CommitMessage(props) {
   }
 
   return (
-    <a href={commitUrl} target="_blank">
+    <a href={commitUrl} target="_blank" rel="noopener noreferrer">
       {props.message}
     </a>
   )
