@@ -56,7 +56,7 @@ function Activity() {
         </tbody>
       </table>
 
-      {loaded || <Error />}
+      {loaded === false && <Error />}
 
       <table style={styles.fullWidth}>
         <tbody style={styles.table}>
