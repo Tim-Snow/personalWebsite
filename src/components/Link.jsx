@@ -15,7 +15,7 @@ function Link(props) {
       },
     })
       .then(res => res.json())
-      .then(res => setUrl(res.html_url))
+      .then(json => setUrl(json.html_url))
       .catch(err => console.error('err' + err))
   }
 

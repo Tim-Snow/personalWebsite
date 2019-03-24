@@ -2,9 +2,9 @@ import React from 'react'
 
 const TableTitle = props => {
   return (
-    <td style={styles.col}>
+    <th style={styles.col}>
       <p style={styles.text}>{props.value}</p>
-    </td>
+    </th>
   )
 }
 

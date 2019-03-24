@@ -44,13 +44,17 @@ function Activity() {
     <div style={styles.container}>
       <h2>Recent Github activity</h2>
       <table style={styles.fullWidth}>
-        <tbody style={styles.table}>
+        <tbody style={styles.fullWidth}>
           <tr style={styles.row} key="titles">
             <TableTitle style={styles.column} value="Date" />
             <TableTitle style={styles.column} value="Event" />
             <TableTitle style={styles.column} value="Repository" />
             <TableTitle style={styles.column} value="Commit message" />
           </tr>
+        </tbody>
+      </table>
+      <table style={styles.fullWidth}>
+        <tbody style={styles.table}>
           {loaded &&
             activities.map(activity => (
               <tr style={{ ...styles.row, ...styles.shadow }} key={activity.id}>
@@ -82,12 +86,13 @@ function Activity() {
 
 const styles = {
   container: {
+    display: 'flex',
+    flexDirection: 'column',
     borderRadius: radius,
     background: secondary,
     color: '#333',
     textAlign: 'center',
     margin: 10,
-    overflowY: 'auto',
     height: 600,
     width: 900,
     padding: 15,
@@ -95,12 +100,12 @@ const styles = {
   },
   fullWidth: {
     width: '100%',
+    display: 'flex',
   },
   table: {
+    height: 490,
+    overflowY: 'auto',
     width: '100%',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'space-around',
   },
   column: {
     flex: 1,
