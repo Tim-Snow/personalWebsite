@@ -1,6 +1,7 @@
 import React from 'react'
 
 import Button from '@material-ui/core/Button'
+import { radius, secondary, shadow } from '../constants/styles'
 
 const Contact = () => {
   return (
