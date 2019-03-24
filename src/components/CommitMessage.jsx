@@ -8,7 +8,6 @@ function CommitMessage(props) {
   useEffect(() => fetchUrl(), [])
 
   const fetchUrl = () => {
-    console.log(`calling: ${props.url}`)
     fetch(props.url, {
       method: 'get',
       headers: {
@@ -20,7 +19,11 @@ function CommitMessage(props) {
       .catch(err => console.error('err' + err))
   }
 
-  return <a href={commitUrl}>{props.message}</a>
+  return (
+    <a href={commitUrl} target="_blank">
+      {props.message}
+    </a>
+  )
 }
 
 export default CommitMessage

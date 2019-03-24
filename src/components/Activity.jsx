@@ -43,27 +43,27 @@ function Activity() {
   return (
     <div style={styles.container}>
       <h2>Recent Github activity</h2>
-      <table>
-        <tbody>
-          <tr key="titles">
-            <TableTitle value="Date" />
-            <TableTitle value="Event" />
-            <TableTitle value="Repository" />
-            <TableTitle value="Commit message" />
+      <table style={styles.fullWidth}>
+        <tbody style={styles.table}>
+          <tr style={styles.row} key="titles">
+            <TableTitle style={styles.column} value="Date" />
+            <TableTitle style={styles.column} value="Event" />
+            <TableTitle style={styles.column} value="Repository" />
+            <TableTitle style={styles.column} value="Commit message" />
           </tr>
           {loaded &&
             activities.map(activity => (
-              <tr key={activity.id}>
-                <td style={styles.border}>
+              <tr style={{ ...styles.row, ...styles.shadow }} key={activity.id}>
+                <td style={styles.column}>
                   {activity.created_at && activity.created_at.substr(0, 10)}
                 </td>
-                <td style={styles.border}>{activity.type}</td>
-                <td style={styles.border}>
-                  <a href={activity.repo.url}>
+                <td style={styles.column}>{activity.type}</td>
+                <td style={styles.column}>
+                  <a href={activity.repo.url} target="_blank">
                     {activity.repo.name.split('/')[1]}
                   </a>
                 </td>
-                <td style={styles.border}>
+                <td style={styles.column}>
                   {activity.type === 'Pushed to' &&
                     activity.payload.commits.map(commit => (
                       <p key={commit.sha}>
@@ -88,21 +88,34 @@ const styles = {
     background: secondary,
     color: '#333',
     textAlign: 'center',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
     margin: 10,
-    overflowY: 'scroll',
+    overflowY: 'auto',
     height: 600,
     width: 900,
     padding: 15,
     boxShadow: shadow,
   },
-  border: {
-    borderColor: '#333',
-    borderWidth: 1,
-    borderLeftStyle: 'solid',
-    borderTopStyle: 'solid',
+  fullWidth: {
+    width: '100%',
+  },
+  table: {
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-around',
+  },
+  column: {
+    flex: 1,
+  },
+  row: {
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'center',
+    flex: 1,
+  },
+  shadow: {
+    boxShadow: '0px 0px 9px 0px rgba(0,0,0,0.1)',
+    margin: 5,
   },
 }
 

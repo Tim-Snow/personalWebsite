@@ -80,7 +80,10 @@ function Profile() {
                 <img style={styles.icon} src={GithubSvg} alt="Github" />
               </td>
               <td>
-                Find me on <a href="https://github.com/Tim-Snow">github</a>
+                Find me on
+                <a href="https://github.com/Tim-Snow" target="_blank">
+                  github
+                </a>
               </td>
             </tr>
             <tr style={styles.row}>
@@ -88,7 +91,10 @@ function Profile() {
                 <img style={styles.icon} src={EmailSvg} alt="Email" />
               </td>
               <td>
-                <a href={`mailto:${info.email}?subject=Hello world!`}>
+                <a
+                  href={`mailto:${info.email}?subject=Hello world!`}
+                  target="_blank"
+                >
                   <p>{info.email}</p>
                 </a>
               </td>

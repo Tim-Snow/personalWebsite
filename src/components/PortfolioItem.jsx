@@ -1,4 +1,5 @@
 import React from 'react'
+import { radius } from '../constants/styles'
 
 function PortfolioItem(props) {
   const click = () => props.callback(props.id)
@@ -19,6 +20,7 @@ const styles = {
     minHeight: 250,
     margin: 15,
     overflow: 'hidden',
+    borderRadius: radius,
   },
 }
 

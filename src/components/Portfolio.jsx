@@ -62,7 +62,7 @@ const styles = {
   },
   flex: {
     display: 'flex',
-    overflowX: 'scroll',
+    overflowX: 'auto',
   },
 }
 

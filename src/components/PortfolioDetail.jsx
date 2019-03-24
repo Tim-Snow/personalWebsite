@@ -16,7 +16,7 @@ function PortfolioDetail(props) {
           <div>
             <h5>{current}</h5>
             <p>
-              <a href={props.portfolio.html_url}>
+              <a href={props.portfolio.html_url} target="_blank">
                 <img
                   style={styles.icon}
                   src={GithubSvg}
