@@ -1,13 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
 
 import Button from '@material-ui/core/Button'
 import { radius, secondary, shadow } from '../constants/styles'
 
-const Contact = () => {
+function Contact() {
+  const [sent, setSent] = useState(false)
+
+  function handleSubmit() {
+    setSent(true)
+  }
+
   return (
     <div style={styles.container}>
       <h2>Contact me</h2>
-      <form style={styles.form}>
+      <div style={styles.form}>
         <input
           style={styles.margin}
           placeholder="Your name"
@@ -27,11 +33,24 @@ const Contact = () => {
           cols="80"
           name="message"
         />
-
-        <Button variant="contained" color="primary" style={styles.margin}>
-          Send
-        </Button>
-      </form>
+      </div>
+      {sent && (
+        <div style={styles.error}>
+          <p>
+            Sorry, I haven't implemented anything but the visuals for this,
+            yet..!
+          </p>
+          <p>Use the info at the top of the page to get in contact 😊</p>
+        </div>
+      )}
+      <Button
+        variant="contained"
+        color="primary"
+        style={styles.margin}
+        onClick={handleSubmit}
+      >
+        Send
+      </Button>
     </div>
   )
 }
@@ -56,6 +75,10 @@ const styles = {
   },
   margin: {
     margin: 5,
+  },
+  error: {
+    textAlign: 'center',
+    color: '#F33',
   },
 }
 
