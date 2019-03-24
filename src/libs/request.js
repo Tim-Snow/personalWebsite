@@ -6,19 +6,13 @@ const request = async url => {
     headers: {
       Authorization: `token ${REACT_APP_API_KEY}`,
     },
-  })
-    .then(res => res.json())
-    .catch(err => console.error(err))
+  }).then(res => res.json())
 
   return response
 }
 
 export const requestImage = async url => {
-  return URL.createObjectURL(
-    await fetch(url)
-      .then(response => response.blob())
-      .catch(err => console.error(err)),
-  )
+  return URL.createObjectURL(await fetch(url).then(response => response.blob()))
 }
 
 export default request

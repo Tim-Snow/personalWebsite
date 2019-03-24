@@ -3,12 +3,13 @@ import React, { useEffect, useState } from 'react'
 import TableTitle from './TableTitle'
 import request from '../libs/request'
 import Link from './Link'
+import Error from './Error'
 
 import { secondary, shadow, radius } from '../constants/styles'
 
 function Activity() {
   const [activities, setActivities] = useState([])
-  const [loaded, setLoaded] = useState(false)
+  const [loaded, setLoaded] = useState(undefined)
 
   useEffect(() => {
     getGitActivity()
@@ -19,6 +20,7 @@ function Activity() {
       .then(res => cleanEventNames(res))
       .then(clean => setActivities(clean))
       .then(() => setLoaded(true))
+      .catch(() => setLoaded(false))
   }
 
   const cleanEventNames = activities => {
@@ -53,6 +55,9 @@ function Activity() {
           </tr>
         </tbody>
       </table>
+
+      {loaded || <Error />}
+
       <table style={styles.fullWidth}>
         <tbody style={styles.table}>
           {loaded &&

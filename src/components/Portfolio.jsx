@@ -9,7 +9,7 @@ import { secondary, shadow, radius } from '../constants/styles'
 function Portfolio() {
   const [selected, setSelected] = useState(-1)
   const [portfolios, setPortfolios] = useState([])
-  const [loaded, setLoaded] = useState(false)
+  const [loaded, setLoaded] = useState(undefined)
 
   useEffect(() => {
     getGitRepositories()
@@ -48,6 +48,13 @@ function Portfolio() {
           open={selected !== -1}
           portfolio={portfolios[selected]}
         />
+      )}
+
+      {loaded === false && (
+        <p>
+          I do have stuff... I just rely on Github API calls which haven't
+          worked!
+        </p>
       )}
     </div>
   )
