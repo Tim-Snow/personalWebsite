@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import Collapse from '@material-ui/core/Collapse'
 
 import PortfolioItem from './PortfolioItem'
 import request from '../libs/request'
-
-import GithubSvg from '../assets/github.svg'
-import PortfolioImages from '../assets/portfolio-images'
+import PortfolioDetail from './PortfolioDetail'
 
 function Portfolio() {
   const [selected, setSelected] = useState(-1)
@@ -16,7 +13,7 @@ function Portfolio() {
   }, [])
 
   const getGitRepositories = async () => {
-    const portfolios = await request('/api/users/tim-snow/repos')
+    const portfolios = await request('/users/tim-snow/repos')
     await setPortfolios(portfolios)
   }
 
@@ -24,9 +21,6 @@ function Portfolio() {
     i === selected ? hideDetailView() : showDetailView(i)
   const hideDetailView = () => setSelected(-1)
   const showDetailView = i => setSelected(i)
-
-  let current
-  if (portfolios && selected !== -1) current = portfolios[selected].name
 
   return (
     <div style={styles.container}>
@@ -43,31 +37,8 @@ function Portfolio() {
             />
           ))}
       </div>
-      <Collapse in={selected !== -1}>
-        <div style={styles.details}>
-          {selected !== -1 && (
-            <div>
-              <h5>{current}</h5>
-              <p>
-                <a href={portfolios[selected].html_url}>
-                  <img
-                    style={styles.icon}
-                    src={GithubSvg}
-                    alt="View code on Github"
-                  />
-                </a>
-              </p>
-              <img
-                src={PortfolioImages[current]}
-                alt={current}
-                style={styles.image}
-              />
-              <p>{portfolios[selected].description}</p>
-              <p>Main language used: {portfolios[selected].language}</p>
-            </div>
-          )}
-        </div>
-      </Collapse>
+
+      <PortfolioDetail selected={selected} portfolio={portfolios[selected]} />
     </div>
   )
 }
@@ -84,15 +55,6 @@ const styles = {
   flex: {
     display: 'flex',
     overflowX: 'scroll',
-  },
-  details: {
-    backgroundColor: '#DFDFDF',
-    margin: 10,
-  },
-  icon: { width: 24 },
-  image: {
-    maxHeight: 600,
-    maxWidth: 600,
   },
 }
 

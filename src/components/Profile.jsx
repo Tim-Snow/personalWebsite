@@ -15,8 +15,8 @@ function Profile() {
     name: 'Tim Snow',
     bio: 'Developer',
     location: 'England',
-    email: 'tim.snow1991@gmail.com',
-    blog: 'http://www.tim-snow.co.uk',
+    email: 'contact@timsnow.dev',
+    blog: 'http://timsnow.dev',
   })
   const [phone, setPhone] = useState('07944 878 ???')
 
@@ -26,7 +26,7 @@ function Profile() {
 
   const fetchGitInfo = async () => {
     const { name, blog, email, location, bio, avatar_url } = await request(
-      '/api/users/tim-snow',
+      '/users/tim-snow',
     )
 
     const image = await requestImage(avatar_url)

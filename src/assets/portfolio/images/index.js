@@ -1,4 +1,4 @@
-import finalProject from './finalProject.jpg'
+import finalYearProject from './finalYearProject.jpg'
 import fxglScientistBrawl from './scientistBrawl.jpg'
 // import homeMonitor from './homeMonitor.png'
 // import homeMonitorApp from './homeMonitorApp.png'
@@ -17,7 +17,7 @@ import snake from './snake.jpg'
 // import unityLocalMultiplayerGame from './unityLocalMultiplayerGame.png'
 
 const images = {
-  finalProject,
+  finalYearProject,
   fxglScientistBrawl,
   // homeMonitor,
   // homeMonitorApp,
