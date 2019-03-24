@@ -38,7 +38,12 @@ function Portfolio() {
           ))}
       </div>
 
-      <PortfolioDetail selected={selected} portfolio={portfolios[selected]} />
+      {portfolios && (
+        <PortfolioDetail
+          open={selected !== -1}
+          portfolio={portfolios[selected]}
+        />
+      )}
     </div>
   )
 }

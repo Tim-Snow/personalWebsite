@@ -7,14 +7,12 @@ import PortfolioContent from '../assets/portfolio'
 
 function PortfolioDetail(props) {
   let current
-  if (props.selected !== -1) {
-    current = props.portfolio.name
-  }
+  if (props.open) current = props.portfolio.name
 
   return (
-    <Collapse in={props.selected !== -1}>
+    <Collapse in={props.open}>
       <div style={styles.details}>
-        {props.selected !== -1 && (
+        {props.open && (
           <div>
             <h5>{current}</h5>
             <p>
