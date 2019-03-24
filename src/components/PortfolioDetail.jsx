@@ -52,7 +52,6 @@ function PortfolioDetail(props) {
 
 const styles = {
   details: {
-    backgroundColor: '#DFDFDF',
     margin: 10,
   },
   icon: { width: 24 },

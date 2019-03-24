@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { secondary, shadow, radius } from '../constants/styles'
+
 function AboutMe() {
   return (
     <div style={styles.container}>
@@ -50,9 +52,9 @@ function AboutMe() {
 
 const styles = {
   container: {
-    borderRadius: 4,
+    borderRadius: radius,
     padding: 15,
-    background: '#DFDFDF',
+    background: secondary,
     color: '#333',
     maxWidth: 900,
     minHeight: 600,
@@ -62,6 +64,7 @@ const styles = {
     alignItems: 'center',
     alignSelf: 'start',
     margin: 10,
+    boxShadow: shadow,
   },
   skillsContainer: {
     display: 'flex',

@@ -6,6 +6,8 @@ import Activity from './components/Activity'
 import Contact from './components/Contact'
 import Portfolio from './components/Portfolio'
 
+import { background } from './constants/styles'
+
 function App() {
   return (
     <div style={styles.container}>
@@ -22,7 +24,7 @@ function App() {
 
 const styles = {
   container: {
-    backgroundColor: '#335',
+    backgroundColor: background,
   },
   splitSection: {
     display: 'flex',

@@ -11,6 +11,8 @@ import request, { requestImage } from '../libs/request'
 import Tooltip from '@material-ui/core/Tooltip'
 import Slide from '@material-ui/core/Slide'
 
+import { main, shadow } from '../constants/styles'
+
 function Profile() {
   const [info, setInfo] = useState({
     name: 'Tim Snow',
@@ -112,10 +114,11 @@ const styles = {
   container: {
     padding: 5,
     display: 'flex',
-    backgroundColor: '#DFDFDF',
+    backgroundColor: main,
     alignItems: 'center',
     justifyContent: 'center',
     flexWrap: 'wrap',
+    boxShadow: shadow,
   },
   infoContainer: {
     padding: 5,

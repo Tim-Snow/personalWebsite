@@ -85,8 +85,8 @@ function Activity() {
 
 const styles = {
   container: {
-    borderRadius: 4,
-    background: '#DFDFDF',
+    borderRadius: radius,
+    background: secondary,
     color: '#333',
     textAlign: 'center',
     display: 'flex',
@@ -97,6 +97,7 @@ const styles = {
     height: 600,
     width: 900,
     padding: 15,
+    boxShadow: shadow,
   },
   border: {
     borderColor: '#333',

@@ -37,15 +37,16 @@ const Contact = () => {
 
 const styles = {
   container: {
-    borderRadius: 4,
+    borderRadius: radius,
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     padding: 15,
-    backgroundColor: '#DFDFDF',
+    backgroundColor: secondary,
     marginTop: 10,
     marginLeft: 10,
     marginRight: 10,
+    boxShadow: shadow,
   },
   form: {
     display: 'flex',
