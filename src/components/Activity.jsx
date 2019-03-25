@@ -1,27 +1,23 @@
 import React, { useEffect, useState } from 'react'
 
-import TableTitle from './TableTitle'
+import ActivityTableHeader from './ActivityTableHeader'
 import request from '../libs/request'
 import Link from './Link'
 import Error from './Error'
 
-import { secondary, shadow, radius } from '../constants/styles'
+import { secondary, shadow, radius, textColour } from '../constants/styles'
 
-function Activity() {
+const Activity = () => {
   const [activities, setActivities] = useState([])
   const [loaded, setLoaded] = useState(undefined)
 
   useEffect(() => {
-    getGitActivity()
-  }, [])
-
-  const getGitActivity = () => {
-    request('/users/tim-snow/events')
+    request({ endpoint: '/users/tim-snow/events' })
       .then(res => cleanEventNames(res))
       .then(clean => setActivities(clean))
       .then(() => setLoaded(true))
       .catch(() => setLoaded(false))
-  }
+  }, [])
 
   const cleanEventNames = activities => {
     return activities.map(act => {

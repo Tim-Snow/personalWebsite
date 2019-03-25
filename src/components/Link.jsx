@@ -1,23 +1,17 @@
 import React, { useState, useEffect } from 'react'
+import request from '../libs/request'
 
-const { REACT_APP_API_KEY } = process.env
-
-function Link(props) {
+const Link = props => {
   const [url, setUrl] = useState('')
 
-  useEffect(() => fetchUrl(), [])
-
-  const fetchUrl = () => {
-    fetch(props.url, {
-      method: 'get',
-      headers: {
-        Authorization: `token ${REACT_APP_API_KEY}`,
-      },
-    })
-      .then(res => res.json())
+  useEffect(() => {
+    request({ fullUrl: props.url })
       .then(json => setUrl(json.html_url))
-      .catch(err => console.error('err' + err))
-  }
+      .catch(err => {
+        setUrl('nooo')
+        console.error('err' + err)
+      })
+  }, [])
 
   return (
     <a href={url} target="_blank" rel="noopener noreferrer">

@@ -16,7 +16,7 @@ function Portfolio() {
   }, [])
 
   const getGitRepositories = () => {
-    request('/users/tim-snow/repos')
+    request({ endpoint: '/users/tim-snow/repos' })
       .then(res => setPortfolios(res))
       .then(() => setLoaded(true))
       .catch(() => setLoaded(false))
