@@ -1,4 +1,5 @@
 import React from 'react'
+import TableTitle from './TableTitle'
 
 const Header = () => (
   <table style={styles.fullWidth}>

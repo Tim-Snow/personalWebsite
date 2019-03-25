@@ -5,7 +5,7 @@ import GithubSvg from '../assets/github.svg'
 import PortfolioImages from '../assets/portfolio/images'
 import PortfolioContent from '../assets/portfolio'
 
-function PortfolioDetail(props) {
+const PortfolioDetail = props => {
   let current
   if (props.open) current = props.portfolio.name
 

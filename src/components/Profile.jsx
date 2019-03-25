@@ -13,7 +13,7 @@ import Slide from '@material-ui/core/Slide'
 
 import { main, shadow } from '../constants/styles'
 
-function Profile() {
+const Profile = () => {
   const [info, setInfo] = useState({
     name: 'Tim Snow',
     bio: 'Developer',
@@ -25,39 +25,33 @@ function Profile() {
   const [loaded, setLoaded] = useState(undefined)
 
   useEffect(() => {
-    fetchGitInfo()
-  }, [])
-
-  const fetchGitInfo = () => {
-    request('/users/tim-snow')
-      .then(res => {
-        const { name, blog, email, location, bio, avatar_url } = res
-
-        requestImage(avatar_url).then(image => {
-          setInfo({
-            name,
-            blog,
-            email,
-            location,
-            bio,
-            image: URL.createObjectURL(image),
-          })
+    request({ endpoint: '/users/tim-snow' })
+      .then(r => {
+        const { avatar_url, ...inf } = r
+        const image = URL.createObjectURL(requestImage(avatar_url))
+        return setInfo({
+          ...inf,
+          image,
         })
       })
       .then(() => setLoaded(true))
       .catch(() => setLoaded(false))
-  }
+  }, [])
 
   const revealPhoneNumber = () => setPhone('07944 878 537')
 
   return (
     <div style={styles.container}>
       <h1 style={styles.name}>{info.name}</h1>
-      <Slide in={loaded}>
-        <div>
-          {info.image && <img src={info.image} alt="Me" style={styles.image} />}
-        </div>
-      </Slide>
+      {loaded !== false && (
+        <Slide in={loaded}>
+          <div>
+            {info.image && (
+              <img src={info.image} alt="Me" style={styles.image} />
+            )}
+          </div>
+        </Slide>
+      )}
       <div style={styles.infoContainer}>
         <table>
           <tbody>
