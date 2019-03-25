@@ -3,10 +3,10 @@ import React, { useState } from 'react'
 import Button from '@material-ui/core/Button'
 import { radius, secondary, shadow } from '../constants/styles'
 
-function Contact() {
+const Contact = () => {
   const [sent, setSent] = useState(false)
 
-  function handleSubmit() {
+  const handleSubmit = () => {
     setSent(true)
   }
 
@@ -22,6 +22,12 @@ function Contact() {
         />
         <input
           style={styles.margin}
+          placeholder="Your email"
+          type="text"
+          name="email"
+        />
+        <input
+          style={styles.margin}
           type="text"
           placeholder="Subject"
           name="subject"
@@ -34,6 +40,7 @@ function Contact() {
           name="message"
         />
       </div>
+
       {sent && (
         <div style={styles.error}>
           <p>
@@ -48,6 +55,7 @@ function Contact() {
           </p>
         </div>
       )}
+
       <Button
         variant="contained"
         color="primary"

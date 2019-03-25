@@ -1,12 +1,10 @@
 import React from 'react'
 
-const TableTitle = props => {
-  return (
-    <th style={styles.col}>
-      <p style={styles.text}>{props.value}</p>
-    </th>
-  )
-}
+const TableTitle = props => (
+  <th style={styles.col}>
+    <p style={styles.text}>{props.value}</p>
+  </th>
+)
 
 const styles = {
   col: {
