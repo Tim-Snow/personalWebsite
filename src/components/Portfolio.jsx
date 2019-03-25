@@ -4,9 +4,9 @@ import PortfolioItem from './PortfolioItem'
 import request from '../libs/request'
 import PortfolioDetail from './PortfolioDetail'
 
-import { secondary, shadow, radius } from '../constants/styles'
+import { secondary, shadow, radius, textColour } from '../constants/styles'
 
-function Portfolio() {
+const Portfolio = () => {
   const [selected, setSelected] = useState(-1)
   const [portfolios, setPortfolios] = useState([])
   const [loaded, setLoaded] = useState(undefined)
@@ -64,7 +64,7 @@ const styles = {
   container: {
     borderRadius: radius,
     backgroundColor: secondary,
-    color: '#333',
+    color: textColour,
     textAlign: 'center',
     padding: 10,
     margin: 10,

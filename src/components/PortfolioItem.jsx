@@ -1,21 +1,21 @@
 import React from 'react'
-import { radius } from '../constants/styles'
+import { radius, textColour, background } from '../constants/styles'
 
-function PortfolioItem(props) {
-  const click = () => props.callback(props.id)
-
-  return (
-    <div style={styles.container} onClick={click}>
-      <h4>{props.title}</h4>
-      <p>{props.details}</p>
-    </div>
-  )
-}
+const PortfolioItem = props => (
+  <div
+    style={styles.container}
+    onClick={props.callback(props.id)}
+    key={props.key}
+  >
+    <h4>{props.title}</h4>
+    <p>{props.details}</p>
+  </div>
+)
 
 const styles = {
   container: {
-    backgroundColor: '#333',
-    color: '#FFF',
+    backgroundColor: background,
+    color: textColour,
     minWidth: 250,
     minHeight: 250,
     margin: 15,

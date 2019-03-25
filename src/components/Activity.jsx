@@ -91,7 +91,7 @@ const styles = {
     flexDirection: 'column',
     borderRadius: radius,
     background: secondary,
-    color: '#333',
+    color: textColour,
     textAlign: 'center',
     margin: 10,
     height: 600,
