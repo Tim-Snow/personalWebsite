@@ -41,16 +41,7 @@ const Activity = () => {
   return (
     <div style={styles.container}>
       <h2>Recent Github activity</h2>
-      <table style={styles.fullWidth}>
-        <tbody style={styles.fullWidth}>
-          <tr style={styles.row} key="titles">
-            <TableTitle style={styles.column} value="Date" />
-            <TableTitle style={styles.column} value="Event" />
-            <TableTitle style={styles.column} value="Repository" />
-            <TableTitle style={styles.column} value="Commit message" />
-          </tr>
-        </tbody>
-      </table>
+      <ActivityTableHeader />
 
       {loaded === false && <Error />}
 
