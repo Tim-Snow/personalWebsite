@@ -1,12 +1,11 @@
-import React from 'react'
+import React from 'react';
 
-import Profile from './components/Profile'
-import AboutMe from './components/AboutMe'
-import Activity from './components/Activity'
-import Contact from './components/Contact'
-import Portfolio from './components/Portfolio'
+import Profile from './components/Profile';
+import AboutMe from './components/AboutMe';
+import Activity from './components/Activity';
+import Portfolio from './components/Portfolio';
 
-import { background } from './constants/styles'
+import { background } from './constants/styles';
 
 function App() {
   return (
@@ -17,9 +16,8 @@ function App() {
         <Activity style={styles.activity} />
       </div>
       <Portfolio />
-      <Contact />
     </div>
-  )
+  );
 }
 
 const styles = {
@@ -39,6 +37,6 @@ const styles = {
   activity: {
     flex: 1,
   },
-}
+};
 
-export default App
+export default App;

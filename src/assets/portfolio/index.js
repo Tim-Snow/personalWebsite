@@ -1,12 +1,12 @@
 const PortfolioContent = {
-  unityLocalMultiplayerGame: {
+  'local-multiplayer-game': {
     id: 0,
     name: 'Local Multiplayer Game',
     about:
       'Started off as a simple project to learn my way around the Unity engine, and slowly wanted to add more and more! \nSupports 4 players locally, allowing them to select a class such as an archer or warrior and fight their friends.\nThe bow for the archer class is used by pulling the right analogue stick in the opposite direction to the direction you wish to travel, trying to simulate drawing the string back and firing the arrow, you simply release the joystick when pulled back to shoot - time held back and distance joystick is flicked from affect the velocity.',
     technologies: ['C#', 'Unity'],
   },
-  finalYearProject: {
+  'final-year-project': {
     id: 1,
     name: 'Final Year Project',
     title: 'Digital Signal Analysis Influencing a 3D Scene',
@@ -14,28 +14,21 @@ const PortfolioContent = {
       "This was my final year project while at university and was very well received, being awarded a first. The WebAudioAPI is used to load songs and analyse them in real time using the FFT (Fast Fourier Transform), the data obtained is then used to animate the WebGL scene created using the THREE.js library. The website also featured a dynamic user interface animated using the jQuery library. The scene is animated using the average amplitude of the song, the amplitudes of each individual frequency 'band', beats that may be occurring in each frequency band, and the top scoring beat of the 6 frequency bands. Working on this project gave tremendous experience in many areas, as I was not familiar with any digital signal processing, nor had used JavaScript or either of the necessary libraries prior to starting this project. \nThrough completing this I have experience building complex systems from the ground up, breaking a complex problem in to more manageable tasks, and adapting to new styles of programming. ",
     technologies: ['Javascript', 'ThreeJS', 'WebGL', 'Web Audio', 'jQuery'],
   },
-  gameOfLife: {
+  'game-of-life': {
     id: 2,
     name: 'Game Of Life',
     about:
       'A fun side project that allows the user to set the initial state and watch how four simple rules can create patterns and cause it to evolve.\nThe four rules are:\n1. Any live cell with fewer than two live neighbours dies.\n2. Any live cell with two or three live neighbours lives on to the next generation.\n3. Any live cell with more than three live neighbours dies.\n4. Any dead cell with exactly three live neighbours becomes a live cell.\nAlso added in templates for common found patterns allowing a much easier and less tedious set up. Grid size, visibility and speed can be customized.',
     technologies: ['Javascript', 'jQuery'],
   },
-  homepage: {
-    id: 3,
-    name: 'Homepage',
-    about:
-      'A homepage for quick access to sites I frequently use as well as the weather',
-    technologies: ['Javascript', 'React', 'Redux'],
-  },
-  pacmanPython: {
+  'pacman-python': {
     id: 4,
     name: 'Pacman',
     about:
       'University assignment implementing Pacman with the AI using A* pathfinding instead of original Pacman pathfinding.',
     technologies: ['Python'],
   },
-  plainSailingAndroid: {
+  'plain-sailing': {
     id: 5,
     name: 'Plain Sailing',
     about:
@@ -49,14 +42,14 @@ const PortfolioContent = {
       'Quick little game made to refresh skills in Javascript after a break',
     technologies: ['Javascript'],
   },
-  personalWebsite: {
+  'personal-website': {
     id: 7,
     name: 'Personal Website',
     about:
       'Place to show my recent activity and portfolio as well as contact information',
     technologies: ['Javascript', 'React'],
   },
-  scientistBrawl: {
+  'scientist-brawl': {
     id: 8,
     name: 'Scientist Brawl',
     about:
@@ -71,7 +64,7 @@ const PortfolioContent = {
       'Collaboration with Caoilan creating a 2 player game, having each player try to jump on their oppositions head while avoiding having the same happen to them.',
     technologies: ['C++', 'OpenGL', 'SDL'],
   },
-  tcpPongFairServerAndClient: {
+  'pong-server-and-client': {
     id: 10,
     name: 'TCP Pong Fair Server And Client',
     title: 'TCP Pong Fair Server And Client',
@@ -79,6 +72,6 @@ const PortfolioContent = {
       'The server was responsible for pinging all clients and storing the highest ping of all, it would then send the highest ping to all clients. \nThe messages were sent at specific times (delayed by highest ping time - client ping) to ensure that all clients received the message at the same time. \nThe clients, knowing their own ping time and the time of the highest ping, would delay their reply by an appropriate amount of time ensuring that all responses arrived at the server at the same time. \nGave tremendous insight in to the workings and the many problems encountered when working with concurrent and networked systems.',
     technologies: ['Java', 'Concurrency', 'Networking'],
   },
-}
+};
 
-export default PortfolioContent
+export default PortfolioContent;

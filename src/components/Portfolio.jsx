@@ -1,37 +1,39 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
 
-import PortfolioItem from './PortfolioItem'
-import request from '../libs/request'
-import PortfolioDetail from './PortfolioDetail'
+import PortfolioItem from './PortfolioItem';
+import request from '../libs/request';
+import PortfolioDetail from './PortfolioDetail';
 
-import { secondary, shadow, radius, textColour } from '../constants/styles'
+import { secondary, shadow, radius, textColour } from '../constants/styles';
 
 const Portfolio = () => {
-  const [selected, setSelected] = useState(-1)
-  const [portfolios, setPortfolios] = useState([])
-  const [loaded, setLoaded] = useState(undefined)
+  const [selected, setSelected] = useState(-1);
+  const [portfolios, setPortfolios] = useState([]);
+  const [loaded, setLoaded] = useState(undefined);
 
   useEffect(() => {
-    getGitRepositories()
-  }, [])
+    getGitRepositories();
+  }, []);
 
   const getGitRepositories = () => {
     request({ endpoint: '/users/tim-snow/repos' })
       .then(res => setPortfolios(res))
       .then(() => setLoaded(true))
-      .catch(() => setLoaded(false))
-  }
+      .catch(() => setLoaded(false));
+  };
 
   const setSelectedInterceptor = i =>
-    i === selected ? hideDetailView() : showDetailView(i)
-  const hideDetailView = () => setSelected(-1)
-  const showDetailView = i => setSelected(i)
+    i === selected ? hideDetailView() : showDetailView(i);
+  const hideDetailView = () => setSelected(-1);
+  const showDetailView = i => setSelected(i);
 
   return (
     <div style={styles.container}>
       <h2>Portfolio</h2>
       <div style={styles.flex}>
         {loaded &&
+          portfolios &&
+          portfolios.length > 0 &&
           portfolios.map((portfolio, key) => (
             <PortfolioItem
               id={key}
@@ -57,8 +59,8 @@ const Portfolio = () => {
         </p>
       )}
     </div>
-  )
-}
+  );
+};
 
 const styles = {
   container: {
@@ -74,6 +76,6 @@ const styles = {
     display: 'flex',
     overflowX: 'auto',
   },
-}
+};
 
-export default Portfolio
+export default Portfolio;
