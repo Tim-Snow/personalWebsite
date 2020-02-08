@@ -8,7 +8,6 @@ import { secondary, radius, textColour } from '../constants/styles';
 
 const WANTED_REPOS = [
   'final-year-project',
-  'fxgl-scientist-brawl',
   'game-of-life',
   'pacman-python',
   'personal-website',
@@ -88,6 +87,7 @@ const styles = {
   flex: {
     display: 'flex',
     overflowX: 'auto',
+    justifyContent: 'center',
   },
 };
 

@@ -5,7 +5,7 @@ import request from '../libs/request';
 import Link from './Link';
 import Error from './Error';
 
-import { secondary, radius, textColour } from '../constants/styles';
+import { secondary, radius, textColour, main } from '../constants/styles';
 
 const Activity = () => {
   const [activities, setActivities] = useState([]);
@@ -49,7 +49,7 @@ const Activity = () => {
         <tbody style={styles.table}>
           {loaded &&
             activities.map(activity => (
-              <tr style={{ ...styles.row, ...styles.shadow }} key={activity.id}>
+              <tr style={{ ...styles.row }} key={activity.id}>
                 <td style={styles.column}>
                   {activity.created_at && activity.created_at.substr(0, 10)}
                 </td>
@@ -85,7 +85,7 @@ const styles = {
     color: textColour,
     textAlign: 'center',
     margin: 10,
-    height: 600,
+    height: 660,
     width: 900,
     padding: 15,
   },
@@ -106,6 +106,10 @@ const styles = {
     flexDirection: 'row',
     alignItems: 'center',
     flex: 1,
+    borderColor: main,
+    borderStyle: 'solid',
+    borderWidth: 1,
+    borderRadius: 3,
   },
   shadow: {
     boxShadow: '0px 0px 9px 0px rgba(0,0,0,0.1)',

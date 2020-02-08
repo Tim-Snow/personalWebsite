@@ -9,7 +9,7 @@ import request, { requestImage } from '../libs/request';
 
 import Slide from '@material-ui/core/Slide';
 
-import { main } from '../constants/styles';
+import { main, textColour } from '../constants/styles';
 
 const Profile = () => {
   const [info, setInfo] = useState({
@@ -79,7 +79,6 @@ const Profile = () => {
                   href="https://github.com/Tim-Snow"
                   target="_blank"
                   rel="noopener noreferrer"
-                  style={{ color: 'white' }}
                 >
                   github
                 </a>
@@ -115,7 +114,7 @@ const styles = {
     justifyContent: 'center',
     flexWrap: 'wrap',
     overflow: 'hidden',
-    color: '#DDD',
+    color: textColour,
   },
   infoContainer: {
     padding: 5,

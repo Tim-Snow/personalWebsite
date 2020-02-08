@@ -1,13 +1,13 @@
-import React from 'react'
-import Collapse from '@material-ui/core/Collapse'
+import React from 'react';
+import Collapse from '@material-ui/core/Collapse';
 
-import GithubSvg from '../assets/github.svg'
-import PortfolioImages from '../assets/portfolio/images'
-import PortfolioContent from '../assets/portfolio'
+import GithubSvg from '../assets/github.svg';
+import PortfolioImages from '../assets/portfolio/images';
+import PortfolioContent from '../assets/portfolio';
 
 const PortfolioDetail = props => {
-  let current
-  if (props.open) current = props.portfolio.name
+  let current;
+  if (props.open) current = props.portfolio.name;
 
   return (
     <Collapse in={props.open}>
@@ -16,6 +16,7 @@ const PortfolioDetail = props => {
           <div>
             <h5>{current}</h5>
             <p>
+              View code on Github:{' '}
               <a
                 href={props.portfolio.html_url}
                 target="_blank"
@@ -51,8 +52,8 @@ const PortfolioDetail = props => {
         )}
       </div>
     </Collapse>
-  )
-}
+  );
+};
 
 const styles = {
   details: {
@@ -63,6 +64,6 @@ const styles = {
     maxHeight: 600,
     maxWidth: 600,
   },
-}
+};
 
-export default PortfolioDetail
+export default PortfolioDetail;
