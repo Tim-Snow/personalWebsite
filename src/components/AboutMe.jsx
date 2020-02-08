@@ -1,6 +1,6 @@
-import React from 'react'
+import React from 'react';
 
-import { secondary, shadow, radius, textColour } from '../constants/styles'
+import { secondary, radius, textColour } from '../constants/styles';
 
 const AboutMe = () => (
   <div style={styles.container}>
@@ -46,7 +46,7 @@ const AboutMe = () => (
       </ul>
     </div>
   </div>
-)
+);
 
 const styles = {
   container: {
@@ -62,7 +62,6 @@ const styles = {
     alignItems: 'center',
     alignSelf: 'start',
     margin: 10,
-    boxShadow: shadow,
   },
   skillsContainer: {
     display: 'flex',
@@ -70,6 +69,6 @@ const styles = {
     flexFlow: 'row wrap',
     textAlign: 'left',
   },
-}
+};
 
-export default AboutMe
+export default AboutMe;

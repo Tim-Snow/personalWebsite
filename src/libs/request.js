@@ -1,4 +1,4 @@
-const { REACT_APP_API_KEY, REACT_APP_API_URL } = process.env
+const { REACT_APP_API_KEY, REACT_APP_API_URL } = process.env;
 
 const request = options =>
   fetch(options.fullUrl || `${REACT_APP_API_URL}${options.endpoint}`, {
@@ -6,8 +6,8 @@ const request = options =>
     headers: {
       Authorization: `token ${REACT_APP_API_KEY}`,
     },
-  }).then(res => res.json())
+  }).then(res => res.json());
 
-export const requestImage = url => fetch(url).then(response => response.blob())
+export const requestImage = url => fetch(url).then(response => response.blob());
 
-export default request
+export default request;

@@ -21,7 +21,7 @@ const PortfolioContent = {
       'A fun side project that allows the user to set the initial state and watch how four simple rules can create patterns and cause it to evolve.\nThe four rules are:\n1. Any live cell with fewer than two live neighbours dies.\n2. Any live cell with two or three live neighbours lives on to the next generation.\n3. Any live cell with more than three live neighbours dies.\n4. Any dead cell with exactly three live neighbours becomes a live cell.\nAlso added in templates for common found patterns allowing a much easier and less tedious set up. Grid size, visibility and speed can be customized.',
     technologies: ['Javascript', 'jQuery'],
   },
-  'pacman-python': {
+  pacman: {
     id: 4,
     name: 'Pacman',
     about:

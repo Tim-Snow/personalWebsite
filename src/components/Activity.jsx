@@ -1,42 +1,42 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 
-import ActivityTableHeader from './ActivityTableHeader'
-import request from '../libs/request'
-import Link from './Link'
-import Error from './Error'
+import ActivityTableHeader from './ActivityTableHeader';
+import request from '../libs/request';
+import Link from './Link';
+import Error from './Error';
 
-import { secondary, shadow, radius, textColour } from '../constants/styles'
+import { secondary, radius, textColour } from '../constants/styles';
 
 const Activity = () => {
-  const [activities, setActivities] = useState([])
-  const [loaded, setLoaded] = useState(undefined)
+  const [activities, setActivities] = useState([]);
+  const [loaded, setLoaded] = useState(undefined);
 
   useEffect(() => {
     request({ endpoint: '/users/tim-snow/events' })
       .then(res => cleanEventNames(res))
       .then(clean => setActivities(clean))
       .then(() => setLoaded(true))
-      .catch(() => setLoaded(false))
-  }, [])
+      .catch(() => setLoaded(false));
+  }, []);
 
   const cleanEventNames = activities => {
     return activities.map(act => {
       switch (act.type) {
         case 'WatchEvent':
-          act.type = 'Watching'
-          break
+          act.type = 'Watching';
+          break;
         case 'PushEvent':
-          act.type = 'Pushed to'
-          break
+          act.type = 'Pushed to';
+          break;
         case 'CreateEvent':
-          act.type = 'Created'
-          break
+          act.type = 'Created';
+          break;
         default:
-          break
+          break;
       }
-      return act
-    })
-  }
+      return act;
+    });
+  };
 
   return (
     <div style={styles.container}>
@@ -73,8 +73,8 @@ const Activity = () => {
         </tbody>
       </table>
     </div>
-  )
-}
+  );
+};
 
 const styles = {
   container: {
@@ -88,7 +88,6 @@ const styles = {
     height: 600,
     width: 900,
     padding: 15,
-    boxShadow: shadow,
   },
   fullWidth: {
     width: '100%',
@@ -112,6 +111,6 @@ const styles = {
     boxShadow: '0px 0px 9px 0px rgba(0,0,0,0.1)',
     margin: 5,
   },
-}
+};
 
-export default Activity
+export default Activity;

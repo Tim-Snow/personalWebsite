@@ -20,17 +20,17 @@ textarea {
 }
 
 a:link {
-  color: #000;
+  color: #ddd;
 }
 
 a:visited {
-  color: #333;
+  color: #bbb;
 }
 
 a:hover {
-  color: #777;
+  color: #fff;
 }
 
 a:active {
-  color: #777;
+  color: #fff;
 }

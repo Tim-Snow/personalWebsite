@@ -1,17 +1,15 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 
-import EmailSvg from '../assets/email.svg'
-import WorkSvg from '../assets/business.svg'
-import PhoneSvg from '../assets/call.svg'
-import LocationSvg from '../assets/location.svg'
-import GithubSvg from '../assets/github.svg'
+import EmailSvg from '../assets/email.svg';
+import WorkSvg from '../assets/business.svg';
+import LocationSvg from '../assets/location.svg';
+import GithubSvg from '../assets/github.svg';
 
-import request, { requestImage } from '../libs/request'
+import request, { requestImage } from '../libs/request';
 
-import Tooltip from '@material-ui/core/Tooltip'
-import Slide from '@material-ui/core/Slide'
+import Slide from '@material-ui/core/Slide';
 
-import { main, shadow } from '../constants/styles'
+import { main } from '../constants/styles';
 
 const Profile = () => {
   const [info, setInfo] = useState({
@@ -20,25 +18,25 @@ const Profile = () => {
     location: 'England',
     email: 'contact@timsnow.dev',
     blog: 'http://timsnow.dev',
-  })
-  const [phone, setPhone] = useState('07944 878 ???')
-  const [loaded, setLoaded] = useState(undefined)
+  });
+  const [loaded, setLoaded] = useState(undefined);
 
   useEffect(() => {
     request({ endpoint: '/users/tim-snow' })
-      .then(r => {
-        const { avatar_url, ...inf } = r
-        const image = URL.createObjectURL(requestImage(avatar_url))
+      .then(async r => {
+        const { avatar_url, ...inf } = r;
+        const image = await URL.createObjectURL(await requestImage(avatar_url));
         return setInfo({
           ...inf,
           image,
-        })
+        });
       })
       .then(() => setLoaded(true))
-      .catch(() => setLoaded(false))
-  }, [])
-
-  const revealPhoneNumber = () => setPhone('07944 878 537')
+      .catch(err => {
+        console.log(err);
+        setLoaded(false);
+      });
+  }, []);
 
   return (
     <div style={styles.container}>
@@ -81,6 +79,7 @@ const Profile = () => {
                   href="https://github.com/Tim-Snow"
                   target="_blank"
                   rel="noopener noreferrer"
+                  style={{ color: 'white' }}
                 >
                   github
                 </a>
@@ -100,22 +99,12 @@ const Profile = () => {
                 </a>
               </td>
             </tr>
-            <tr style={styles.row}>
-              <td style={styles.col}>
-                <img style={styles.icon} src={PhoneSvg} alt="Phone" />
-              </td>
-              <td style={styles.interactive} onClick={revealPhoneNumber}>
-                <Tooltip title="Shhh :)" placement="top-start" enterDelay={10}>
-                  <p>{phone}</p>
-                </Tooltip>
-              </td>
-            </tr>
           </tbody>
         </table>
       </div>
     </div>
-  )
-}
+  );
+};
 
 const styles = {
   container: {
@@ -125,7 +114,8 @@ const styles = {
     alignItems: 'center',
     justifyContent: 'center',
     flexWrap: 'wrap',
-    boxShadow: shadow,
+    overflow: 'hidden',
+    color: '#DDD',
   },
   infoContainer: {
     padding: 5,
@@ -150,10 +140,7 @@ const styles = {
     textAlign: 'center',
     width: 50,
   },
-  interactive: {
-    cursor: 'pointer',
-  },
   icon: { width: 24 },
-}
+};
 
-export default Profile
+export default Profile;
