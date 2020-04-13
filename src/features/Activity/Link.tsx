@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import A from 'components/A';
 import useHttpRequest from 'hooks/useHttpRequest';
 
 interface Props {
@@ -15,23 +14,29 @@ export default function Link(props: Props) {
   const { res, state: requestState, setUrl: setInnerUrl } = useHttpRequest<{ html_url: string }>(undefined);
 
   const getUrl = useCallback(() => {
-    setInnerUrl(props.url);
-    setState('load');
-  }, [props.url, setInnerUrl]);
+    if (url) {
+      return window.open(url);
+    }
+    if (state !== 'ok') {
+      setInnerUrl(props.url);
+      return setState('load');
+    }
+  }, [props.url, setInnerUrl, state]);
 
   useEffect(() => {
     if (requestState === 'ok' && res) {
       setState('ok');
       setUrl(res.html_url);
+      window.open(url);
     }
     if (requestState === 'ko') {
       setState('ko');
     }
-  }, [requestState, res]);
+  }, [requestState, res, url]);
 
   return (
-    <div onClick={getUrl}>
-      <A url={url}>{state === 'load' ? 'Loading...' : props.text}</A>
+    <div onClick={getUrl} style={{ cursor: 'pointer' }}>
+      <p style={{ textDecoration: 'underline' }}>{state === 'load' ? 'Loading...' : props.text}</p>
     </div>
   );
 }
