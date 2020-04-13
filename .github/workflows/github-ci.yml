@@ -2,13 +2,12 @@ name: CI
 
 on:
   push:
-    branches: [ master ]
+    branches: [master]
   pull_request:
-    branches: [ master ]
+    branches: [master]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     strategy:
@@ -16,12 +15,12 @@ jobs:
         node-version: [12.x]
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Yarn CLI
-      uses: CultureHQ/actions-yarn@v1.0.1
-    - run: yarn
-    - run: yarn lint
-    - run: yarn test
-    - run: yarn deploy
-      env:
-        CI: true
+      - uses: actions/checkout@v2
+      - name: Yarn CLI
+        uses: CultureHQ/actions-yarn@v1.0.1
+      - run: yarn
+      - run: yarn lint
+      - run: yarn test
+      - run: REACT_APP_API_KEY=$"REACT_APP_API_KEY" yarn build
+        env:
+          CI: true

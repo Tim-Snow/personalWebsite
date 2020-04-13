@@ -21,7 +21,7 @@ export default function Link(props: Props) {
       setInnerUrl(props.url);
       return setState('load');
     }
-  }, [props.url, setInnerUrl, state]);
+  }, [props.url, setInnerUrl, state, url]);
 
   useEffect(() => {
     if (requestState === 'ok' && res) {

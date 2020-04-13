@@ -68,9 +68,9 @@ export default function Activity() {
                   <td style={styles.column}>
                     {activity.type === 'Pushed to' &&
                       activity.payload?.commits.map((commit) => (
-                        <p key={commit.sha}>
+                        <div key={commit.sha}>
                           <Link text={commit.message} url={commit.url} />
-                        </p>
+                        </div>
                       ))}
                   </td>
                 </tr>
