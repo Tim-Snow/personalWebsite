@@ -2,11 +2,11 @@ body {
   margin: 0;
   padding: 0;
   font-size: 18;
-  font-family: -apple-system, BlinkMacSystemFont, 'Open Sans', 'Roboto',
-    'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Open Sans', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
+    'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: black;
 }
 
 input[type='text'],
@@ -20,17 +20,21 @@ textarea {
 }
 
 a:link {
-  color: #33c;
+  color: #ccd;
 }
 
 a:visited {
-  color: #229;
+  color: #99a;
 }
 
 a:hover {
-  color: #44f;
+  color: #fff;
 }
 
 a:active {
-  color: #44f;
+  color: #fff;
+}
+
+.nav-item {
+  cursor: pointer;
 }

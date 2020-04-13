@@ -1,0 +1,7 @@
+src/serviceWorker.js
+mock-api
+node_modules
+assets
+__snapshots__
+build
+public
