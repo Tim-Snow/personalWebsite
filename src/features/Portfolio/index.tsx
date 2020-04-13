@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from 'react';
 
-import PortfolioItem from './Item';
+import Item from './Item';
 import Detail from './Detail';
 
 import { secondary, textColour } from 'constants/styles';
@@ -15,8 +15,6 @@ const styles = {
     padding: 10,
     marginTop: 24,
     minHeight: 350,
-    overflow: 'hidden',
-    overflowX: 'auto',
   },
   flex: {
     display: 'flex',
@@ -42,11 +40,11 @@ export default function Portfolio() {
       <div style={styles.flex}>
         {(state === 'ko' && <p>I do have stuff... I just rely on Github API calls which haven&apos;t worked!</p>) || (
           <WithSpinner loading={state === 'load'} style={{ position: 'relative', top: 50 }}>
-            <>
+            <div style={{ display: 'flex', flexWrap: 'nowrap', overflow: 'hidden', overflowX: 'auto' }}>
               {portfolios &&
                 portfolios.length > 0 &&
                 portfolios.map((portfolio, i) => (
-                  <PortfolioItem
+                  <Item
                     id={i}
                     key={i}
                     title={portfolio.name}
@@ -54,7 +52,7 @@ export default function Portfolio() {
                     callback={setSelectedInterceptor}
                   />
                 ))}
-            </>
+            </div>
           </WithSpinner>
         )}
       </div>

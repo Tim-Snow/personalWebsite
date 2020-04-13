@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import useHttpRequest from 'hooks/useHttpRequest';
 import toOrdinal from 'libs/toOrdinal';
 
-const ACTIVITY_ENDPOINT = '/users/tim-snow/events';
+const ACTIVITY_ENDPOINT = 'https://api.github.com/users/tim-snow/events';
 
 type ActivityState = 'load' | 'ok' | 'ko';
 
@@ -54,7 +54,7 @@ export default function useActivities() {
   const { res, state: requestState } = useHttpRequest<Activity[]>(ACTIVITY_ENDPOINT);
 
   useEffect(() => {
-    if (requestState === 'ok') {
+    if (requestState === 'ok' && res) {
       setState(requestState);
       setActivities(cleanEvents(res));
     }

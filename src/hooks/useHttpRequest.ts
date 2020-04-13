@@ -1,9 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 
 const { REACT_APP_API_KEY } = process.env;
 
 type Config = {
   blob?: boolean;
+  noAuth?: boolean;
 };
 
 type State = 'init' | 'load' | 'ok' | 'ko';
@@ -13,31 +14,29 @@ export default function useHttpRequest<T>(url: string | undefined, config?: Conf
   const [res, setRes] = useState<T | undefined>(undefined);
   const [u, setUrl] = useState(url);
 
-  function done() {
-    setTimeout(() => {
-      setState('ok');
-    }, 1500);
-  }
+  const headers = useMemo(() => {
+    if (config?.noAuth) {
+      return;
+    }
+    return { Authorization: `token ${REACT_APP_API_KEY}` };
+  }, [config]);
 
   useEffect(() => {
-    if (u) {
+    if (u && state === 'init') {
       setState('load');
       fetch(u, {
         method: 'get',
-        headers: {
-          Authorization: `token ${REACT_APP_API_KEY}`,
-        },
+        headers,
       })
         .then((r) => (config?.blob ? r.blob() : r.json()))
         .then((jsonOrBlob) => setRes(jsonOrBlob))
-        .then(done)
-        // .then(() => setState('ok'))
+        .then(() => setState('ok'))
         .catch((err) => {
-          console.warn(err);
+          console.warn(`useHttp error for ${u} - ${err}`);
           setState('ko');
         });
     }
-  }, [u, config]);
+  }, [u, config, state, headers]);
 
   return { res, state, setUrl };
 }

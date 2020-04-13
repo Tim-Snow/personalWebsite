@@ -16,8 +16,14 @@ interface Props {
 }
 
 const styles = {
+  container: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   details: {
     margin: 10,
+    maxWidth: 800,
   },
   icon: { width: 24 },
   image: {
@@ -36,7 +42,7 @@ export default function Detail(props: Props) {
   }, [props.open, props.portfolio]);
 
   return (
-    <Collapse in={props.open}>
+    <Collapse in={props.open} style={styles.container}>
       <div style={styles.details} id="detail">
         {props.open && props.portfolio && current && (
           <div>
@@ -51,7 +57,9 @@ export default function Detail(props: Props) {
             {PortfolioContent[current] && (
               <>
                 <h3>{PortfolioContent[current].title && PortfolioContent[current].title}</h3>
-                <p>{PortfolioContent[current].about}</p>
+                {PortfolioContent[current].about.map((element: string, i: number) => (
+                  <p key={i}>{element}</p>
+                ))}
                 <p>Technologies: {PortfolioContent[current].technologies.join(', ')}</p>
               </>
             )}

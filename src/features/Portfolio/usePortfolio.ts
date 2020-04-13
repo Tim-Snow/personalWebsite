@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import useHttpRequest from 'hooks/useHttpRequest';
 
-const PORTFOLIO_ENDPOINT = '/users/tim-snow/repos';
+const PORTFOLIO_ENDPOINT = 'https://api.github.com/users/tim-snow/repos';
 
 const WANTED_REPOS = [
   'final-year-project',

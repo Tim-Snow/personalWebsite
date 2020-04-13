@@ -9,7 +9,15 @@ interface NavLinkProps {
 
 export default function NavLink({ text, sectionId }: NavLinkProps) {
   return (
-    <Link to={sectionId} spy={true} smooth={true} offset={-NAVBAR_MIN_HEIGHT} duration={500} style={{ paddingTop: 12 }}>
+    <Link
+      to={sectionId}
+      spy={true}
+      smooth={true}
+      offset={-NAVBAR_MIN_HEIGHT}
+      duration={500}
+      style={{ paddingTop: 12 }}
+      className="nav-item"
+    >
       {text}
     </Link>
   );

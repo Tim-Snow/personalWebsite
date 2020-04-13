@@ -8,7 +8,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "start:server": "nodemon mock-api/index.js",
-    "deploy": "npm run build && firebase deploy",
+    "deploy": "yarn build && firebase deploy",
     "lint": "eslint --ext .ts --ext .tsx --ext .js --ext .jsx ."
   },
   "dependencies": {
@@ -42,6 +42,7 @@
   "eslintConfig": {
     "extends": "react-app"
   },
+  "proxy": "http://localhost:3001/",
   "browserslist": {
     "production": [
       ">0.2%",

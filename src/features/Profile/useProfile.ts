@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 import useHttpRequest from 'hooks/useHttpRequest';
 
-const PROFILE_ENDPOINT = '/users/tim-snow';
+const PROFILE_ENDPOINT = 'https://api.github.com/users/tim-snow';
 
 const defaultInfo = {
   name: 'Tim Snow',
@@ -33,6 +33,7 @@ export default function useProfile() {
   const { res: info, state: infoState } = useHttpRequest<Info>(PROFILE_ENDPOINT);
   const { res: image, state: imageState, setUrl } = useHttpRequest(undefined, {
     blob: true,
+    noAuth: true,
   });
 
   useEffect(() => {
