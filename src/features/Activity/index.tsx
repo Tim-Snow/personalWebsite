@@ -34,8 +34,12 @@ const styles = {
     flex: 1,
     borderColor: main,
     borderStyle: 'solid',
-    borderWidth: 1,
+    borderTopWidth: 0,
+    borderRightWidth: 0,
+    borderBottomWidth: 1,
+    borderLeftWidth: 1,
     borderRadius: 3,
+    marginBottom: 12,
   },
   spinner: {
     position: 'relative',
