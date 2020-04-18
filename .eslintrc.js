@@ -9,9 +9,11 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 2018,
     sourceType: 'module',
+    project: './tsconfig.json',
   },
   rules: {
     '@typescript-eslint/explicit-function-return-type': 'off',
+    'react-hooks/exhaustive-deps': 'off',
   },
   settings: {
     react: {
