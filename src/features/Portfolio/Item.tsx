@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 
 import { textColour, main, secondary } from 'constants/styles';
 import GithubSvg from 'assets/github.svg';
@@ -29,14 +29,16 @@ const styles = {
     alignItems: 'center',
     flexDirection: 'column',
     justifyContent: 'space-between',
+    textTransform: 'capitalize',
   } as React.CSSProperties,
 };
 
 export default function Item({ id, title, details, callback }: Props) {
   const onClick = useCallback(() => callback(id), [id, callback]);
+  const prettyTitle = useMemo(() => title.split('-').join(' '), [title]);
   return (
     <div style={styles.container} onClick={onClick}>
-      <h2>{title}</h2>
+      <h2>{prettyTitle}</h2>
       <p>{details}</p>
       <img style={{ width: 56 }} src={GithubSvg} alt="Github" />
     </div>

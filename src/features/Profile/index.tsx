@@ -1,15 +1,16 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 
 import { main, textColour } from 'constants/styles';
 import { WithSpinner } from 'components/Spinner';
 import Table from 'components/Table';
 import Title from 'components/Title';
 
-import useProfile from './useProfile';
+import useProfile, { LOAD_IMAGE } from './useProfile';
 import RowWithIcon from './RowWithIcon';
 import { items } from './basicItems';
 
 import ErrorImg from 'assets/error.png';
+import { BaseApiState } from 'types/api';
 
 const styles = {
   container: {
@@ -43,9 +44,10 @@ export default function Profile() {
     image,
     state,
   } = useProfile();
+  const loading = useMemo(() => state === BaseApiState.LOAD || state === LOAD_IMAGE, [state]);
   return (
     <div style={styles.container}>
-      <WithSpinner loading={state === 'load' || state === 'load image'}>
+      <WithSpinner loading={loading}>
         <div style={styles.image}>{<img src={image || ErrorImg} alt="Me" style={styles.image} />}</div>
       </WithSpinner>
       <Title style={styles.name}>Tim Snow</Title>

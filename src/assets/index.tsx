@@ -1,15 +1,17 @@
-import EmailSvg from 'assets/email.svg';
-import WorkSvg from 'assets/business.svg';
-import LocationSvg from 'assets/location.svg';
-import GithubSvg from 'assets/github.svg';
-import GraduatedSvg from 'assets/graduated.svg';
+import email from 'assets/email.svg';
+import work from 'assets/business.svg';
+import location from 'assets/location.svg';
+import github from 'assets/github.svg';
+import question from 'assets/question.svg';
+import grad from 'assets/graduated.svg';
 
 const icons = {
-  email: EmailSvg,
-  work: WorkSvg,
-  location: LocationSvg,
-  github: GithubSvg,
-  grad: GraduatedSvg,
+  email,
+  work,
+  location,
+  github,
+  grad,
+  question,
 };
 
 export default icons;

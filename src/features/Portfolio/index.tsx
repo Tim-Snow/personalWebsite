@@ -6,6 +6,7 @@ import Detail from './Detail';
 import { secondary, textColour } from 'constants/styles';
 import usePortfolio from './usePortfolio';
 import { WithSpinner } from 'components/Spinner';
+import { BaseApiState } from 'types/api';
 
 const styles = {
   container: {
@@ -38,8 +39,10 @@ export default function Portfolio() {
     <div style={styles.container} id="portfolio">
       <h1>Portfolio</h1>
       <div style={styles.flex}>
-        {(state === 'ko' && <p>I do have stuff... I just rely on Github API calls which haven&apos;t worked!</p>) || (
-          <WithSpinner loading={state === 'load'} style={{ position: 'relative', top: 50 }}>
+        {(state === BaseApiState.KO && (
+          <p>I do have stuff... I just rely on Github API calls which haven&apos;t worked!</p>
+        )) || (
+          <WithSpinner loading={state === BaseApiState.LOAD} style={{ position: 'relative', top: 50 }}>
             <div style={{ display: 'flex', flexWrap: 'nowrap', overflow: 'hidden', overflowX: 'auto' }}>
               {portfolios &&
                 portfolios.length > 0 &&
@@ -56,7 +59,7 @@ export default function Portfolio() {
           </WithSpinner>
         )}
       </div>
-      {state === 'ok' && portfolios && <Detail open={selected !== -1} portfolio={portfolios[selected]} />}
+      {state === BaseApiState.OK && portfolios && <Detail open={selected !== -1} portfolio={portfolios[selected]} />}
     </div>
   );
 }

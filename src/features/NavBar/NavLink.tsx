@@ -17,6 +17,7 @@ export default function NavLink({ text, sectionId }: NavLinkProps) {
       duration={500}
       style={{ paddingTop: 12 }}
       className="nav-item"
+      activeClass="active"
     >
       {text}
     </Link>

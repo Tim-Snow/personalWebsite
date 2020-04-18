@@ -1,15 +1,16 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import useHttpRequest from 'hooks/useHttpRequest';
+import { BaseApiState, BaseApiType } from 'types/api';
 
 interface Props {
   url: string;
   text: string;
 }
 
-type State = 'init' | 'load' | 'ok' | 'ko';
+type State = BaseApiType;
 
 export default function Link(props: Props) {
-  const [state, setState] = useState<State>('init');
+  const [state, setState] = useState<State>(BaseApiState.INIT);
   const [url, setUrl] = useState('');
   const { res, state: requestState, setUrl: setInnerUrl } = useHttpRequest<{ html_url: string }>(undefined);
 
@@ -17,26 +18,33 @@ export default function Link(props: Props) {
     if (url) {
       return window.open(url);
     }
-    if (state !== 'ok') {
+    if (state !== BaseApiState.OK) {
       setInnerUrl(props.url);
-      return setState('load');
+      return setState(BaseApiState.LOAD);
     }
   }, [props.url, setInnerUrl, state, url]);
 
   useEffect(() => {
-    if (requestState === 'ok' && res) {
-      setState('ok');
-      setUrl(res.html_url);
+    if (url) {
       window.open(url);
     }
-    if (requestState === 'ko') {
-      setState('ko');
+  }, [url]);
+
+  useEffect(() => {
+    if (requestState === BaseApiState.OK && res) {
+      setUrl(res.html_url);
     }
+    setState(requestState);
   }, [requestState, res, url]);
 
   return (
     <div onClick={getUrl} style={{ cursor: 'pointer' }}>
-      <p style={{ textDecoration: 'underline' }}>{state === 'load' ? 'Loading...' : props.text}</p>
+      {
+        // eslint-disable-next-line
+        <a href={undefined} title={url || props.url} style={{ textDecoration: 'underline' }}>
+          {state === BaseApiState.LOAD ? 'Loading...' : props.text}
+        </a>
+      }
     </div>
   );
 }

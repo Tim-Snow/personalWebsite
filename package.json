@@ -4,12 +4,14 @@
   "private": true,
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
     "start:server": "nodemon mock-api/index.js",
-    "deploy": "yarn build && firebase deploy",
-    "lint": "eslint --ext .ts --ext .tsx --ext .js --ext .jsx ."
+    "build": "react-scripts build",
+    "build:deploy": "yarn build && yarn deploy",
+    "deploy": "firebase deploy",
+    "test": "jest --config jest.config.js",
+    "test:watch": "jest --watch",
+    "lint": "eslint --ext .ts --ext .tsx --ext .js --ext .jsx .",
+    "eject": "react-scripts eject"
   },
   "dependencies": {
     "@material-ui/core": "^3.9.2",
@@ -24,6 +26,7 @@
     "@types/react": "^16.9.34",
     "@types/react-dom": "^16.9.6",
     "@types/react-scroll": "^1.5.4",
+    "@types/react-test-renderer": "^16.9.2",
     "@typescript-eslint/eslint-plugin": "^2.27.0",
     "@typescript-eslint/parser": "^2.27.0",
     "cra-template": "1.0.3",
@@ -38,6 +41,8 @@
     "nodemon": "1.18.10",
     "prettier": "^2.0.4",
     "react-scripts": "3.4.1",
+    "react-test-renderer": "^16.13.1",
+    "react-testing-library": "^8.0.1",
     "typescript": "^3.8.3"
   },
   "eslintConfig": {

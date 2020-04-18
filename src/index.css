@@ -38,3 +38,7 @@ a:active {
 .nav-item {
   cursor: pointer;
 }
+
+.nav-item.active {
+  color: #fff;
+}

@@ -1,4 +1,5 @@
 import { useState, useEffect, useMemo } from 'react';
+import { BaseApiType, BaseApiState } from 'types/api';
 
 const { REACT_APP_API_KEY } = process.env;
 
@@ -7,12 +8,12 @@ type Config = {
   noAuth?: boolean;
 };
 
-type State = 'init' | 'load' | 'ok' | 'ko';
+type State = BaseApiType;
 
 export default function useHttpRequest<T>(url: string | undefined, config?: Config) {
-  const [state, setState] = useState<State>('init');
+  const [state, setState] = useState<State>(BaseApiState.INIT);
   const [res, setRes] = useState<T | undefined>(undefined);
-  const [u, setUrl] = useState(url);
+  const [myUrl, setUrl] = useState(url);
 
   const headers = useMemo(() => {
     if (config?.noAuth) {
@@ -22,21 +23,21 @@ export default function useHttpRequest<T>(url: string | undefined, config?: Conf
   }, [config]);
 
   useEffect(() => {
-    if (u && state === 'init') {
-      setState('load');
-      fetch(u, {
+    if (myUrl && state === BaseApiState.INIT) {
+      setState(BaseApiState.LOAD);
+      fetch(myUrl, {
         method: 'get',
         headers,
       })
         .then((r) => (config?.blob ? r.blob() : r.json()))
         .then((jsonOrBlob) => setRes(jsonOrBlob))
-        .then(() => setState('ok'))
+        .then(() => setState(BaseApiState.OK))
         .catch((err) => {
-          console.warn(`useHttp error for ${u} - ${err}`);
-          setState('ko');
+          console.warn(`useHttp error for ${myUrl} - ${err}`);
+          setState(BaseApiState.KO);
         });
     }
-  }, [u, config, state, headers]);
+  }, [myUrl, config, state, headers]);
 
   return { res, state, setUrl };
 }

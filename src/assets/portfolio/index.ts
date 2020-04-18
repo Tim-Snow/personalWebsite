@@ -4,33 +4,24 @@ type PortfolioContent = {
   title?: string;
   about: string[];
   technologies: string[];
+  ghpages?: string;
 };
 
 type Projects =
-  | 'local-multiplayer-game'
   | 'final-year-project'
   | 'game-of-life'
   | 'pacman'
-  | 'plain-sailing'
-  | 'snake'
   | 'personal-website'
+  | 'plain-sailing'
   | 'scientist-brawl'
-  | 'sumo'
-  | 'pong-server-and-client';
+  | 'pong-server-and-client'
+  | 'home-monitor'
+  | 'snake'
+  | 'sumo';
 
 const PortfolioContent: { [key in Projects]: PortfolioContent } = {
-  'local-multiplayer-game': {
-    id: 0,
-    name: 'Local Multiplayer Game',
-    about: [
-      'Started off as a simple project to learn my way around the Unity engine, and slowly wanted to add more and more!',
-      'Supports 4 players locally, allowing them to select a class such as an archer or warrior and fight their friends.',
-      'The bow for the archer class is used by pulling the right analogue stick in the opposite direction to the direction you wish to travel, trying to simulate drawing the string back and firing the arrow, you simply release the joystick when pulled back to shoot - time held back and distance joystick is flicked from affect the velocity.',
-    ],
-    technologies: ['C#', 'Unity'],
-  },
   'final-year-project': {
-    id: 1,
+    id: 0,
     name: 'Final Year Project',
     title: 'Digital Signal Analysis Influencing a 3D Scene',
     about: [
@@ -40,12 +31,13 @@ const PortfolioContent: { [key in Projects]: PortfolioContent } = {
       'Through completing this I have experience building complex systems from the ground up, breaking a complex problem in to more manageable tasks, and adapting to new styles of programming. ',
     ],
     technologies: ['Javascript', 'ThreeJS', 'WebGL', 'Web Audio', 'jQuery'],
+    ghpages: 'https://tim-snow.github.io/final-year-project',
   },
   'game-of-life': {
-    id: 2,
+    id: 1,
     name: 'Game Of Life',
     about: [
-      'A fun side project that allows the user to set the initial state and watch how four simple rules can create patterns and cause it to evolve.',
+      'Allows the user to set the initial state and watch how four simple rules can create patterns and cause it to evolve.',
       'The four rules are:',
       '1. Any live cell with fewer than two live neighbours dies.',
       '2. Any live cell with two or three live neighbours lives on to the next generation.',
@@ -54,17 +46,24 @@ const PortfolioContent: { [key in Projects]: PortfolioContent } = {
       'Also added in templates for common found patterns allowing a much easier and less tedious set up. Grid size, visibility and speed can be customized.',
     ],
     technologies: ['Javascript', 'jQuery'],
+    ghpages: 'https://tim-snow.github.io/game-of-life',
   },
   pacman: {
-    id: 4,
+    id: 2,
     name: 'Pacman',
     about: [
       'University assignment implementing Pacman with the AI using A* pathfinding instead of original Pacman pathfinding.',
     ],
     technologies: ['Python'],
   },
+  'personal-website': {
+    id: 3,
+    name: 'Personal Website',
+    about: ['Place to show my recent activity and portfolio as well as contact information'],
+    technologies: ['Javascript', 'React', 'Typescript'],
+  },
   'plain-sailing': {
-    id: 5,
+    id: 4,
     name: 'Plain Sailing',
     about: [
       "A simple game similar to the old 'helicopter' flash browser game, replacing mouse clicks with taps, also features a full shop allowing the player to purchase upgrades for their ship, and a boost mechanic that gives brief immunity.",
@@ -72,35 +71,14 @@ const PortfolioContent: { [key in Projects]: PortfolioContent } = {
     ],
     technologies: ['Java', 'Native Android'],
   },
-  snake: {
-    id: 6,
-    name: 'Snake',
-    about: ['Quick little game made to refresh skills in Javascript after a break'],
-    technologies: ['Javascript'],
-  },
-  'personal-website': {
-    id: 7,
-    name: 'Personal Website',
-    about: ['Place to show my recent activity and portfolio as well as contact information'],
-    technologies: ['Javascript', 'React', 'Typescript'],
-  },
   'scientist-brawl': {
-    id: 8,
+    id: 5,
     name: 'Scientist Brawl',
     about: ['A local multiplayer game, customize your scientist and fight your friends!'],
     technologies: ['C#', 'Unity'],
   },
-  sumo: {
-    id: 9,
-    name: 'Sumo',
-    title: 'Sumo',
-    about: [
-      'Collaboration with Caoilan creating a 2 player game, having each player try to jump on their oppositions head while avoiding having the same happen to them.',
-    ],
-    technologies: ['C++', 'OpenGL', 'SDL'],
-  },
   'pong-server-and-client': {
-    id: 10,
+    id: 6,
     name: 'TCP Pong Fair Server And Client',
     title: 'TCP Pong Fair Server And Client',
     about: [
@@ -110,6 +88,34 @@ const PortfolioContent: { [key in Projects]: PortfolioContent } = {
       'Gave tremendous insight in to the workings and the many problems encountered when working with concurrent and networked systems.',
     ],
     technologies: ['Java', 'Concurrency', 'Networking'],
+  },
+  'home-monitor': {
+    id: 7,
+    name: 'Home Monitor',
+    about: [
+      'A project designed to run on a Raspberry Pi with a webcam attached. It captures images at regular intervals, deleting old images when approaching the set limit.',
+      'If any motion is detected, it will capture more images at a faster interval, then it will send an email containing all images.',
+      'Also provides a REST API interface to retrieve, capture, and query images manually.',
+      'In hindsight, spring is too resource heavy to be running constantly on a raspberry pi, if I were to focus on this project again the first step would involve migrating to express.',
+    ],
+    technologies: ['Java', 'Kotlin', 'Spring'],
+  },
+  snake: {
+    id: 8,
+    name: 'Snake',
+    about: ['Quick little game made to refresh skills in Javascript after a break'],
+    technologies: ['Javascript'],
+    ghpages: 'https://tim-snow.github.io/snake',
+  },
+
+  sumo: {
+    id: 9,
+    name: 'Sumo',
+    title: 'Sumo',
+    about: [
+      'Collaboration with Caoilan creating a 2 player game, having each player try to jump on their oppositions head while avoiding having the same happen to them.',
+    ],
+    technologies: ['C++', 'OpenGL', 'SDL'],
   },
 };
 

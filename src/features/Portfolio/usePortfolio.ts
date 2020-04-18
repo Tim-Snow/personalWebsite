@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
 import useHttpRequest from 'hooks/useHttpRequest';
+import { BaseApiType, BaseApiState } from 'types/api';
+import { API_BASE } from 'constants/index';
 
-const PORTFOLIO_ENDPOINT = 'https://api.github.com/users/tim-snow/repos';
+const PORTFOLIO_ENDPOINT = `${API_BASE}/repos`;
 
 const WANTED_REPOS = [
   'final-year-project',
@@ -21,21 +23,16 @@ type Portfolio = {
   html_url: string;
 };
 
-type PortfolioState = 'load' | 'ok' | 'ko';
-
 export default function usePortfolio() {
-  const [state, setState] = useState<PortfolioState>('load');
+  const [state, setState] = useState<BaseApiType>(BaseApiState.LOAD);
   const [portfolios, setPortfolios] = useState<Portfolio[] | undefined>(undefined);
   const { res, state: requestState } = useHttpRequest<Portfolio[]>(PORTFOLIO_ENDPOINT);
 
   useEffect(() => {
-    if (requestState === 'ok' && res) {
+    if (requestState === BaseApiState.OK && res) {
       setPortfolios(res.filter((item: Portfolio) => WANTED_REPOS.includes(item.name)));
-      setState('ok');
     }
-    if (requestState === 'ko') {
-      setState('ko');
-    }
+    setState(requestState);
   }, [requestState, res]);
 
   return { portfolios, state };

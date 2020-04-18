@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import useHttpRequest from 'hooks/useHttpRequest';
 import toOrdinal from 'libs/toOrdinal';
+import { BaseApiState, BaseApiType } from 'types/api';
+import { API_BASE } from 'constants/index';
 
-const ACTIVITY_ENDPOINT = 'https://api.github.com/users/tim-snow/events';
-
-type ActivityState = 'load' | 'ok' | 'ko';
+const ACTIVITY_ENDPOINT = `${API_BASE}/events`;
 
 export type Activity = {
   id: string;
@@ -16,20 +16,15 @@ export type Activity = {
   };
 };
 
+export const EVENT_NAME_MAP = {
+  DeleteEvent: 'Deleted',
+  WatchEvent: 'Watching',
+  PushEvent: 'Pushed to',
+  CreateEvent: 'Created',
+};
+
 function cleanEventName(activity: Activity) {
-  switch (activity.type) {
-    case 'WatchEvent':
-      activity.type = 'Watching';
-      break;
-    case 'PushEvent':
-      activity.type = 'Pushed to';
-      break;
-    case 'CreateEvent':
-      activity.type = 'Created';
-      break;
-    default:
-      break;
-  }
+  activity.type = EVENT_NAME_MAP[activity.type];
   return activity;
 }
 
@@ -49,18 +44,15 @@ function cleanEvents(activities: Activity[] | undefined) {
 }
 
 export default function useActivities() {
-  const [state, setState] = useState<ActivityState>('load');
+  const [state, setState] = useState<BaseApiType>(BaseApiState.LOAD);
   const [activities, setActivities] = useState<Activity[] | undefined>(undefined);
   const { res, state: requestState } = useHttpRequest<Activity[]>(ACTIVITY_ENDPOINT);
 
   useEffect(() => {
-    if (requestState === 'ok' && res) {
-      setState(requestState);
+    if (requestState === BaseApiState.OK && res) {
       setActivities(cleanEvents(res));
     }
-    if (requestState === 'ko') {
-      setState('ko');
-    }
+    setState(requestState);
   }, [requestState, res]);
 
   return { activities, state };

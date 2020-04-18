@@ -23,7 +23,7 @@ const styles = {
   icon: { width: 24 },
 } as { [key: string]: React.CSSProperties };
 
-export default function RowWithIcon({ text = '', icon, link = '', linkText = undefined }: Props) {
+export default function RowWithIcon({ icon = 'question', text = '', link = '', linkText = '' }: Props) {
   const [updated, setUpdated] = useState(false);
   const prevText = usePrevious(text);
   const Icon = useMemo(() => Icons[icon], [icon]);

@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 
 import useHttpRequest from 'hooks/useHttpRequest';
-
-const PROFILE_ENDPOINT = 'https://api.github.com/users/tim-snow';
+import { BaseApiType, BaseApiState } from 'types/api';
+import { API_BASE } from 'constants/index';
 
 const defaultInfo = {
   name: 'Tim Snow',
@@ -14,7 +14,8 @@ const defaultInfo = {
 };
 
 type Info = typeof defaultInfo;
-type ProfileState = 'load' | 'load image' | 'end' | 'ko';
+export const LOAD_IMAGE = 'LOAD_IMAGE';
+type ProfileState = typeof LOAD_IMAGE | BaseApiType;
 
 function cleanInfo(info: Info) {
   return { ...info, bio: info.bio.replace('.', ''), location: `Isolating in ${info.location}` };
@@ -26,40 +27,40 @@ export default function useProfile() {
     info: Info;
     image: null | string;
   }>({
-    state: 'load',
+    state: BaseApiState.LOAD,
     info: defaultInfo,
     image: null,
   });
-  const { res: info, state: infoState } = useHttpRequest<Info>(PROFILE_ENDPOINT);
+  const { res: info, state: infoState } = useHttpRequest<Info>(API_BASE);
   const { res: image, state: imageState, setUrl } = useHttpRequest(undefined, {
     blob: true,
     noAuth: true,
   });
 
   useEffect(() => {
-    if (infoState === 'ok' && info !== undefined) {
+    if (infoState === BaseApiState.OK && info !== undefined) {
       setUrl(info.avatar_url);
       setState((prev) => ({
         ...prev,
-        state: 'load image',
+        state: 'LOAD_IMAGE',
         info: cleanInfo(info),
       }));
     }
-    if (infoState === 'ko') {
-      setState((prev) => ({ ...prev, state: 'ko' }));
+    if (infoState === BaseApiState.KO) {
+      setState((prev) => ({ ...prev, state: BaseApiState.KO }));
     }
   }, [info, infoState, setUrl]);
 
   useEffect(() => {
-    if (imageState === 'ok') {
+    if (imageState === BaseApiState.OK) {
       setState((prev) => ({
         ...prev,
-        state: 'end',
+        state: imageState,
         image: URL.createObjectURL(image),
       }));
     }
-    if (imageState === 'ko') {
-      setState((prev) => ({ ...prev, state: 'ko' }));
+    if (imageState === BaseApiState.KO) {
+      setState((prev) => ({ ...prev, state: BaseApiState.KO }));
     }
   }, [image, imageState]);
 
