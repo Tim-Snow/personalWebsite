@@ -23,7 +23,7 @@ jobs:
       - run: yarn test
       - run: REACT_APP_API_KEY=$"REACT_APP_API_KEY" yarn build
         env:
-          CI: true
+          REACT_APP_API_KEY: ${{ secrets.REACT_APP_API_KEY }}
       - name: Deploy to Firebase
         uses: w9jds/firebase-action@master
         with:
