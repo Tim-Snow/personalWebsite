@@ -13,7 +13,6 @@ module.exports = {
   },
   rules: {
     '@typescript-eslint/explicit-function-return-type': 'off',
-    'react-hooks/exhaustive-deps': 'off',
   },
   settings: {
     react: {

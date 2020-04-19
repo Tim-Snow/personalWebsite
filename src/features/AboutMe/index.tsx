@@ -1,34 +1,16 @@
 import React from 'react';
 
-import { secondary, textColour } from 'constants/styles';
-import boat from 'assets/boat_white.png';
 import Title from 'components/Title';
 import Content from 'components/Content';
+import A from 'components/A';
+import Img from 'components/Img';
 
 import { content } from './content';
-import A from 'components/A';
-
-const styles = {
-  container: {
-    background: secondary,
-    color: textColour,
-    maxWidth: 800,
-    minHeight: 600,
-    textAlign: 'justify',
-    padding: 24,
-    margin: 24,
-  },
-  skillsContainer: {
-    display: 'flex',
-    flexDirection: 'row',
-    flexFlow: 'row wrap',
-    textAlign: 'left',
-  },
-} as { [key: string]: React.CSSProperties };
+import style from './style';
 
 export default function AboutMe() {
   return (
-    <div style={styles.container} id="about">
+    <div style={style.container} id="about">
       <Title>{content.sections[0].title}</Title>
       {content.sections[0].content.map((con, i) => (
         <Content key={i}>{con}</Content>
@@ -36,10 +18,10 @@ export default function AboutMe() {
 
       <Title>{content.sections[1].title}</Title>
       <Content>
-        <div style={{ display: 'flex', justifyContent: 'center' }}>
-          <div style={{ paddingRight: 12 }}>
+        <div style={style.content}>
+          <div style={style.aweighContainer}>
             <h3>{content.sections[1].content[0]}</h3>
-            <img src={boat} style={{ width: 48, height: 48 }} alt="Aweigh logo" />
+            <Img src="boat" width={48} alt="Aweigh logo" />
           </div>
           <p>
             <A url="https://aweigh.co.uk/#/">{content.sections[1].content[0]}</A>
@@ -53,10 +35,10 @@ export default function AboutMe() {
 
       <Title>{content.sections[2].title}</Title>
       <Content>{content.sections[2].content[0]}</Content>
-      <div style={styles.skillsContainer}>
+      <div style={style.skillsContainer}>
         {Object.keys(content.skills).map((lr, i) => (
           <ul key={i}>
-            {content.skills[lr].map((skill: string) => (
+            {content.skills[lr as 'left' | 'right'].map((skill: string) => (
               <li key={skill}>{skill}</li>
             ))}
           </ul>

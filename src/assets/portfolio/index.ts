@@ -7,19 +7,22 @@ type PortfolioContent = {
   ghpages?: string;
 };
 
-type Projects =
-  | 'final-year-project'
-  | 'game-of-life'
-  | 'pacman'
-  | 'personal-website'
-  | 'plain-sailing'
-  | 'scientist-brawl'
-  | 'pong-server-and-client'
-  | 'home-monitor'
-  | 'snake'
-  | 'sumo';
+const ProjectNames = [
+  'final-year-project',
+  'game-of-life',
+  'pacman',
+  'personal-website',
+  'plain-sailing',
+  'scientist-brawl',
+  'pong-server-and-client',
+  'home-monitor',
+  'snake',
+  'sumo',
+] as const;
 
-const PortfolioContent: { [key in Projects]: PortfolioContent } = {
+export type ProjectName = typeof ProjectNames[number];
+
+const PortfolioContent: { [key in ProjectName]: PortfolioContent } = {
   'final-year-project': {
     id: 0,
     name: 'Final Year Project',

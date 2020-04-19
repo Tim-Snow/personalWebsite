@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import useHttpRequest from 'hooks/useHttpRequest';
 import { BaseApiType, BaseApiState } from 'types/api';
 import { API_BASE } from 'constants/index';
+import { ProjectName } from 'assets/portfolio';
 
 const PORTFOLIO_ENDPOINT = `${API_BASE}/repos`;
 
@@ -18,7 +19,7 @@ const WANTED_REPOS = [
   'sumo',
 ];
 type Portfolio = {
-  name: string;
+  name: ProjectName;
   description: string;
   html_url: string;
 };

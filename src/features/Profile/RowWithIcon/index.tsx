@@ -1,9 +1,11 @@
-import React, { useMemo, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 
-import Icons, { Icon } from 'assets';
+import { Icon } from 'assets';
 import A from 'components/A';
 import usePrevious from 'hooks/usePrevious';
 import { Fade } from '@material-ui/core';
+import style from './style';
+import Img from 'components/Img';
 
 interface Props {
   text?: string;
@@ -12,30 +14,18 @@ interface Props {
   linkText?: string;
 }
 
-const styles = {
-  row: {
-    height: 50,
-  },
-  col: {
-    textAlign: 'center',
-    width: 50,
-  },
-  icon: { width: 24 },
-} as { [key: string]: React.CSSProperties };
-
 export default function RowWithIcon({ icon = 'question', text = '', link = '', linkText = '' }: Props) {
   const [updated, setUpdated] = useState(false);
   const prevText = usePrevious(text);
-  const Icon = useMemo(() => Icons[icon], [icon]);
   useEffect(() => {
     if (!updated && prevText !== text) {
       setUpdated(true);
     }
   }, [text, prevText, updated]);
   return (
-    <tr style={styles.row}>
-      <td style={styles.col}>
-        <img style={styles.icon} src={Icon} alt={icon} />
+    <tr style={style.row}>
+      <td style={style.col}>
+        <Img width={24} alt={icon} src={icon} />
       </td>
       <td>
         <Fade in={updated} timeout={5000}>

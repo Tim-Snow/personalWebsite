@@ -1,46 +1,30 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import Collapse from '@material-ui/core/Collapse';
 
-import GithubSvg from 'assets/github.svg';
-import PortfolioImages from 'assets/portfolio/images';
-import PortfolioContent from 'assets/portfolio';
 import A from 'components/A';
 import Title from 'components/Title';
+import { WithSpinner } from 'components/Spinner';
+
+import PortfolioImages from 'assets/portfolio/images';
+import PortfolioContent, { ProjectName } from 'assets/portfolio';
+import icons from 'assets';
+import style from './style';
 
 interface Props {
   open: boolean;
   portfolio?: {
-    name: string;
+    name: ProjectName;
     html_url: string;
     description: string;
   };
 }
 
-const styles = {
-  container: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  title: {
-    textTransform: 'capitalize' as 'capitalize',
-  },
-  details: {
-    margin: 10,
-    maxWidth: 800,
-  },
-  icon: { width: 24 },
-  image: {
-    maxHeight: 700,
-    maxWidth: 600,
-  },
-};
-
 export default function Detail(props: Props) {
-  const [current, setCurrent] = useState<string | undefined>(undefined);
+  const [current, setCurrent] = useState<ProjectName | undefined>(undefined);
   const [currentPortfolioContent, setCurrentPortfolioContent] = useState<PortfolioContent | undefined>(undefined);
   const [currentPortfolioImage, setCurrentPortfolioImage] = useState<string | undefined>(undefined);
-
+  const [imageLoaded, setImageLoaded] = useState(false);
+  const setLoaded = useCallback(() => setImageLoaded(true), []);
   const prettyTitle = useMemo(() => current?.split('-').join(' '), [current]);
 
   useEffect(() => {
@@ -50,18 +34,23 @@ export default function Detail(props: Props) {
   }, [props.open, props.portfolio]);
   useEffect(() => {
     if (current) {
+      setImageLoaded(false);
       setCurrentPortfolioContent(PortfolioContent[current]);
       setCurrentPortfolioImage(PortfolioImages[current]);
     }
   }, [current]);
 
   return (
-    <Collapse in={props.open} style={styles.container}>
-      <div style={styles.details} id="detail">
+    <Collapse in={props.open} style={style.container}>
+      <div style={style.details} id="detail">
         {props.open && props.portfolio && current && (
           <div>
-            <Title style={styles.title}>{prettyTitle}</Title>
-            <img src={currentPortfolioImage} alt={current} style={styles.image} />
+            <Title style={style.title}>{prettyTitle}</Title>
+            {currentPortfolioImage && (
+              <WithSpinner loading={!imageLoaded}>
+                <img src={currentPortfolioImage} onLoad={setLoaded} alt={current} style={style.image} />
+              </WithSpinner>
+            )}
             <p>{props.portfolio.description}</p>
             {currentPortfolioContent && (
               <>
@@ -73,14 +62,14 @@ export default function Detail(props: Props) {
                 {currentPortfolioContent.ghpages && (
                   <A url={currentPortfolioContent.ghpages}>
                     View in action on Github pages{' '}
-                    <img style={styles.icon} src={GithubSvg} alt="View on Github pages" />
+                    <img style={style.icon} src={icons['github']} alt="View on Github pages" />
                   </A>
                 )}
               </>
             )}
             <p>
               <A url={props.portfolio.html_url}>
-                View the code on Github <img style={styles.icon} src={GithubSvg} alt="View code on Github" />
+                View the code on Github <img style={style.icon} src={icons['github']} alt="View code on Github" />
               </A>
             </p>
           </div>

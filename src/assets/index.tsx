@@ -4,6 +4,8 @@ import location from 'assets/location.svg';
 import github from 'assets/github.svg';
 import question from 'assets/question.svg';
 import grad from 'assets/graduated.svg';
+import error from 'assets/error.png';
+import boat from 'assets/boat_white.png';
 
 const icons = {
   email,
@@ -12,6 +14,8 @@ const icons = {
   github,
   grad,
   question,
+  error,
+  boat,
 };
 
 export default icons;

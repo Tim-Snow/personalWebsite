@@ -2,26 +2,11 @@ import React, { useState, useCallback } from 'react';
 
 import Item from './Item';
 import Detail from './Detail';
-
-import { secondary, textColour } from 'constants/styles';
+import style from './style';
 import usePortfolio from './usePortfolio';
+
 import { WithSpinner } from 'components/Spinner';
 import { BaseApiState } from 'types/api';
-
-const styles = {
-  container: {
-    backgroundColor: secondary,
-    color: textColour,
-    textAlign: 'center',
-    padding: 10,
-    marginTop: 24,
-    minHeight: 350,
-  },
-  flex: {
-    display: 'flex',
-    justifyContent: 'center',
-  },
-} as { [key: string]: React.CSSProperties };
 
 export default function Portfolio() {
   const [selected, setSelected] = useState(-1);
@@ -36,14 +21,14 @@ export default function Portfolio() {
   ]);
 
   return (
-    <div style={styles.container} id="portfolio">
+    <div style={style.container} id="portfolio">
       <h1>Portfolio</h1>
-      <div style={styles.flex}>
-        {(state === BaseApiState.KO && (
+      <div style={style.flex}>
+        {state === BaseApiState.KO ? (
           <p>I do have stuff... I just rely on Github API calls which haven&apos;t worked!</p>
-        )) || (
-          <WithSpinner loading={state === BaseApiState.LOAD} style={{ position: 'relative', top: 50 }}>
-            <div style={{ display: 'flex', flexWrap: 'nowrap', overflow: 'hidden', overflowX: 'auto' }}>
+        ) : (
+          <WithSpinner loading={state === BaseApiState.LOAD} style={style.spinner}>
+            <div style={style.content}>
               {portfolios &&
                 portfolios.length > 0 &&
                 portfolios.map((portfolio, i) => (

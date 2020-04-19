@@ -6,17 +6,20 @@ import { API_BASE } from 'constants/index';
 
 const ACTIVITY_ENDPOINT = `${API_BASE}/events`;
 
+type EventType = 'DeleteEvent' | 'WatchEvent' | 'PushEvent' | 'CreateEvent';
 export type Activity = {
   id: string;
   created_at: string;
-  type: string;
+  type: EventType;
   repo: { name: string; url: string };
   payload?: {
     commits: [{ sha: string; message: string; url: string }];
   };
+  prettyType: string | undefined;
+  prettyCreated: string | undefined;
 };
 
-export const EVENT_NAME_MAP = {
+export const EVENT_NAME_MAP: { [key in EventType]: string } = {
   DeleteEvent: 'Deleted',
   WatchEvent: 'Watching',
   PushEvent: 'Pushed to',
@@ -24,16 +27,14 @@ export const EVENT_NAME_MAP = {
 };
 
 function cleanEventName(activity: Activity) {
-  activity.type = EVENT_NAME_MAP[activity.type];
+  activity.prettyType = EVENT_NAME_MAP[activity.type];
   return activity;
 }
 
 function cleanEventTime(activity: Activity) {
   if (activity.created_at) {
-    // eslint-disable-next-line @typescript-eslint/camelcase
     const split = new Date(activity.created_at).toUTCString().split(' ');
-    // eslint-disable-next-line @typescript-eslint/camelcase
-    activity.created_at = `${toOrdinal(split[1])} ${split[2]} ${split[3]}`;
+    activity.prettyCreated = `${toOrdinal(split[1])} ${split[2]} ${split[3]}`;
   }
   return activity;
 }
