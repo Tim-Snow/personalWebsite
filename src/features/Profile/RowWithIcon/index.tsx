@@ -1,11 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 
-import { Icon } from 'assets';
+import Icons, { Icon } from 'assets';
 import A from 'components/A';
 import usePrevious from 'hooks/usePrevious';
 import { Fade } from '@material-ui/core';
 import style from './style';
-import Img from 'components/Img';
 
 interface Props {
   text?: string;
@@ -16,6 +15,7 @@ interface Props {
 
 export default function RowWithIcon({ icon = 'question', text = '', link = '', linkText = '' }: Props) {
   const [updated, setUpdated] = useState(false);
+  const Icon = useMemo(() => Icons[icon], [icon]);
   const prevText = usePrevious(text);
   useEffect(() => {
     if (!updated && prevText !== text) {
@@ -25,7 +25,7 @@ export default function RowWithIcon({ icon = 'question', text = '', link = '', l
   return (
     <tr style={style.row}>
       <td style={style.col}>
-        <Img width={24} alt={icon} src={icon} />
+        <img style={{ width: 24 }} src={Icon} alt={icon} />
       </td>
       <td>
         <Fade in={updated} timeout={5000}>

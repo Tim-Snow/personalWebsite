@@ -7,7 +7,7 @@ import grad from 'assets/graduated.svg';
 import error from 'assets/error.png';
 import boat from 'assets/boat_white.png';
 
-const icons = {
+export const icons = {
   email,
   work,
   location,
