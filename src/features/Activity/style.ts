@@ -15,7 +15,9 @@ const style = {
     overflowY: 'auto',
   },
   column: {
+    display: 'flex',
     flex: 1,
+    justifyContent: 'center',
   },
   row: {
     display: 'flex',
@@ -31,6 +33,8 @@ const style = {
     borderRadius: 3,
     marginBottom: 12,
     paddingBottom: 12,
+    paddingLeft: 12,
+    paddingRight: 12,
   },
   spinner: {
     position: 'relative',

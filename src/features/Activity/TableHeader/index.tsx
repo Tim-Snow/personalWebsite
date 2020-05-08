@@ -4,13 +4,13 @@ import style from './style';
 
 export default function Header() {
   return (
-    <table style={style.fullWidth}>
+    <table style={{ ...style.fullWidth, paddingRight: 12 }}>
       <tbody style={style.fullWidth}>
         <tr style={style.row} key="titles">
           <TableTitle value="Date" />
           <TableTitle value="Event" />
           <TableTitle value="Repository" />
-          <TableTitle value="Commit message" />
+          <TableTitle value="Commit message" style={{ flex: 2 }} />
         </tr>
       </tbody>
     </table>

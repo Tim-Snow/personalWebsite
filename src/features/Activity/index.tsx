@@ -23,7 +23,10 @@ export default function Activity() {
       ) : (
         <WithSpinner loading={state === BaseApiState.LOAD} style={style.spinner}>
           <div style={style.tableContainer}>
-            <Table>
+            <Table
+              tableStyle={{ display: 'flex', flex: 1 }}
+              tbodyStyle={{ display: 'flex', flex: 1, flexDirection: 'column' }}
+            >
               {activities?.map((activity) => (
                 <tr style={style.row} key={activity.id}>
                   <td style={style.column}>{activity.prettyCreated}</td>
@@ -31,11 +34,9 @@ export default function Activity() {
                   <td style={style.column}>
                     <Link text={activity.repo.name.split('/')[1]} url={activity.repo.url} />
                   </td>
-                  <td style={style.column}>
+                  <td style={{ ...style.column, flexDirection: 'column', flex: 2 }}>
                     {activity.payload?.commits?.map((commit) => (
-                      <div key={commit.sha}>
-                        <Link text={commit.message} url={commit.url} />
-                      </div>
+                      <Link text={commit.message} url={commit.url} key={commit.sha} style={{ paddingBottom: 4 }} />
                     ))}
                   </td>
                 </tr>

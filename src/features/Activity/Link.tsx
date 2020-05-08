@@ -1,13 +1,16 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import useFetch from 'hooks/useFetch';
 import { BaseApiState, BaseApiType } from 'types/api';
 
 interface Props {
   url: string;
   text: string;
+  style?: React.CSSProperties;
 }
 
 type State = BaseApiType;
+
+const MAX_TEXT_LENGTH = 50;
 
 export default function Link(props: Props) {
   const [state, setState] = useState<State>(BaseApiState.INIT);
@@ -37,12 +40,16 @@ export default function Link(props: Props) {
     setState(requestState);
   }, [requestState, res, url]);
 
+  const text = useMemo(() => {
+    return props.text.length > MAX_TEXT_LENGTH ? props.text.substr(0, MAX_TEXT_LENGTH) + '...' : props.text;
+  }, [props.text]);
+
   return (
-    <div onClick={getUrl} style={{ cursor: 'pointer' }}>
+    <div onClick={getUrl} style={{ cursor: 'pointer', ...props.style }}>
       {
         // eslint-disable-next-line
         <a href={undefined} title={url || props.url} style={{ textDecoration: 'underline' }}>
-          {state === BaseApiState.LOAD ? 'Loading...' : props.text}
+          {state === BaseApiState.LOAD ? 'Loading...' : text}
         </a>
       }
     </div>
