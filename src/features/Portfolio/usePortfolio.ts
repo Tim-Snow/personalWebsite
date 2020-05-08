@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import useHttpRequest from 'hooks/useHttpRequest';
+import useFetch from 'hooks/useFetch';
 import { BaseApiType, BaseApiState } from 'types/api';
 import { API_BASE } from 'constants/index';
 import { ProjectName } from 'assets/portfolio';
@@ -27,7 +27,7 @@ type Portfolio = {
 export default function usePortfolio() {
   const [state, setState] = useState<BaseApiType>(BaseApiState.LOAD);
   const [portfolios, setPortfolios] = useState<Portfolio[] | undefined>(undefined);
-  const { res, state: requestState } = useHttpRequest<Portfolio[]>(PORTFOLIO_ENDPOINT);
+  const { res, state: requestState } = useFetch<Portfolio[]>(PORTFOLIO_ENDPOINT);
 
   useEffect(() => {
     if (requestState === BaseApiState.OK && res) {

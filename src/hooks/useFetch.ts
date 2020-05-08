@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, useCallback } from 'react';
 import { BaseApiType, BaseApiState } from 'types/api';
 
 const { REACT_APP_API_KEY } = process.env;
@@ -8,7 +8,7 @@ type Config = {
   noAuth?: boolean;
 };
 
-export default function useHttpRequest<T>(url: string | undefined, config?: Config) {
+export default function useFetch<T>(url: string | undefined, config?: Config) {
   const [state, setState] = useState<BaseApiType>(BaseApiState.INIT);
   const [res, setRes] = useState<T | undefined>(undefined);
   const [myUrl, setUrl] = useState(url);
@@ -37,5 +37,9 @@ export default function useHttpRequest<T>(url: string | undefined, config?: Conf
     }
   }, [myUrl, config, state, headers]);
 
-  return { res, state, setUrl };
+  const retry = useCallback(() => {
+    setState(BaseApiState.INIT);
+  }, []);
+
+  return { res, state, setUrl, retry };
 }

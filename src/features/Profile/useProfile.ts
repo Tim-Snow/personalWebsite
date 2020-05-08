@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-import useHttpRequest from 'hooks/useHttpRequest';
+import useFetch from 'hooks/useFetch';
 import { BaseApiType, BaseApiState } from 'types/api';
 import { API_BASE } from 'constants/index';
 
@@ -31,8 +31,8 @@ export default function useProfile() {
     info: defaultInfo,
     image: null,
   });
-  const { res: info, state: infoState } = useHttpRequest<Info>(API_BASE);
-  const { res: image, state: imageState, setUrl } = useHttpRequest(undefined, {
+  const { res: info, state: infoState } = useFetch<Info>(API_BASE);
+  const { res: image, state: imageState, setUrl } = useFetch(undefined, {
     blob: true,
     noAuth: true,
   });
