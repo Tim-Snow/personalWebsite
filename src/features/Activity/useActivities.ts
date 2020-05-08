@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import useHttpRequest from 'hooks/useHttpRequest';
+import useHttpRequest from 'hooks/useFetch';
 import toOrdinal from 'libs/toOrdinal';
 import { BaseApiState, BaseApiType } from 'types/api';
 import { API_BASE } from 'constants/index';
