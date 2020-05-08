@@ -5,6 +5,7 @@ import personalWebsite from './personal-website.jpg';
 import plainSailing from './plain-sailing.jpg';
 import scientistBrawl from './scientist-brawl.gif';
 import snake from './snake.jpg';
+import sumo from './sumo.jpg';
 import { ProjectName } from '..';
 
 const images: { [key in ProjectName]: string | undefined } = {
@@ -17,7 +18,7 @@ const images: { [key in ProjectName]: string | undefined } = {
   snake,
   'home-monitor': undefined,
   'pong-server-and-client': undefined,
-  sumo: undefined,
+  sumo,
 };
 
 export default images;
