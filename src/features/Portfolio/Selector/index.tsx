@@ -48,6 +48,7 @@ function HoverScroller({ right, scroll, stop, visible }: HoverProps) {
             justifyContent: 'center',
             fontSize: 36,
             fontWeight: 'bold',
+            userSelect: 'none',
           }}
         >
           {right ? '>' : '<'}

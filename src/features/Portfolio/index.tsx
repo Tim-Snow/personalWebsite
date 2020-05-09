@@ -1,15 +1,15 @@
 import React from 'react';
 
 import Detail from './Detail';
+import Selector from './Selector';
 import style from './style';
 import usePortfolio from './usePortfolio';
 
 import { WithSpinner } from 'components/Spinner';
 import { BaseApiState } from 'types/api';
-import Selector from './Selector';
 
 export default function Portfolio() {
-  const { portfolios, state, hideDetailView, selected, showDetailView } = usePortfolio();
+  const { portfolios, state, hideDetailView, selected, showDetailView, next, prev } = usePortfolio();
   return (
     <div style={style.container} id="portfolio">
       <h1>Portfolio</h1>
@@ -27,7 +27,9 @@ export default function Portfolio() {
           </WithSpinner>
         )}
       </div>
-      {state === BaseApiState.OK && portfolios && <Detail open={selected !== -1} portfolio={portfolios[selected]} />}
+      {state === BaseApiState.OK && portfolios && (
+        <Detail portfolio={portfolios[selected]} open={selected !== -1} next={next} prev={prev} />
+      )}
     </div>
   );
 }

@@ -32,6 +32,16 @@ export default function usePortfolio() {
   const [selected, setSelected] = useState(-1);
   const hideDetailView = useCallback(() => setSelected(-1), []);
   const showDetailView = useCallback((i) => setSelected(i), []);
+  const next = useCallback(() => {
+    if (selected + 1 !== portfolios?.length) {
+      setSelected(selected + 1);
+    }
+  }, [portfolios, selected]);
+  const prev = useCallback(() => {
+    if (selected !== 0) {
+      setSelected(selected - 1);
+    }
+  }, [selected]);
 
   useEffect(() => {
     if (requestState === BaseApiState.OK && res) {
@@ -40,5 +50,5 @@ export default function usePortfolio() {
     setState(requestState);
   }, [requestState, res]);
 
-  return { portfolios, state, selected, hideDetailView, showDetailView };
+  return { portfolios, state, selected, hideDetailView, showDetailView, next, prev };
 }

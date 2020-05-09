@@ -17,6 +17,8 @@ interface Props {
     html_url: string;
     description: string;
   };
+  next: () => void;
+  prev: () => void;
 }
 
 export default function Detail(props: Props) {
@@ -45,33 +47,45 @@ export default function Detail(props: Props) {
       <div style={style.details} id="detail">
         {props.open && props.portfolio && current && (
           <div>
-            <Title style={style.title}>{prettyTitle}</Title>
-            {currentPortfolioImage && (
-              <WithSpinner loading={!imageLoaded}>
-                <img src={currentPortfolioImage} onLoad={setLoaded} alt={current} style={style.image} />
-              </WithSpinner>
-            )}
-            <p>{props.portfolio.description}</p>
-            {currentPortfolioContent && (
-              <>
-                <h3>{currentPortfolioContent.title && currentPortfolioContent.title}</h3>
-                {currentPortfolioContent.about.map((element: string, i: number) => (
-                  <p key={i}>{element}</p>
-                ))}
-                <p>Technologies: {currentPortfolioContent.technologies.join(', ')}</p>
-                {currentPortfolioContent.ghpages && (
-                  <A url={currentPortfolioContent.ghpages}>
-                    View in action on Github pages{' '}
-                    <img style={style.icon} src={icons['github']} alt="View on Github pages" />
-                  </A>
-                )}
-              </>
-            )}
-            <p>
-              <A url={props.portfolio.html_url}>
-                View the code on Github <img style={style.icon} src={icons['github']} alt="View code on Github" />
-              </A>
-            </p>
+            <div style={{ display: 'flex', flex: 1, justifyContent: 'space-between' }}>
+              <div onClick={props.prev} style={style.arrow}>
+                <h1>{'<'}</h1>
+              </div>
+              <div style={{ maxWidth: 200 }}>
+                <Title style={style.title}>{prettyTitle}</Title>
+              </div>
+              <div onClick={props.next} style={style.arrow}>
+                <h1>{'>'}</h1>
+              </div>
+            </div>
+            <div>
+              {currentPortfolioImage && (
+                <WithSpinner loading={!imageLoaded}>
+                  <img src={currentPortfolioImage} onLoad={setLoaded} alt={current} style={style.image} />
+                </WithSpinner>
+              )}
+              <p>{props.portfolio.description}</p>
+              {currentPortfolioContent && (
+                <>
+                  <h3>{currentPortfolioContent.title && currentPortfolioContent.title}</h3>
+                  {currentPortfolioContent.about.map((element: string, i: number) => (
+                    <p key={i}>{element}</p>
+                  ))}
+                  <p>Technologies: {currentPortfolioContent.technologies.join(', ')}</p>
+                  {currentPortfolioContent.ghpages && (
+                    <A url={currentPortfolioContent.ghpages}>
+                      View in action on Github pages{' '}
+                      <img style={style.icon} src={icons['github']} alt="View on Github pages" />
+                    </A>
+                  )}
+                </>
+              )}
+              <p>
+                <A url={props.portfolio.html_url}>
+                  View the code on Github <img style={style.icon} src={icons['github']} alt="View code on Github" />
+                </A>
+              </p>
+            </div>
           </div>
         )}
       </div>
