@@ -51,9 +51,7 @@ export default function Detail(props: Props) {
               <div onClick={props.prev} style={style.arrow}>
                 <h1>{'<'}</h1>
               </div>
-              <div style={{ maxWidth: 200 }}>
-                <Title style={style.title}>{prettyTitle}</Title>
-              </div>
+              <Title style={style.title}>{prettyTitle}</Title>
               <div onClick={props.next} style={style.arrow}>
                 <h1>{'>'}</h1>
               </div>

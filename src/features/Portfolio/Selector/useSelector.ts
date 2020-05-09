@@ -26,7 +26,11 @@ export default function useSelector({ containerRef, selected, hideDetail, showDe
   }, []);
 
   useEffect(() => {
-    containerRef.current?.scrollTo({ left: horizOffset });
+    if (containerRef.current) {
+      if (typeof containerRef.current.scrollTo === 'function') {
+        containerRef.current.scrollTo({ left: horizOffset });
+      }
+    }
   }, [horizOffset, containerRef]);
 
   useEffect(() => {
