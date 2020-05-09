@@ -7,7 +7,7 @@ const style = {
     textAlign: 'center',
     padding: 12,
     margin: 24,
-    width: 800,
+    maxWidth: 800,
     minHeight: 820,
   },
   tableContainer: {

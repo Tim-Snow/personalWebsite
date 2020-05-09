@@ -4,10 +4,9 @@ const style = {
   container: {
     background: secondary,
     color: textColour,
-    width: 800,
-    minHeight: 600,
+    maxWidth: 800,
     textAlign: 'justify',
-    padding: 24,
+    padding: 12,
     margin: 24,
   },
   skillsContainer: {

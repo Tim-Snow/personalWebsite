@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import useFetch from 'hooks/useFetch';
 import { BaseApiType, BaseApiState } from 'types/api';
 import { API_BASE } from 'constants/index';
@@ -18,7 +18,8 @@ const WANTED_REPOS = [
   'snake',
   'sumo',
 ];
-type Portfolio = {
+
+export type Portfolio = {
   name: ProjectName;
   description: string;
   html_url: string;
@@ -28,6 +29,9 @@ export default function usePortfolio() {
   const [state, setState] = useState<BaseApiType>(BaseApiState.LOAD);
   const [portfolios, setPortfolios] = useState<Portfolio[] | undefined>(undefined);
   const { res, state: requestState } = useFetch<Portfolio[]>(PORTFOLIO_ENDPOINT);
+  const [selected, setSelected] = useState(-1);
+  const hideDetailView = useCallback(() => setSelected(-1), []);
+  const showDetailView = useCallback((i) => setSelected(i), []);
 
   useEffect(() => {
     if (requestState === BaseApiState.OK && res) {
@@ -36,5 +40,5 @@ export default function usePortfolio() {
     setState(requestState);
   }, [requestState, res]);
 
-  return { portfolios, state };
+  return { portfolios, state, selected, hideDetailView, showDetailView };
 }

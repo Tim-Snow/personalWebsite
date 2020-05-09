@@ -13,12 +13,6 @@ const style = {
     display: 'flex',
     justifyContent: 'center',
   },
-  content: {
-    display: 'flex',
-    flexWrap: 'nowrap',
-    overflow: 'hidden',
-    overflowX: 'auto',
-  },
   spinner: { position: 'relative', top: 50 },
 } as { [key: string]: React.CSSProperties };
 
