@@ -6,7 +6,7 @@ import { API_BASE } from 'constants/index';
 
 const ACTIVITY_ENDPOINT = `${API_BASE}/events`;
 
-type EventType = 'DeleteEvent' | 'WatchEvent' | 'PushEvent' | 'CreateEvent' | 'IssueCommentEvent';
+type EventType = 'DeleteEvent' | 'WatchEvent' | 'PushEvent' | 'CreateEvent' | 'IssueCommentEvent' | 'ForkEvent';
 export type Activity = {
   id: string;
   created_at: string;
@@ -25,6 +25,7 @@ export const EVENT_NAME_MAP: { [key in EventType]: string } = {
   PushEvent: 'Pushed to',
   CreateEvent: 'Created',
   IssueCommentEvent: 'Commented on issue',
+  ForkEvent: 'Forked',
 };
 
 function cleanEventName(activity: Activity) {
