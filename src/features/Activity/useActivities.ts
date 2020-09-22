@@ -6,7 +6,7 @@ import { API_BASE } from 'constants/index';
 
 const ACTIVITY_ENDPOINT = `${API_BASE}/events`;
 
-type EventType = 'DeleteEvent' | 'WatchEvent' | 'PushEvent' | 'CreateEvent';
+type EventType = 'DeleteEvent' | 'WatchEvent' | 'PushEvent' | 'CreateEvent' | 'IssueCommentEvent';
 export type Activity = {
   id: string;
   created_at: string;
@@ -24,10 +24,11 @@ export const EVENT_NAME_MAP: { [key in EventType]: string } = {
   WatchEvent: 'Watching',
   PushEvent: 'Pushed to',
   CreateEvent: 'Created',
+  IssueCommentEvent: 'Commented on issue',
 };
 
 function cleanEventName(activity: Activity) {
-  activity.prettyType = EVENT_NAME_MAP[activity.type];
+  activity.prettyType = EVENT_NAME_MAP[activity.type] || activity.type;
   return activity;
 }
 
