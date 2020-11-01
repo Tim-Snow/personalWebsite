@@ -26,9 +26,10 @@ export default function AboutMe() {
           <p>
             <A url="https://aweigh.co.uk/#/">{content.sections[1].content[0]}</A>
             {content.sections[1].content[1]}
-            <A url="https://play.google.com/store/apps/details?id=com.aweigh">app</A>{' '}
-            <A url="https://apps.apple.com/us/app/aweigh/id1460562069">stores</A>
-            {content.sections[1].content[2]}
+            <p style={{ display: 'flex', justifyContent: 'space-around' }}>
+              <A url="https://play.google.com/store/apps/details?id=com.aweigh">Google Play Store</A>{' '}
+              <A url="https://apps.apple.com/us/app/aweigh/id1460562069">iOS App Store</A>
+            </p>
           </p>
         </div>
       </Content>

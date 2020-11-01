@@ -1,17 +1,14 @@
 import React, { useRef } from 'react';
-
-import style from './style';
-import usePortfolio, { Portfolio } from '../usePortfolio';
-import Item from '../Item';
-import useSelector from './useSelector';
 import { Fade } from '@material-ui/core';
 
-interface Props {
-  portfolios: Portfolio[];
-  selected: number;
-  hideDetail: () => void;
-  showDetail: (i: number) => void;
-}
+import { WithSpinner } from 'components/Spinner';
+import { BaseApiState } from 'types/api';
+
+import { usePortfolioState } from '../usePortfolio';
+import Item from '../Item';
+
+import style from './style';
+import useSelector from './useSelector';
 
 interface HoverProps {
   scroll?: any;
@@ -58,32 +55,35 @@ function HoverScroller({ right, scroll, stop, visible }: HoverProps) {
   );
 }
 
-export default function Selector({ portfolios, selected, hideDetail, showDetail }: Props) {
+export default function Selector() {
+  const { state, portfolios } = usePortfolioState();
   const containerRef = useRef<HTMLDivElement | null>(null);
-  const { hoverScrollL, hoverScrollR, setSelected, stop, atEnd } = useSelector({
+  const { hoverScrollL, hoverScrollR, stop, atEnd } = useSelector({
     containerRef,
-    selected,
-    showDetail,
-    hideDetail,
   });
-  const { state } = usePortfolio();
   return (
-    <div style={style.content}>
-      <HoverScroller
-        scroll={hoverScrollL}
-        stop={stop}
-        visible={
-          state === 'OK' && containerRef.current ? containerRef.current.scrollLeft! >= HOVER_SELECTOR_WIDTH : false
-        }
-      />
-      <div style={style.content} ref={containerRef}>
-        {portfolios &&
-          portfolios.length > 0 &&
-          portfolios.map((portfolio, i) => (
-            <Item id={i} key={i} title={portfolio.name} details={portfolio.description} callback={setSelected} />
-          ))}
-      </div>
-      <HoverScroller right scroll={hoverScrollR} stop={stop} visible={state === 'OK' && !atEnd} />
-    </div>
+    <WithSpinner loading={state === BaseApiState.LOAD} style={style.spinner}>
+      {state === BaseApiState.KO ? (
+        <p>I do have stuff... I just rely on Github API calls which haven&apos;t worked!</p>
+      ) : (
+        <div style={style.content}>
+          <HoverScroller
+            scroll={hoverScrollL}
+            stop={stop}
+            visible={
+              state === 'OK' && containerRef.current ? containerRef.current.scrollLeft! >= HOVER_SELECTOR_WIDTH : false
+            }
+          />
+          <div style={style.content} ref={containerRef}>
+            {portfolios &&
+              portfolios.length > 0 &&
+              portfolios.map((portfolio, i) => (
+                <Item id={i} key={i} title={portfolio.name} details={portfolio.description} />
+              ))}
+          </div>
+          <HoverScroller right scroll={hoverScrollR} stop={stop} visible={state === 'OK' && !atEnd} />
+        </div>
+      )}
+    </WithSpinner>
   );
 }

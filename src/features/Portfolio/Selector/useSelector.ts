@@ -2,18 +2,10 @@ import React, { useState, useCallback, useEffect } from 'react';
 
 interface Props {
   containerRef: React.MutableRefObject<HTMLDivElement | null>;
-  hideDetail: () => void;
-  showDetail: (i: number) => void;
-  selected: number;
 }
 
-export default function useSelector({ containerRef, selected, hideDetail, showDetail }: Props) {
+export default function useSelector({ containerRef }: Props) {
   const [horizOffset, setHorizOffset] = useState(0);
-  const setSelected = useCallback((i) => (i === selected ? hideDetail() : showDetail(i)), [
-    hideDetail,
-    selected,
-    showDetail,
-  ]);
   const [scroll, setScroll] = useState<'left' | 'right' | null>(null);
   const hoverScrollL = useCallback(() => {
     setScroll('left');
@@ -58,5 +50,5 @@ export default function useSelector({ containerRef, selected, hideDetail, showDe
     containerRef.current?.addEventListener('scroll', handleScroll);
   }, [containerRef, handleScroll]);
 
-  return { hoverScrollL, hoverScrollR, stop, setSelected, atEnd };
+  return { hoverScrollL, hoverScrollR, stop, atEnd };
 }

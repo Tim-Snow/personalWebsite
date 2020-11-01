@@ -9,19 +9,11 @@ import PortfolioImages from 'assets/portfolio/images';
 import PortfolioContent, { ProjectName } from 'assets/portfolio';
 import icons from 'assets';
 import style from './style';
+import { usePortfolioDispatch, usePortfolioState } from '../usePortfolio';
 
-interface Props {
-  open: boolean;
-  portfolio?: {
-    name: ProjectName;
-    html_url: string;
-    description: string;
-  };
-  next: () => void;
-  prev: () => void;
-}
-
-export default function Detail(props: Props) {
+export default function Detail() {
+  const { detailShowing, portfolios, selected } = usePortfolioState();
+  const dispatch = usePortfolioDispatch();
   const [current, setCurrent] = useState<ProjectName | undefined>(undefined);
   const [currentPortfolioContent, setCurrentPortfolioContent] = useState<PortfolioContent | undefined>(undefined);
   const [currentPortfolioImage, setCurrentPortfolioImage] = useState<string | undefined>(undefined);
@@ -30,10 +22,10 @@ export default function Detail(props: Props) {
   const prettyTitle = useMemo(() => current?.split('-').join(' '), [current]);
 
   useEffect(() => {
-    if (props.open) {
-      setCurrent(props.portfolio?.name);
+    if (detailShowing && portfolios) {
+      setCurrent(portfolios[selected]?.name);
     }
-  }, [props.open, props.portfolio]);
+  }, [detailShowing, portfolios, selected]);
   useEffect(() => {
     if (current) {
       setImageLoaded(false);
@@ -43,16 +35,26 @@ export default function Detail(props: Props) {
   }, [current]);
 
   return (
-    <Collapse in={props.open} style={style.container}>
+    <Collapse in={detailShowing} style={style.container}>
       <div style={style.details} id="detail">
-        {props.open && props.portfolio && current && (
+        {detailShowing && portfolios && current && (
           <div>
             <div style={{ display: 'flex', flex: 1, justifyContent: 'space-between' }}>
-              <div onClick={props.prev} style={style.arrow}>
+              <div
+                onClick={() => {
+                  dispatch({ type: 'prev' });
+                }}
+                style={style.arrow}
+              >
                 <h1>{'<'}</h1>
               </div>
               <Title style={style.title}>{prettyTitle}</Title>
-              <div onClick={props.next} style={style.arrow}>
+              <div
+                onClick={() => {
+                  dispatch({ type: 'next' });
+                }}
+                style={style.arrow}
+              >
                 <h1>{'>'}</h1>
               </div>
             </div>
@@ -62,7 +64,7 @@ export default function Detail(props: Props) {
                   <img src={currentPortfolioImage} onLoad={setLoaded} alt={current} style={style.image} />
                 </WithSpinner>
               )}
-              <p>{props.portfolio.description}</p>
+              <p>{portfolios[selected].description}</p>
               {currentPortfolioContent && (
                 <>
                   <h3>{currentPortfolioContent.title && currentPortfolioContent.title}</h3>
@@ -79,7 +81,7 @@ export default function Detail(props: Props) {
                 </>
               )}
               <p>
-                <A url={props.portfolio.html_url}>
+                <A url={portfolios[selected].html_url}>
                   View the code on Github <img style={style.icon} src={icons['github']} alt="View code on Github" />
                 </A>
               </p>

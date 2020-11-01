@@ -24,8 +24,7 @@ export const content: Content = {
       title: 'Personal Projects',
       content: [
         'Aweigh',
-        " is a mobile application that helps people stay safe and informed on the Norfolk Broads and boasts thousands of downloads despite its infancy. Myself and a friend have developed this in our spare time and at weekends. It has the full support of The Broads Authority, the Police, and all established Boatyards. It's free and on the ",
-        ", I'd love for you to try it!",
+        " is a mobile application that helps people stay safe and informed on the Norfolk Broads and boasts thousands of downloads despite its infancy. Myself and a friend have developed this in our spare time and at weekends. It has the full support of The Broads Authority, the Police, and all established Boatyards. It's free and on both app stores, I'd love for you to try it!",
       ],
     },
     {

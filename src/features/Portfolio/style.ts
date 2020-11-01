@@ -13,7 +13,6 @@ const style = {
     display: 'flex',
     justifyContent: 'center',
   },
-  spinner: { position: 'relative', top: 50 },
 } as { [key: string]: React.CSSProperties };
 
 export default style;
