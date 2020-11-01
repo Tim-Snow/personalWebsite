@@ -14,11 +14,9 @@ const styles = {
     paddingTop: NAVBAR_MAX_HEIGHT,
   },
   splitSection: {
+    alignItems: 'center',
     display: 'flex',
-    flex: 1,
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'space-around',
+    flexDirection: 'column',
   },
 } as { [key: string]: React.CSSProperties };
 

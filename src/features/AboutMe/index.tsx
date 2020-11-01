@@ -11,12 +11,12 @@ import style from './style';
 export default function AboutMe() {
   return (
     <div style={style.container} id="about">
-      <Title>{content.sections[0].title}</Title>
+      <Title style={style.center}>{content.sections[0].title}</Title>
       {content.sections[0].content.map((con, i) => (
         <Content key={i}>{con}</Content>
       ))}
 
-      <Title>{content.sections[1].title}</Title>
+      <Title style={style.center}>{content.sections[1].title}</Title>
       <Content>
         <div style={style.content}>
           <div style={style.aweighContainer}>
@@ -34,7 +34,7 @@ export default function AboutMe() {
         </div>
       </Content>
 
-      <Title>{content.sections[2].title}</Title>
+      <Title style={style.center}>{content.sections[2].title}</Title>
       <Content>{content.sections[2].content[0]}</Content>
       <div style={style.skillsContainer}>
         {Object.keys(content.skills).map((lr, i) => (

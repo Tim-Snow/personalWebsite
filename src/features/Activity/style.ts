@@ -5,10 +5,10 @@ const style = {
     background: secondary,
     color: textColour,
     textAlign: 'center',
-    padding: 12,
+    padding: 32,
     margin: 24,
-    maxWidth: 800,
     minHeight: 820,
+    borderRadius: 4,
   },
   tableContainer: {
     maxHeight: 800,

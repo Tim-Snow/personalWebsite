@@ -10,9 +10,7 @@ export default function Portfolio() {
     <PortfolioProvider>
       <div style={style.container} id="portfolio">
         <h1>Portfolio</h1>
-        <div style={style.flex}>
-          <Selector />
-        </div>
+        <Selector />
         <Detail />
       </div>
     </PortfolioProvider>

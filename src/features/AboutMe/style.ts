@@ -2,12 +2,15 @@ import { secondary, textColour } from 'constants/styles';
 
 const style = {
   container: {
+    display: 'flex',
+    flexDirection: 'column',
     background: secondary,
     color: textColour,
-    maxWidth: 800,
+    maxWidth: 785,
     textAlign: 'justify',
     padding: 12,
     margin: 24,
+    borderRadius: 4,
   },
   skillsContainer: {
     display: 'flex',
@@ -17,6 +20,7 @@ const style = {
   },
   content: { display: 'flex', justifyContent: 'center' },
   aweighContainer: { paddingRight: 12 },
+  center: { textAlign: 'center' },
 } as { [key: string]: React.CSSProperties };
 
 export default style;
