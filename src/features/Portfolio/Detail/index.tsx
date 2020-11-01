@@ -41,7 +41,7 @@ export default function Detail() {
         {detailShowing && portfolios && current && (
           <div>
             <div style={{ display: 'flex', flex: 1, justifyContent: 'space-between' }}>
-              <Fade in={selected !== 0}>
+              <Fade in={selected !== 0} unmountOnExit>
                 <div
                   onClick={() => {
                     dispatch({ type: 'prev' });
@@ -52,7 +52,7 @@ export default function Detail() {
                 </div>
               </Fade>
               <Title style={style.title}>{prettyTitle}</Title>
-              <Fade in={selected !== portfolios.length - 1}>
+              <Fade in={selected !== portfolios.length - 1} unmountOnExit>
                 <div
                   onClick={() => {
                     dispatch({ type: 'next' });

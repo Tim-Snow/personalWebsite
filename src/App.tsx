@@ -13,7 +13,7 @@ const styles = {
     backgroundColor: background,
     paddingTop: NAVBAR_MAX_HEIGHT,
   },
-  splitSection: {
+  centeredSection: {
     alignItems: 'center',
     display: 'flex',
     flexDirection: 'column',
@@ -25,7 +25,7 @@ export default function App() {
     <div style={styles.container} id="home">
       <Profile />
       <Portfolio />
-      <div style={styles.splitSection}>
+      <div style={styles.centeredSection}>
         <AboutMe />
         <Activity />
       </div>

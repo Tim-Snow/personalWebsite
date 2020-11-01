@@ -7,6 +7,9 @@ const style = {
   },
   title: {
     textTransform: 'capitalize',
+    alignSelf: 'center',
+    flex: 1,
+    width: 700,
   },
   details: {
     margin: 10,
