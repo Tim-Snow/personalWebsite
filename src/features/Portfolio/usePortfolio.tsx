@@ -1,6 +1,6 @@
 import React, { useReducer } from 'react';
 import { useEffect } from 'react';
-import useFetch from 'hooks/useFetch';
+import useHttpRequest from 'hooks/useHttpRequest';
 import { BaseApiState, BaseApiType } from 'types/api';
 import { API_BASE } from 'constants/index';
 import { ProjectName } from 'assets/portfolio';
@@ -83,7 +83,7 @@ function PortfolioProvider({ children }: PortfolioProviderProps) {
     detailShowing: false,
   });
 
-  const { res, state: requestState } = useFetch<Portfolio[]>(PORTFOLIO_ENDPOINT);
+  const { res, state: requestState } = useHttpRequest<Portfolio[]>(PORTFOLIO_ENDPOINT);
 
   useEffect(() => {
     if (requestState === BaseApiState.OK && res) {

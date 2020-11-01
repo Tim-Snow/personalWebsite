@@ -8,7 +8,7 @@ type Config = {
   noAuth?: boolean;
 };
 
-export default function useFetch<T>(url: string | undefined, config?: Config) {
+export default function useHttpRequest<T>(url: string | undefined, config?: Config) {
   const [state, setState] = useState<BaseApiType>(BaseApiState.INIT);
   const [res, setRes] = useState<T | undefined>(undefined);
   const [myUrl, setUrl] = useState(url);

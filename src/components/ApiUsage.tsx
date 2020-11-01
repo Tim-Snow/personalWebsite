@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import useFetch from 'hooks/useFetch';
+import useHttpRequest from 'hooks/useHttpRequest';
 import { background, textColour } from 'constants/styles';
 
 interface Rate {
@@ -21,7 +21,7 @@ interface Core {
 }
 
 export default function ApiUsage() {
-  const { res, state } = useFetch<Rate>('https://api.github.com/rate_limit');
+  const { res, state } = useHttpRequest<Rate>('https://api.github.com/rate_limit');
   const reset = useMemo(
     () => (state === 'OK' && res ? new Date(res.resources.core.reset * 1000).toLocaleTimeString() : ''),
     [res, state],

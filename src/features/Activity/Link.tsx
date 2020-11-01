@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
-import useFetch from 'hooks/useFetch';
+import useHttpRequest from 'hooks/useHttpRequest';
 import { BaseApiState, BaseApiType } from 'types/api';
 import { textColour } from 'constants/styles';
 
@@ -16,7 +16,7 @@ const MAX_TEXT_LENGTH = 50;
 export default function Link(props: Props) {
   const [state, setState] = useState<State>(BaseApiState.INIT);
   const [url, setUrl] = useState('');
-  const { res, state: requestState, setUrl: setInnerUrl } = useFetch<{ html_url: string }>(undefined);
+  const { res, state: requestState, setUrl: setInnerUrl } = useHttpRequest<{ html_url: string }>(undefined);
 
   const getUrl = useCallback(() => {
     if (url) {
