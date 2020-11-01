@@ -10,6 +10,7 @@ import PortfolioContent, { ProjectName } from 'assets/portfolio';
 import icons from 'assets';
 import style from './style';
 import { usePortfolioDispatch, usePortfolioState } from '../usePortfolio';
+import { Fade } from '@material-ui/core';
 
 export default function Detail() {
   const { detailShowing, portfolios, selected } = usePortfolioState();
@@ -40,23 +41,27 @@ export default function Detail() {
         {detailShowing && portfolios && current && (
           <div>
             <div style={{ display: 'flex', flex: 1, justifyContent: 'space-between' }}>
-              <div
-                onClick={() => {
-                  dispatch({ type: 'prev' });
-                }}
-                style={style.arrow}
-              >
-                <h1>{'<'}</h1>
-              </div>
+              <Fade in={selected !== 0}>
+                <div
+                  onClick={() => {
+                    dispatch({ type: 'prev' });
+                  }}
+                  style={style.arrow}
+                >
+                  <h1>{'<'}</h1>
+                </div>
+              </Fade>
               <Title style={style.title}>{prettyTitle}</Title>
-              <div
-                onClick={() => {
-                  dispatch({ type: 'next' });
-                }}
-                style={style.arrow}
-              >
-                <h1>{'>'}</h1>
-              </div>
+              <Fade in={selected !== portfolios.length - 1}>
+                <div
+                  onClick={() => {
+                    dispatch({ type: 'next' });
+                  }}
+                  style={style.arrow}
+                >
+                  <h1>{'>'}</h1>
+                </div>
+              </Fade>
             </div>
             <div>
               {currentPortfolioImage && (
