@@ -30,8 +30,9 @@ type SetPortfolios = { type: 'set_portfolios'; payload: Portfolio[] };
 type SelectItem = { type: 'select'; payload: { id: number } };
 type NextItem = { type: 'next' };
 type PrevItem = { type: 'prev' };
+type Close = { type: 'close' };
 
-type Action = SetPortfolios | SelectItem | NextItem | PrevItem;
+type Action = SetPortfolios | SelectItem | NextItem | PrevItem | Close;
 
 type Dispatch = (action: Action) => void;
 
@@ -64,6 +65,9 @@ function portfolioReducer(state: State, action: Action) {
     }
     case 'prev': {
       return { ...state, selected: state.selected === 0 ? state.selected : state.selected - 1 };
+    }
+    case 'close': {
+      return { ...state, detailShowing: false, selected: -1 };
     }
     default: {
       throw new Error(`Unhandled action type: ${action!.type}`);

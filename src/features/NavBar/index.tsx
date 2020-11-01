@@ -12,7 +12,7 @@ export default function NavBar() {
   }, [scroll]);
 
   return (
-    <div
+    <nav
       style={{
         position: 'fixed',
         left: 0,
@@ -31,6 +31,6 @@ export default function NavBar() {
       <NavLink text="Portfolio" sectionId="portfolio" />
       <NavLink text="About" sectionId="about" />
       <NavLink text="Activity" sectionId="activity" />
-    </div>
+    </nav>
   );
 }

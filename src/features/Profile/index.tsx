@@ -20,9 +20,9 @@ export default function Profile() {
   } = useProfile();
   const loading = useMemo(() => state === BaseApiState.LOAD || state === LOAD_IMAGE, [state]);
   return (
-    <div style={style.container}>
+    <section style={style.container}>
       <WithSpinner loading={loading}>
-        <div style={style.image}>{<img src={image || ErrorImg} alt="Me" style={style.image} />}</div>
+        <img src={image || ErrorImg} alt="Me" style={style.image} />
       </WithSpinner>
       <Title style={style.name}>Tim Snow</Title>
       <div style={style.infoContainer}>
@@ -30,10 +30,10 @@ export default function Profile() {
           <RowWithIcon text={location} icon="location" />
           <RowWithIcon text={bio} icon="work" />
           {items.map((item) => (
-            <RowWithIcon key={item.key} {...item} />
+            <RowWithIcon {...item} key={item.key} />
           ))}
         </Table>
       </div>
-    </div>
+    </section>
   );
 }

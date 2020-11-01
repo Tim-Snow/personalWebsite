@@ -10,6 +10,9 @@ const style = {
     alignSelf: 'center',
     flex: 1,
     width: 700,
+    fontWeight: 'bold',
+    color: '#fff',
+    fontSize: 24,
   },
   details: {
     margin: 10,
@@ -24,7 +27,9 @@ const style = {
   arrow: {
     cursor: 'pointer',
     fontSize: 24,
-    userSelect: 'none',
+    color: '#fff',
+    backgroundColor: 'transparent',
+    border: 0,
   },
 } as { [key: string]: React.CSSProperties };
 

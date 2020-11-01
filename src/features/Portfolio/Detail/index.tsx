@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
-import Collapse from '@material-ui/core/Collapse';
+import { Fade, Collapse } from '@material-ui/core';
 
 import A from 'components/A';
 import Title from 'components/Title';
@@ -10,7 +10,6 @@ import PortfolioContent, { ProjectName } from 'assets/portfolio';
 import icons from 'assets';
 import style from './style';
 import { usePortfolioDispatch, usePortfolioState } from '../usePortfolio';
-import { Fade } from '@material-ui/core';
 
 export default function Detail() {
   const { detailShowing, portfolios, selected } = usePortfolioState();
@@ -24,7 +23,7 @@ export default function Detail() {
 
   useEffect(() => {
     if (detailShowing && portfolios) {
-      setCurrent(portfolios[selected]?.name);
+      setCurrent(portfolios[selected].name);
     }
   }, [detailShowing, portfolios, selected]);
   useEffect(() => {
@@ -36,34 +35,34 @@ export default function Detail() {
   }, [current]);
 
   return (
-    <Collapse in={detailShowing} style={style.container}>
-      <div style={style.details} id="detail">
+    <Collapse in={detailShowing} style={style.container} mountOnEnter>
+      <section style={style.details} id="detail">
         {detailShowing && portfolios && current && (
-          <div>
+          <>
             <div style={{ display: 'flex', flex: 1, justifyContent: 'space-between' }}>
               <Fade in={selected !== 0} unmountOnExit>
-                <div
+                <button
                   onClick={() => {
                     dispatch({ type: 'prev' });
                   }}
                   style={style.arrow}
                 >
                   <h1>{'<'}</h1>
-                </div>
+                </button>
               </Fade>
               <Title style={style.title}>{prettyTitle}</Title>
               <Fade in={selected !== portfolios.length - 1} unmountOnExit>
-                <div
+                <button
                   onClick={() => {
                     dispatch({ type: 'next' });
                   }}
                   style={style.arrow}
                 >
                   <h1>{'>'}</h1>
-                </div>
+                </button>
               </Fade>
             </div>
-            <div>
+            <>
               {currentPortfolioImage && (
                 <WithSpinner loading={!imageLoaded}>
                   <img src={currentPortfolioImage} onLoad={setLoaded} alt={current} style={style.image} />
@@ -90,10 +89,13 @@ export default function Detail() {
                   View the code on Github <img style={style.icon} src={icons['github']} alt="View code on Github" />
                 </A>
               </p>
-            </div>
-          </div>
+            </>
+            <button onClick={() => dispatch({ type: 'close' })} style={{ ...style.arrow, fontSize: 14 }}>
+              <h1>Close</h1>
+            </button>
+          </>
         )}
-      </div>
+      </section>
     </Collapse>
   );
 }

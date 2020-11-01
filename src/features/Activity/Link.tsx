@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import useFetch from 'hooks/useFetch';
 import { BaseApiState, BaseApiType } from 'types/api';
+import { textColour } from 'constants/styles';
 
 interface Props {
   url: string;
@@ -45,13 +46,16 @@ export default function Link(props: Props) {
   }, [props.text]);
 
   return (
-    <div onClick={getUrl} style={{ cursor: 'pointer', ...props.style }}>
+    <button
+      onClick={getUrl}
+      style={{ backgroundColor: 'transparent', border: 0, cursor: 'pointer', color: textColour, ...props.style }}
+    >
       {
         // eslint-disable-next-line
         <a href={undefined} title={url || props.url} style={{ textDecoration: 'underline' }}>
           {state === BaseApiState.LOAD ? 'Loading...' : text}
         </a>
       }
-    </div>
+    </button>
   );
 }

@@ -9,7 +9,9 @@ const style = {
     maxWidth: 785,
     textAlign: 'justify',
     padding: 12,
-    margin: 24,
+    marginLeft: 24,
+    marginRight: 24,
+    marginTop: 24,
     borderRadius: 4,
   },
   skillsContainer: {

@@ -17,11 +17,14 @@ function Item({ id, title, details }: Props) {
   const onClick = useCallback(() => dispatch({ type: 'select', payload: { id } }), [id, dispatch]);
   const prettyTitle = useMemo(() => title.split('-').join(' '), [title]);
   return (
-    <div style={{ ...style.container, ...{ backgroundColor: selected === id ? '#777' : secondary } }} onClick={onClick}>
+    <button
+      style={{ ...style.container, ...{ backgroundColor: selected === id ? '#666' : secondary } }}
+      onClick={onClick}
+    >
       <h2>{prettyTitle}</h2>
       <p>{details}</p>
       <Img src="github" width={56} />
-    </div>
+    </button>
   );
 }
 

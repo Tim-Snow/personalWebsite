@@ -10,7 +10,7 @@ import style from './style';
 
 export default function AboutMe() {
   return (
-    <div style={style.container} id="about">
+    <section style={style.container} id="about">
       <Title style={style.center}>{content.sections[0].title}</Title>
       {content.sections[0].content.map((con, i) => (
         <Content key={i}>{con}</Content>
@@ -18,7 +18,7 @@ export default function AboutMe() {
 
       <Title style={style.center}>{content.sections[1].title}</Title>
       <Content>
-        <div style={style.content}>
+        <section style={style.content}>
           <div style={style.aweighContainer}>
             <h3>{content.sections[1].content[0]}</h3>
             <Img src="boat" width={48} alt="Aweigh logo" />
@@ -31,12 +31,12 @@ export default function AboutMe() {
               <A url="https://apps.apple.com/us/app/aweigh/id1460562069">iOS App Store</A>
             </p>
           </p>
-        </div>
+        </section>
       </Content>
 
       <Title style={style.center}>{content.sections[2].title}</Title>
       <Content>{content.sections[2].content[0]}</Content>
-      <div style={style.skillsContainer}>
+      <section style={style.skillsContainer}>
         {Object.keys(content.skills).map((lr, i) => (
           <ul key={i}>
             {content.skills[lr as 'left' | 'right'].map((skill: string) => (
@@ -44,7 +44,7 @@ export default function AboutMe() {
             ))}
           </ul>
         ))}
-      </div>
-    </div>
+      </section>
+    </section>
   );
 }

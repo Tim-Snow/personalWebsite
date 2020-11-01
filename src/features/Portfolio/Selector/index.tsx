@@ -11,8 +11,8 @@ import style from './style';
 import useSelector from './useSelector';
 
 interface HoverProps {
-  scroll?: any;
-  stop?: any;
+  scroll?: () => void;
+  stop?: () => void;
   right?: boolean;
   visible: boolean;
 }
@@ -71,7 +71,7 @@ export default function Selector() {
             scroll={hoverScrollL}
             stop={stop}
             visible={
-              state === 'OK' && containerRef.current ? containerRef.current.scrollLeft! >= HOVER_SELECTOR_WIDTH : false
+              state === 'OK' && containerRef.current ? containerRef.current.scrollLeft >= HOVER_SELECTOR_WIDTH : false
             }
           />
           <div style={style.content} ref={containerRef}>

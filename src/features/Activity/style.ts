@@ -7,17 +7,18 @@ const style = {
     textAlign: 'center',
     padding: 32,
     margin: 24,
-    minHeight: 820,
     borderRadius: 4,
   },
   tableContainer: {
-    maxHeight: 800,
+    maxHeight: 1050,
     overflowY: 'auto',
   },
   column: {
     display: 'flex',
     flex: 1,
     justifyContent: 'center',
+    paddingLeft: 11,
+    paddingRight: 11,
   },
   row: {
     display: 'flex',

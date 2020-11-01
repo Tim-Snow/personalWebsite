@@ -15,7 +15,7 @@ import { BaseApiState } from 'types/api';
 export default function Activity() {
   const { activities, state } = useActivities();
   return (
-    <div style={style.container} id="activity">
+    <section style={style.container} id="activity">
       <Title>Recent Github activity</Title>
       <ActivityTableHeader />
       {state === BaseApiState.KO ? (
@@ -45,6 +45,6 @@ export default function Activity() {
           </div>
         </WithSpinner>
       )}
-    </div>
+    </section>
   );
 }
