@@ -27,6 +27,9 @@ export type Portfolio = {
   name: ProjectName;
   description: string;
   html_url: string;
+  homepage: string;
+  language: string;
+  languages_url: string;
 };
 
 type SetPortfolios = { type: 'set_portfolios'; payload: Portfolio[] };
