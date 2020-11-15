@@ -1,7 +1,5 @@
 type PortfolioContent = {
   id: number;
-  name: string;
-  title?: string;
   about: string[];
   technologies: string[];
   ghpages?: string;
@@ -25,8 +23,6 @@ export type ProjectName = typeof ProjectNames[number];
 const PortfolioContent: { [key in ProjectName]: PortfolioContent } = {
   'final-year-project': {
     id: 0,
-    name: 'Final Year Project',
-    title: 'Digital Signal Analysis Influencing a 3D Scene',
     about: [
       'This was my final year project while at university and was very well received, being awarded a first.',
       'The WebAudioAPI is used to load songs and analyse them in real time using the FFT (Fast Fourier Transform), the data obtained is then used to animate the WebGL scene created using the THREE.js library. The website also featured a dynamic user interface animated using the jQuery library.',
@@ -38,7 +34,6 @@ const PortfolioContent: { [key in ProjectName]: PortfolioContent } = {
   },
   'game-of-life': {
     id: 1,
-    name: 'Game Of Life',
     about: [
       'Allows the user to set the initial state and watch how four simple rules can create patterns and cause it to evolve.',
       'The four rules are:',
@@ -53,7 +48,6 @@ const PortfolioContent: { [key in ProjectName]: PortfolioContent } = {
   },
   pacman: {
     id: 2,
-    name: 'Pacman',
     about: [
       'University assignment implementing Pacman with the AI using A* pathfinding instead of original Pacman pathfinding.',
     ],
@@ -61,13 +55,11 @@ const PortfolioContent: { [key in ProjectName]: PortfolioContent } = {
   },
   'personal-website': {
     id: 3,
-    name: 'Personal Website',
     about: ['Place to show my recent activity and portfolio as well as contact information'],
     technologies: ['Javascript', 'React', 'Typescript'],
   },
   'plain-sailing': {
     id: 4,
-    name: 'Plain Sailing',
     about: [
       "A simple game similar to the old 'helicopter' flash browser game, replacing mouse clicks with taps, also features a full shop allowing the player to purchase upgrades for their ship, and a boost mechanic that gives brief immunity.",
       'Gave insight to many aspects of mobile development such as having platform generation algorithms compatible with all screen sizes, almost eliminating all garbage collections while game is running, storing and loading information to the device, and creating menu layouts that adapted to tablet or phone screen sizes.',
@@ -76,14 +68,11 @@ const PortfolioContent: { [key in ProjectName]: PortfolioContent } = {
   },
   'scientist-brawl': {
     id: 5,
-    name: 'Scientist Brawl',
     about: ['A local multiplayer game, customize your scientist and fight your friends!'],
     technologies: ['C#', 'Unity'],
   },
   'pong-server-and-client': {
     id: 6,
-    name: 'TCP Pong Fair Server And Client',
-    title: 'TCP Pong Fair Server And Client',
     about: [
       'The server was responsible for pinging all clients and storing the highest ping of all, it would then send the highest ping to all clients.',
       'The messages were sent at specific times (delayed by highest ping time - client ping) to ensure that all clients received the message at the same time.',
@@ -94,7 +83,6 @@ const PortfolioContent: { [key in ProjectName]: PortfolioContent } = {
   },
   'home-monitor': {
     id: 7,
-    name: 'Home Monitor',
     about: [
       'A project designed to run on a Raspberry Pi with a webcam attached. It captures images at regular intervals, deleting old images when approaching the set limit.',
       'If any motion is detected, it will capture more images at a faster interval, then it will send an email containing all images.',
@@ -105,7 +93,6 @@ const PortfolioContent: { [key in ProjectName]: PortfolioContent } = {
   },
   snake: {
     id: 8,
-    name: 'Snake',
     about: ['Quick little game made to refresh skills in Javascript after a break'],
     technologies: ['Javascript'],
     ghpages: 'https://tim-snow.github.io/snake',
@@ -113,8 +100,6 @@ const PortfolioContent: { [key in ProjectName]: PortfolioContent } = {
 
   sumo: {
     id: 9,
-    name: 'Sumo',
-    title: 'Sumo',
     about: [
       'Collaboration with Caoilan creating a 2 player game, having each player try to jump on their oppositions head while avoiding having the same happen to them.',
     ],

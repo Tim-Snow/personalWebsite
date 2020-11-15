@@ -5,5 +5,5 @@ interface Props {
 }
 
 export default function Content({ children }: Props) {
-  return <section style={{ paddingLeft: 24, paddingTop: 12 }}>{children}</section>;
+  return <section style={{ paddingLeft: 24, paddingRight: 24, paddingTop: 12 }}>{children}</section>;
 }

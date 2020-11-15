@@ -1,101 +1,55 @@
-import React, { useState, useEffect, useMemo, useCallback } from 'react';
+import React from 'react';
 import { Fade, Collapse } from '@material-ui/core';
-
 import A from 'components/A';
 import Title from 'components/Title';
-import { WithSpinner } from 'components/Spinner';
-
-import PortfolioImages from 'assets/portfolio/images';
-import PortfolioContent, { ProjectName } from 'assets/portfolio';
 import icons from 'assets';
 import style from './style';
 import { usePortfolioDispatch, usePortfolioState } from '../usePortfolio';
 
 export default function Detail() {
-  const { detailShowing, portfolios, selected } = usePortfolioState();
+  const { selected, portfolios, current } = usePortfolioState();
   const dispatch = usePortfolioDispatch();
-  const [current, setCurrent] = useState<ProjectName | undefined>(undefined);
-  const [currentPortfolioContent, setCurrentPortfolioContent] = useState<PortfolioContent | undefined>(undefined);
-  const [currentPortfolioImage, setCurrentPortfolioImage] = useState<string | undefined>(undefined);
-  const [imageLoaded, setImageLoaded] = useState(false);
-  const setLoaded = useCallback(() => setImageLoaded(true), []);
-  const prettyTitle = useMemo(() => current?.split('-').join(' '), [current]);
+  const prev = () => dispatch({ type: 'prev' });
+  const next = () => dispatch({ type: 'next' });
+  const close = () => dispatch({ type: 'close' });
 
-  useEffect(() => {
-    if (detailShowing && portfolios) {
-      setCurrent(portfolios[selected].name);
-    }
-  }, [detailShowing, portfolios, selected]);
-  useEffect(() => {
-    if (current) {
-      setImageLoaded(false);
-      setCurrentPortfolioContent(PortfolioContent[current]);
-      setCurrentPortfolioImage(PortfolioImages[current]);
-    }
-  }, [current]);
-
-  return (
-    <Collapse in={detailShowing} style={style.container} mountOnEnter>
+  return current ? (
+    <Collapse in={selected !== -1} style={style.container} mountOnEnter>
       <section style={style.details} id="detail">
-        {detailShowing && portfolios && current && (
-          <>
-            <div style={{ display: 'flex', flex: 1, justifyContent: 'space-between' }}>
-              <Fade in={selected !== 0} unmountOnExit>
-                <button
-                  onClick={() => {
-                    dispatch({ type: 'prev' });
-                  }}
-                  style={style.arrow}
-                >
-                  <h1>{'<'}</h1>
-                </button>
-              </Fade>
-              <Title style={style.title}>{prettyTitle}</Title>
-              <Fade in={selected !== portfolios.length - 1} unmountOnExit>
-                <button
-                  onClick={() => {
-                    dispatch({ type: 'next' });
-                  }}
-                  style={style.arrow}
-                >
-                  <h1>{'>'}</h1>
-                </button>
-              </Fade>
-            </div>
-            <>
-              {currentPortfolioImage && (
-                <WithSpinner loading={!imageLoaded}>
-                  <img src={currentPortfolioImage} onLoad={setLoaded} alt={current} style={style.image} />
-                </WithSpinner>
-              )}
-              <p>{portfolios[selected].description}</p>
-              {currentPortfolioContent && (
-                <>
-                  <h3>{currentPortfolioContent.title && currentPortfolioContent.title}</h3>
-                  {currentPortfolioContent.about.map((element: string, i: number) => (
-                    <p key={i}>{element}</p>
-                  ))}
-                  <p>Technologies: {currentPortfolioContent.technologies.join(', ')}</p>
-                  {currentPortfolioContent.ghpages && (
-                    <A url={currentPortfolioContent.ghpages}>
-                      View in action on Github pages{' '}
-                      <img style={style.icon} src={icons['github']} alt="View on Github pages" />
-                    </A>
-                  )}
-                </>
-              )}
-              <p>
-                <A url={portfolios[selected].html_url}>
-                  View the code on Github <img style={style.icon} src={icons['github']} alt="View code on Github" />
-                </A>
-              </p>
-            </>
-            <button onClick={() => dispatch({ type: 'close' })} style={{ ...style.arrow, fontSize: 14 }}>
-              <h1>Close</h1>
+        <div style={{ display: 'flex', flex: 1, justifyContent: 'space-between' }}>
+          <Fade in={selected !== 0}>
+            <button onClick={prev} style={style.arrow}>
+              <h1>{'<'}</h1>
             </button>
-          </>
+          </Fade>
+          <Title style={style.title}>{current.fromGit.name.replace(/-/g, ' ')}</Title>
+          <Fade in={portfolios && selected !== portfolios.length - 1}>
+            <button onClick={next} style={style.arrow}>
+              <h1>{'>'}</h1>
+            </button>
+          </Fade>
+        </div>
+        {current.image && <img src={current.image} alt={current.fromGit.name} style={style.image} />}
+        {current.extraContent.about.map((element: string, i: number) => (
+          <p key={i}>{element}</p>
+        ))}
+        <p>Technologies: {current.extraContent.technologies.join(', ')}</p>
+        {current.extraContent.ghpages && (
+          <A url={current.extraContent.ghpages}>
+            View in action on Github pages <img style={style.icon} src={icons['github']} alt="View on Github pages" />
+          </A>
         )}
+        <p>
+          <A url={current.fromGit.html_url}>
+            View the code on Github <img style={style.icon} src={icons['github']} alt="View code on Github" />
+          </A>
+        </p>
+        <button onClick={close} style={{ ...style.arrow, fontSize: 14 }}>
+          <h1>Close</h1>
+        </button>
       </section>
     </Collapse>
+  ) : (
+    <></>
   );
 }
