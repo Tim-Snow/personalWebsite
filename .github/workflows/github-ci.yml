@@ -27,6 +27,7 @@ jobs:
         shell: bash
         env:
           REACT_APP_API_KEY: ${{ secrets.REACT_APP_API_KEY }}
+          NODE_OPTIONS: --openssl-legacy-provider
         run: yarn build
       
       - name: Deploy to Firebase
