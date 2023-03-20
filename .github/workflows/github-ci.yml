@@ -2,29 +2,33 @@ name: CI
 
 on:
   push:
-    branches: [master]
-  pull_request:
-    branches: [master]
+    branches: master
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [12.x]
-
     steps:
       - uses: actions/checkout@v2
+      
       - name: Yarn CLI
         uses: CultureHQ/actions-yarn@v1.0.1
-      - run: yarn
-      - run: yarn lint
-      - run: yarn test
-      - shell: bash
+      
+      - name: Install dependencies
+        run: yarn
+      
+      - name: Lint
+        run: yarn lint
+      
+      - name: Test
+        run: yarn test
+      
+      - name: Set API key
+        shell: bash
         env:
           REACT_APP_API_KEY: ${{ secrets.REACT_APP_API_KEY }}
-        run: REACT_APP_API_KEY="$REACT_APP_API_KEY" yarn build
+        run: yarn build
+      
       - name: Deploy to Firebase
         uses: w9jds/firebase-action@master
         with:
