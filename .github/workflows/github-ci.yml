@@ -24,6 +24,7 @@ jobs:
         run: yarn test
       
       - name: Set API key
+        if: false
         shell: bash
         env:
           REACT_APP_API_KEY: ${{ secrets.REACT_APP_API_KEY }}
@@ -31,6 +32,7 @@ jobs:
         run: yarn build
       
       - name: Deploy to Firebase
+        if: false
         uses: w9jds/firebase-action@master
         with:
           args: deploy
